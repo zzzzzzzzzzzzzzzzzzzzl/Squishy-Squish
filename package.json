@@ -1,0 +1,40 @@
+{
+  "name": "phaser-template",
+  "version": "1.0.0-alpha",
+  "description": "A template for building Phaser games.",
+  "author": "Mark <mark@remarkablemark.org>",
+  "source": "public/index.html",
+  "scripts": {
+    "build": "parcel build",
+    "clean": "rm -rf .parcel-cache/ dist/",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:tsc": "tsc --noEmit",
+    "postinstall": "husky install",
+    "start": "parcel --open"
+  },
+  "homepage": "https://remarkablegames.org/phaser-template/",
+  "dependencies": {
+    "phaser": "3.55.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.5.1",
+    "@commitlint/config-conventional": "17.4.4",
+    "@parcel/packager-raw-url": "2.8.3",
+    "@parcel/transformer-webmanifest": "2.8.3",
+    "@types/gtag.js": "0.0.12",
+    "@typescript-eslint/eslint-plugin": "5.58.0",
+    "@typescript-eslint/parser": "5.58.0",
+    "eslint": "8.38.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.1",
+    "mobx": "6.9.0",
+    "parcel": "2.8.3",
+    "prettier": "2.8.7",
+    "typescript": "5.0.4"
+  },
+  "private": true,
+  "license": "MIT"
+}
