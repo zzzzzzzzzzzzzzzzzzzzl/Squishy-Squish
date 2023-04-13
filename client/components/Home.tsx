@@ -2,11 +2,17 @@ import { useState } from 'react'
 
 function Home() {
   return (
-    <div>
+    <div className="menu-overlay">
       <ul className="menu">
-        <li>Start</li>
-        <li>Shop</li>
-        <li>LeaderBoard</li>
+        <li>
+          <button>Start</button>
+        </li>
+        <li>
+          <button>Shop</button>
+        </li>
+        <li>
+          <button>LeaderBoard</button>
+        </li>
       </ul>
     </div>
   )

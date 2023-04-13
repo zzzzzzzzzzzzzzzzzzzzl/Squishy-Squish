@@ -5,9 +5,8 @@ import P5 from './main'
 function App() {
   return (
     <div>
-      <div style={{transform:translate"0px-100px"}}>
-      <Home />
-
+      <div>
+        <Home />
       </div>
       <Canvas />
     </div>
