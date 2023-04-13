@@ -1,12 +1,15 @@
-import { useState } from 'react'
-
-interface HomeProps {
+interface StartProps {
   onStart: () => void
+  onShopButton: () => void
 }
 
-function Home(props: HomeProps) {
+function Home(props: StartProps) {
   const handleStartClick = () => {
     props.onStart()
+  }
+
+  const handleShopButton = () => {
+    props.onShopButton()
   }
 
   return (
@@ -17,7 +20,7 @@ function Home(props: HomeProps) {
             <button onClick={handleStartClick}>Start</button>
           </li>
           <li>
-            <button>Shop</button>
+            <button onClick={handleShopButton}>Shop</button>
           </li>
           <li>
             <button>LeaderBoard</button>
