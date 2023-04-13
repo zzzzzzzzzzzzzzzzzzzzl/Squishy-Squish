@@ -19,23 +19,24 @@ class enviroment {
       pos: [250, 250],
       acceleration: 0.6,
       velocity: [4, 1],
+      grounded:false
     }
   }
 
   drawPlayer() {
     this.p5.fill([25, 0, 100])
     this.p5.stroke([255, 255, 0])
-    this.p5.rect(this.player.position[0], this.player.position[1], 20, 20)
+    this.p5.rect(this.player.pos[0], this.player.pos[1], 20, 20)
   }
 
   gravity() {
     this.player.velocity[1] += this.player.acceleration
-    this.player.position[1] += this.player.velocity[1]
-    if (this.player.position[1] > 900) {
-      // this.velocity[1]=-this.velocity[1]
-      this.player.position[1] = 900
+    if (this.player.pos[1] > 900) {
+      this.player.velocity[1]=0
+      this.player.pos[1] = 900
     }
   }
+
   drawPlatforms() {
     this.platformArr.map((i) => {
       this.p5.fill([25, Math.random() * 50, 100])
@@ -48,32 +49,51 @@ class enviroment {
       )
     })
   }
+  platformCollision(){
+    this.platformArr.map((i)=>{
+    i.collision(this.player)
+    })
+
+  }
+  collision(){
+    this.platformCollision()
+
+  }
   drawAll() {
     this.drawPlatforms()
-    // this.drawPlayer()
+    this.drawPlayer()
+  }
+  sumForces(){
+    this.player.pos[1] += this.player.velocity[1]
+    // this.player.pos[0] += this.player.velocity[0]
   }
   update() {
     this.drawAll()
+    this.gravity()
+    this.collision()
+    this.keyPressed()
+    this.sumForces()
     // if (!this.ded) {
-    //   this.gravity()
     // }
-    // this.keyPressed()
   }
 
   jump() {
-    this.player.velocity[1] = -20
-    this.jumped = true
+    if(this.player.velocity[1]==0){
+
+      this.player.velocity[1] = -20
+
+    }
   }
 
   keyPressed() {
     if (this.p5.keyIsDown(87)) {
       this.jump()
-    } else if (this.p5.keyIsDown(65)) {
-      this.player[0] += this.velocity[0]
-    } else if (this.p5.keyIsDown(83)) {
-      this.player[1] -= this.velocity[1]
-    } else if (this.p5.keyIsDown(68)) {
-      this.player[0] -= this.velocity[0]
+    } if (this.p5.keyIsDown(65)) {
+      this.player.pos[0] -= this.player.velocity[0]
+    }  if (this.p5.keyIsDown(83)) {
+      this.player.pos[1] -= this.player.velocity[1]
+    }  if (this.p5.keyIsDown(68)) {
+      this.player.pos[0] += this.player.velocity[0]
     }
   }
 
@@ -87,8 +107,6 @@ class enviroment {
 
       this.p5.draw = () => {
         if (this.p5.keyIsDown(87)) {
-          // W key
-          console.log('here')
         }
         this.p5.background(
           255,
