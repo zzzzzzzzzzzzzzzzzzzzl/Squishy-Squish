@@ -1,6 +1,6 @@
 import enviroment from './game/enviroment'
 
-let a = new enviroment(1000)
+const a = new enviroment(1000)
 
 function Canvas() {
   return (
