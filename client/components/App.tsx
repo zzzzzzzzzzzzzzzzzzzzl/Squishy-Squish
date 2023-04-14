@@ -1,6 +1,10 @@
 import Canvas from './main'
 import Home from './Home'
+
+
+=======
 import Store from './Store'
+
 import { useState } from 'react'
 
 function App() {
