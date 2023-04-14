@@ -1,6 +1,7 @@
 interface StartProps {
   onStart: () => void
   onShopButton: () => void
+  onLeaderboardButton: () => void
 }
 
 function Home(props: StartProps) {
@@ -10,6 +11,9 @@ function Home(props: StartProps) {
 
   const handleShopButton = () => {
     props.onShopButton()
+  }
+  const handleLeaderboardButton = () => {
+    props.onLeaderboardButton()
   }
 
   return (
@@ -23,7 +27,7 @@ function Home(props: StartProps) {
             <button onClick={handleShopButton}>Shop</button>
           </li>
           <li>
-            <button>LeaderBoard</button>
+            <button onClick={handleLeaderboardButton}>LeaderBoard</button>
           </li>
         </ul>
       </div>
