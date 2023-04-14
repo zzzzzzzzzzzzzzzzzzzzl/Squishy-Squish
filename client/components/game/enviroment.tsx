@@ -10,13 +10,18 @@ class enviroment {
         const rand = Math.random() * 1000
         return new platform([
           [rand, rand],
-          [Math.random() * 1000, Math.random() * 1000 - 200],
+          [50, 50],
         ])
       })
+    this.groundHeight = 900
+    const ground = [
+      [0, this.groundHeight],
+      [1000, 1000],
+    ]
+    this.platformArr.push(new platform(ground))
 
     this.draw(envSize)
 
-    this.groundHeight = 900
     this.player = new playerObject({
       pos: [250, 250],
       acceleration: 0.6,
@@ -40,7 +45,6 @@ class enviroment {
   }
   //this will draw the enviroment
   drawAll() {
-    this.player.draw(this.p5)
     this.platformArr.map((i) => {
       i.draw(this.p5)
     })
@@ -53,8 +57,9 @@ class enviroment {
   }
   //this is where our game will take place
   update() {
+    this.player.updatePlayer(this.p5)
     this.drawAll()
-    this.gravity()
+    // this.gravity()
     this.collision()
     this.keyPressed()
 
@@ -65,7 +70,7 @@ class enviroment {
 
   keyPressed() {
     if (this.p5.keyIsDown(87)) {
-      this.jump()
+      // this.jump()
     }
     if (this.p5.keyIsDown(65)) {
       this.player.pos[0] -= this.player.velocity[0]

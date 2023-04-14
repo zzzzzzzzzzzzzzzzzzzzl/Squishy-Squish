@@ -1,7 +1,7 @@
 class platform {
   constructor(pos) {
     this.topCorner = pos[0]
-    this.bottomCorner = [50, 50]
+    this.bottomCorner = pos[1]
   }
   collision(player) {
     if (

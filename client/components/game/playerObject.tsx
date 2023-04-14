@@ -1,4 +1,4 @@
-// import gravity from './gravity'
+import gravity from './gravity'
 
 class playerObject {
   constructor(player) {
@@ -18,28 +18,28 @@ class playerObject {
   }
   jump() {
     if (this.velocity[1] == 0) {
-      this.velocity[1] = -20
-    }
+    this.velocity[1] = -20
   }
   playerInput(p5) {
     if (p5.keyIsDown(87)) {
-      this.player.jump()
+      this.jump()
     }
     if (p5.keyIsDown(65)) {
-      this.player.pos[0] -= this.player.velocity[0]
+      this.pos[0] -= this.velocity[0]
     }
     if (p5.keyIsDown(83)) {
-      this.player.pos[1] -= this.player.velocity[1]
+      this.pos[1] -= this.velocity[1]
     }
     if (p5.keyIsDown(68)) {
-      this.player.pos[0] += this.player.velocity[0]
+      this.pos[0] += this.velocity[0]
     }
   }
-  updatePlayer() {
-    // this.velocity = gravity(this.velocity)
-    this.playerInput()
+  updatePlayer(p5) {
+    this.velocity = gravity(this.velocity)
+    this.playerInput(p5)
     this.sumForces()
-    this.draw()
+
+    this.draw(p5)
   }
 }
 
