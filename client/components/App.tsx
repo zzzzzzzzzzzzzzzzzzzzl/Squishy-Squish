@@ -1,21 +1,43 @@
 import Canvas from './main'
 import Home from './Home'
-import P5 from './main'
+
+
+=======
+import Store from './Store'
 
 import { useState } from 'react'
 
 function App() {
-  const [showHome, setShowHome] = useState(true) // state variable to show/hide Home component
+  const [viewToRender, setViewToRender] = useState('home')
 
   const handleStart = () => {
-    setShowHome(false) // hide Home component when Start button is clicked
+    setViewToRender('start') // hide Home component when Start button is clicked
+  }
+  const handleShopButton = () => {
+    setViewToRender('shop')
+  }
+
+  function getViewToRender() {
+    switch (viewToRender) {
+      case 'home':
+        return <Home onStart={handleStart} onShopButton={handleShopButton} />
+
+      case 'shop':
+        return <Store />
+
+      // case 'leaderboard':
+      //     return
+
+      default:
+        return null
+    }
   }
 
   return (
     <div>
-      {showHome && <Home onStart={handleStart} />}{' '}
-      {/* pass handleStart function as a prop to Home component */}
-      <Canvas />
+      {getViewToRender()}
+
+      {<Canvas />}
     </div>
   )
 }
