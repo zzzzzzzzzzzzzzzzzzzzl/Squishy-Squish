@@ -34,6 +34,10 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .menu {
@@ -73,6 +77,43 @@ main {
   
 }
 
+
+.leaderboard {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.leaderboard th {
+  font-size: 2rem;
+  text-transform: uppercase;
+  padding: 1rem;
+  border-bottom: 2px solid #fff;
+}
+.leaderboard td {
+  font-size: 1.8rem;
+  padding: 1rem;
+  border-bottom: 1px solid #fff;
+}
+
+.leaderboard td:first-child {
+  text-align: left;
+}
+
+.leaderboard td:last-child {
+  text-align: right;
+}
+.leaderboard tbody {
+  margin-top: 1rem;
+  padding: 0 2rem;
+}
+
+.leaderboard tbody tr:first-child {
+  background-color: #ff0;
+  color: #000;
+  font-weight: bold;
+
 .store-listing{
   border: solid black 2px;
   padding: 40px;
@@ -92,4 +133,5 @@ main {
 
 .items{
   padding: 40px;
+
 }

@@ -5,7 +5,6 @@ const filePath = path.join(__dirname, './data/data.json')
 export async function getReadData() {
   try {
     const data = await readFile(filePath, 'utf-8')
-    console.log(data)
 
     return JSON.parse(data)
   } catch (err) {
