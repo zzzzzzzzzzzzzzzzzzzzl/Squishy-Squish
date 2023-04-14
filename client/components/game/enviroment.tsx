@@ -5,12 +5,11 @@ import playerObject from './playerObject'
 class enviroment {
   constructor(envSize) {
     //array of platform objects//look at platform.tsx
-    this.platformArr = Array(10)
+    this.platformArr = Array(50)
       .fill()
       .map(() => {
-        const rand = Math.random() * 1000
         return new platform([
-          [rand, rand],
+          [Math.random() * 1000, Math.random() * 1000],
           [50, 50],
         ])
       })
@@ -25,7 +24,7 @@ class enviroment {
     this.player = new playerObject({
       pos: [250, 250],
       acceleration: 0.6,
-      velocity: [4, 1],
+      velocity: [0, 0],
       grounded: false,
     })
 
@@ -34,10 +33,11 @@ class enviroment {
 
   //this is where our game will take place
   update() {
-    this.player.updatePlayer(this.p5)
+    this.player.playerInput(this.p5)
     this.platformArr.map((i) => {
       i.updatePlatform(this.p5, this.player)
     })
+    this.player.updatePlayer(this.p5)
   }
 
   draw(envSize) {
