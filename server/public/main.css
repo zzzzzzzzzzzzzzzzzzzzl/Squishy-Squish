@@ -72,3 +72,24 @@ main {
   border-radius: 20px;
   
 }
+
+.store-listing{
+  border: solid black 2px;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: pink;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-sizing: border-box;
+  position: relative;
+  top: 10px;
+  justify-content: center;
+  /* padding: 20px, 0, 20px, 0px; */
+  list-style: none;
+
+  
+}
+
+.items{
+  padding: 40px;
+}
