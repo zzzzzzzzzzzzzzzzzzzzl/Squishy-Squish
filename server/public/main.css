@@ -77,6 +77,7 @@ main {
   
 }
 
+
 .leaderboard {
   display: table;
   width: 100%;
@@ -112,4 +113,25 @@ main {
   background-color: #ff0;
   color: #000;
   font-weight: bold;
+
+.store-listing{
+  border: solid black 2px;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: pink;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-sizing: border-box;
+  position: relative;
+  top: 10px;
+  justify-content: center;
+  /* padding: 20px, 0, 20px, 0px; */
+  list-style: none;
+
+  
+}
+
+.items{
+  padding: 40px;
+
 }
