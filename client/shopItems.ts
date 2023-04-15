@@ -5,7 +5,7 @@ export default [
     price: 1000,
     power: 1,
     value: 0.1,
-    image: 'string',
+    image: '/images/jump-boost.png',
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export default [
     price: 1000,
     power: 1,
     value: 0.1,
-    image: 'string',
+    image: '/images/speed-boost.png',
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export default [
     price: 1000,
     power: 1,
     value: 1,
-    image: 'string',
+    image: '/images/health.png',
   },
   {
     id: 4,
@@ -29,6 +29,6 @@ export default [
     price: 1000,
     power: 1,
     value: 1,
-    image: 'string',
+    image: '/images/speed-boost.png',
   },
 ]

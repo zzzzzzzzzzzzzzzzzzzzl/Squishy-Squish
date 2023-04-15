@@ -49,7 +49,9 @@ function Store(props: Props) {
         <br></br>
         <h2 className="menu-heading">Shop</h2>
         <br></br>
-        <p>Current currency: ${playerinfo.currency}</p>
+        <p className="currency-display">
+          Current Rations: &#10084; {playerinfo.currency}
+        </p>
         <br></br>
         {items.map((item) => (
           <div className="item-container" key={item.id}>
@@ -60,7 +62,7 @@ function Store(props: Props) {
               src={item.image}
               onDoubleClick={() => handleItemDoubleClick(item)}
             />
-            <p className="item-cost">${item.price} </p>
+            <p className="item-cost"> &#10084; {item.price} </p>
           </div>
         ))}
       </div>

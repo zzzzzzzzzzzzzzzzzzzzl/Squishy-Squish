@@ -34,10 +34,10 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  /* background-color: white;
   border: 2px solid black;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px; */
 }
 
 .menu {
@@ -52,7 +52,7 @@ main {
 }
 
 .menu li {
-  margin: 10px 0;
+  margin: 10px 10px;
 }
 
 .menu button {
@@ -116,10 +116,10 @@ main {
 }
 
 .store-listing{
-  border: solid black 2px;
+  border: solid #774936 5px;
   padding: 40px;
   border-radius: 20px;
-  background-color: pink;
+  background-color: #F7A9A8;
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-sizing: border-box;
@@ -140,14 +140,73 @@ main {
 .return-button{
   width: 50px;
   position: absolute;
-  top:10px;
-  left:10px;
+  top:1px;
+  left:1px;
 }
 
 .menu-heading{
-  display: grid;
-  grid-template-columns: 1fr;
-  position: relative;
+  position: absolute;
+  top: 5px;
+  left:29%;
+  font-size: 50px;
+  margin:auto;
+  padding-left: 20px;
+  padding-right: 20px;
   justify-content: center;
   color: #774936;
+  border: solid #774936 3px;
+  border-radius: 20px;
+  background: rgb(255,247,230);
+  background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
+
+}
+
+.item-image{
+  border: solid #774936 3px;
+  border-radius: 20px;
+  background: rgb(255,247,230);
+  background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
+
+
+}
+
+.item-cost{
+  border: solid #774936 3px;
+  border-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-left: 15px ;
+  margin-right: 15px ;
+  background: rgb(255,247,230);
+  background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
+}
+
+.item-name{
+  font-weight: 1000;
+  border: solid #774936 3px;
+  border-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-left: 15px ;
+  margin-right: 15px ;
+  background: rgb(255,247,230);
+  background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
+}
+
+.currency-display{
+  position: relative;
+  top: 10px;
+  left:50%;
+
+}
+
+.item-image:hover{
+  border: solid #3a89bf 3px;
+  border-radius: 20px;
+  background: rgb(244,253,255);
+  background: linear-gradient(180deg, rgba(244,253,255,1) 0%, rgba(129,212,233,1) 100%);
 }
