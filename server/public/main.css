@@ -55,12 +55,14 @@ main {
   margin: 10px 10px;
 }
 
+
+
 .menu button {
-  background-color: black;
-  border: 2px solid aliceblue;
-  color: aliceblue;
+  border: solid #774936 5px;
+  border-radius: 20px;
+  background-color: #F7A9A8;
+  color: #774936;
   padding: 10px;
-  border-radius: 5px;
   cursor: pointer;
   font-size: 3rem;
   font-weight: bold;
@@ -223,6 +225,7 @@ main {
 .item-image:hover{
   border: solid #3a89bf 3px;
   border-radius: 20px;
+  box-shadow: 3px 3px #263b5a;
   background: rgb(244,253,255);
   background: linear-gradient(180deg, rgba(244,253,255,1) 0%, rgba(129,212,233,1) 100%);
 }
@@ -233,4 +236,19 @@ main {
   background: rgb(255,247,230);
   background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
 
+}
+
+.menu button:hover {
+  border: solid #3a89bf 5px;
+  border-radius: 20px;
+  background: rgb(244,253,255);
+  background: linear-gradient(180deg, rgba(244,253,255,1) 0%, rgba(129,212,233,1) 100%);
+  color: #000000;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: 'serif, Times New Roman', Times;
+  width: 350px;
+  box-shadow: 3px 3px #263b5a;
 }
