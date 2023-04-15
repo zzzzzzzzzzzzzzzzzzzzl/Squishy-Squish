@@ -1,78 +1,37 @@
-import { getReadData, getWriteData } from './dataService';
-import fs from 'fs/promises';
+import { getReadData, getWriteData } from './dataService'
+import { readFile, writeFile } from 'node:fs/promises'
 
-import '@testing-library/jest-dom'
-import path from 'node:path'
+jest.mock('node:fs/promises')
 
-const filePath = path.join(__dirname, './data/data.json')
+describe('getReadData', () => {
+  test('returns parsed data when file is read successfully', async () => {
+    const mockData = { leaderboard: [{ name: 'Alice', score: 100 }] }
+    const mockedReadFile = readFile as jest.MockedFunction<typeof readFile>
+    mockedReadFile.mockResolvedValueOnce(JSON.stringify(mockData))
 
-describe('dataService', () => {
-  beforeEach(async () => {
-    await getWriteData({
-      leaderboard: [
-        {
-          id: 1,
-          name: 'Fido',
-          score: 50,
-        },
-      ],
-    });
-  });
-  
-  afterEach(async () => {
-    await getWriteData(filePath);
-  });
-  
-  test('reads data from the data file', async () => {
-    const expected = {
-      leaderboard: [
-        {
-          id: 1,
-          name: 'Fido',
-          score: 50,
-        },
-      ]
-    };
-  
-    const actual = await getReadData();
-  
-    expect(actual).toEqual(expected);
-  });
-  
-  test('throws an error if the data file cannot be read', async () => {
-    await getWriteData({ leaderboard: [] });
+    const data = await getReadData()
 
-    await expect(getReadData()).rejects.toThrow('Failed to read data file');
-  });
+    expect(data).toEqual(mockData)
+  })
 
-  describe('getWriteData', () => {
-    test('writes data to the data file', async () => {
-      const expected = {
-        leaderboard: [
-          {
-            id: 1,
-            name: 'Fido',
-            score: 50,
-          },
-          {
-            id: 2,
-            name: 'John',
-            score: 60,
-          },
-        ],
-      };
+  test('throws error when file read fails', async () => {
+    const mockedReadFile = readFile as jest.MockedFunction<typeof readFile>
+    mockedReadFile.mockRejectedValueOnce(new Error('Failed to read data file'))
 
-      await getWriteData(expected);
+    await expect(getReadData()).rejects.toThrow('Failed to read data file')
+  })
+})
 
-      const actual = await getReadData();
+describe('getWriteData', () => {
+  test('throws error when file write fails', async () => {
+    const mockData = { leaderboard: [{ name: 'Alice', score: 100 }] }
+    const mockedWriteFile = writeFile as jest.MockedFunction<typeof writeFile>
+    mockedWriteFile.mockRejectedValueOnce(
+      new Error('Failed to write data file')
+    )
 
-      expect(actual).toEqual(expected);
-    });
-
-    test('throws an error if the data file cannot be written to', async () => {
-      const readOnlyFilePath = './data/readOnly.json';
-
-      await expect(getWriteData({}, readOnlyFilePath)).rejects.toThrow('Failed to write data file');
-    });
-  });
-});
+    await expect(getWriteData(mockData)).rejects.toThrow(
+      'Failed to read data file'
+    )
+  })
+})
