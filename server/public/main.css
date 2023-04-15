@@ -6,8 +6,8 @@ body {
   text-align: center;
 }
 
-.p5Canvas {
-}
+/* .p5Canvas {
+} */
 
 main {
   display: inline;
@@ -129,12 +129,18 @@ main {
 .leaderboard tbody tr:first-child {
   color: #774936;
   font-weight: bold;
+
   margin:0px;
   padding:0px;
 }
 
 .view{
   border: solid #774936 5px;
+
+}
+.store-listing{
+  border: solid black 2px;
+
   padding: 40px;
   border-radius: 20px;
   background-color: #F7A9A8;
