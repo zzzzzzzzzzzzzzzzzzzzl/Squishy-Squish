@@ -39,7 +39,7 @@ function Store(props: Props) {
 
   return (
     <div className="menu-overlay">
-      <div className="store-listing">
+      <div className="view">
         <img
           className="return-button"
           src="/images/return-button.png"

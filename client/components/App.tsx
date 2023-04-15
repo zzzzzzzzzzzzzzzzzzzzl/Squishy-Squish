@@ -37,7 +37,7 @@ function App() {
         return <Store updateViewToRender={updateViewToRender} />
 
       case 'leaderboard':
-        return <Leaderboard />
+        return <Leaderboard updateViewToRender={updateViewToRender} />
 
       default:
         return null

@@ -7,10 +7,16 @@ type Leader = {
   score: number
 }
 
-function Leaderboard() {
+interface Props {
+  updateViewToRender: (view: string) => void
+}
+
+function Leaderboard(props: Props) {
   const [leaderboard, setLeaderboard] = useState<Leader[]>([])
 
-  function handleHome() {}
+  const handleReturnButton = () => {
+    props.updateViewToRender('home')
+  }
 
   useEffect(() => {
     getLeaderboard()
@@ -22,7 +28,16 @@ function Leaderboard() {
 
   return (
     <div className="menu-overlay">
-      <div className="border">
+      <div className="view">
+        <img
+          className="return-button"
+          src="/images/return-button.png"
+          onClick={handleReturnButton}
+          alt="return button"
+        />
+        <br></br>
+        <h2 className="leaderboard-heading">Leader Board</h2>
+        <br></br>
         <table className="leaderboard">
           <thead>
             <tr>
@@ -43,7 +58,6 @@ function Leaderboard() {
               ))}
           </tbody>
         </table>
-        <button onClick={handleHome}>Go Back</button>
       </div>
     </div>
   )
