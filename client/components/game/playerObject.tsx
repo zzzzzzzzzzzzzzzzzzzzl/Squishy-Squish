@@ -6,17 +6,44 @@ class playerObject {
     this.acceleration = player.acceleration
     this.velocity = player.velocity
     this.size = 20
+    this.colour=[255, 255, 0]
     this.pBot= [this.pos[0]+this.size,this.pos[1]+this.size]//playerBottom
     this.updateColisionBoundries()
-    console.log(this.bounds)
+    this.snailTrail=Array(7).fill([...this.pos])
+    this.velocityArr=Array(3).fill([0,0])
   }
   sumForces() {
     //is there a better way of doing this???/
-    this.pos[1] += this.velocity[1]
-    this.pBot= [this.pos[0]+this.size,this.pos[1]+this.size]
+    this.pos[1] = Number(    (this.velocity[1]+this.pos[1]).toFixed(1))
 
-    this.pos[0]+=this.velocity[0]
+    this.pBot= [this.pos[0]+this.size,this.pos[1]+this.size]
+    this.pos[0]= Number(    (this.velocity[0]+this.pos[0]).toFixed(1))
     this.velocity[0]*=.8
+  }
+  updateVelocityArr(){
+    console.log(this.velocityArr)
+      this.velocityArr.unshift([...this.velocity])
+      this.velocityArr.pop()
+      
+      console.log(this.velocityArr)
+
+  }
+  updateSnailTrail(p5){
+    let c=[0,0,0]
+    this.snailTrail.unshift([...this.pos])
+    this.snailTrail.pop()
+    this.snailTrail.map((i,idx)=>{
+      let len=this.snailTrail.length-(idx+1)
+      c=[c[0]+30,Math.random()*55,Math.random()*255]
+      if(c[0]>255){
+        c=[50,50,0]
+      }
+      p5.fill(c)
+      p5.stroke(c)
+      p5.rect(this.snailTrail[len][0], this.snailTrail[len][1], 20, 20)
+    })
+
+   
   }
   updateColisionBoundries(){
     this.bounds={
@@ -26,22 +53,17 @@ class playerObject {
       br:[this.pos[0]+this.size,this.pos[1]+this.size]
     }
   }
-  drawBoundries(p5){
-
-    p5.stroke([250, 25, 25])
-    const bounds=this.bounds
-    p5.line(bounds.tl[0], bounds.tl[1], bounds.tr[0], bounds.tr[1]);
-    p5.line(bounds.tl[0], bounds.tl[1], bounds.bl[0], bounds.bl[1]);
-    p5.line(bounds.tr[0], bounds.tr[1], bounds.br[0], bounds.br[1]);
-    p5.line(bounds.bl[0], bounds.bl[1], bounds.br[0], bounds.br[1]);
-  }
+  
   draw(p5) {
-    p5.fill([25, 0, 100])
-    p5.stroke([255, 255, 0])
+    p5.fill(this.colour)
+    p5.stroke(this.colour)
     p5.rect(this.pos[0], this.pos[1], 20, 20)
   }
   jump() {
-    this.velocity[1] = -12
+    if (this.grounded){
+
+      this.velocity[1] = -12
+    }
   }
   playerInput(p5) {
     if (p5.keyIsDown(87)) {//w
@@ -51,7 +73,6 @@ class playerObject {
        this.velocity[0]-=this.acceleration
     }
     if (p5.keyIsDown(83)) {//s
-      //  this.velocity[1]+=this.acceleration
     }
     if (p5.keyIsDown(68)) {//d
        this.velocity[0]+=this.acceleration
@@ -61,10 +82,10 @@ class playerObject {
     this.velocity = gravity(this.velocity)
     this.playerInput(p5)
     this.sumForces()
-    
+    // this.updateSnailTrail(p5)
+    this.updateVelocityArr()
     this.draw(p5)
     this.updateColisionBoundries()
-    this.drawBoundries(p5)
   }
 }
 
