@@ -29,6 +29,7 @@ class platform {
       ) {
         if (player.velocity < 0.2) {
           player.velocity = 0
+  
         } else {
           player.pos[1] -= player.velocity[1]
           player.velocity[1] = -player.velocity[1] / 4
@@ -46,8 +47,9 @@ class platform {
      this.bounds.tr[1]< player.bounds.bl[1]&&
      this.bounds.tr[1]+this.bottomCorner[1]/2> player.bounds.bl[1]
     ) {
-      player.velocity[1] = -.6
+      player.velocity[1] = -player.velocity[1]*.5
       player.pos[1] =this.bounds.tl[1]-player.size
+      player.grounded=true
       return player
     }
 
@@ -58,7 +60,7 @@ class platform {
      this.bounds.br[1]>player.bounds.tl[1]
     ) {
       player.pos[1] =this.bounds.bl[1]
-      player.velocity[1] = -player.velocity[1]/2
+      player.velocity[1] = -player.velocity[1]
       return player
     }
     return player

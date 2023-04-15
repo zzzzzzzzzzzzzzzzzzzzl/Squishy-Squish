@@ -20,15 +20,25 @@ class playerObject {
     this.pos[0]= Number(    (this.velocity[0]+this.pos[0]).toFixed(1))
     this.velocity[0]*=.8
   }
-  updateVelocityArr(){
-    console.log(this.velocityArr)
-      this.velocityArr.unshift([...this.velocity])
+  checkIfGrounded(){//get last 3 frames of velocity. and adds them all. if the total is less than .7 player is grounded
+    //if we change acceloration then we will need to change this 
+    this.velocityArr.unshift([...this.velocity])
       this.velocityArr.pop()
-      
-      console.log(this.velocityArr)
+      let count=0
+      this.velocityArr.map((i)=>{
+        count+=Math.abs(i[1])
+      })
+      if (Math.abs(count)<.7){
+        this.grounded=true
+      }
+      else{
+        this.grounded=false
+      }
+      console.log(count)
+
 
   }
-  updateSnailTrail(p5){
+  updateSnailTrail(p5){//kind of cool visual effect
     let c=[0,0,0]
     this.snailTrail.unshift([...this.pos])
     this.snailTrail.pop()
@@ -62,7 +72,7 @@ class playerObject {
   jump() {
     if (this.grounded){
 
-      this.velocity[1] = -12
+      this.velocity[1] += -8
     }
   }
   playerInput(p5) {
@@ -82,8 +92,8 @@ class playerObject {
     this.velocity = gravity(this.velocity)
     this.playerInput(p5)
     this.sumForces()
-    // this.updateSnailTrail(p5)
-    this.updateVelocityArr()
+    this.updateSnailTrail(p5)
+    this.checkIfGrounded()
     this.draw(p5)
     this.updateColisionBoundries()
   }
