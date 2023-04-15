@@ -1,5 +1,6 @@
 import items from '../shopItems'
 import { loadPlayerData, savePlayerData } from '../localPlayerData'
+import { useState } from 'react'
 
 interface ShopItem {
   id: number
@@ -10,8 +11,17 @@ interface ShopItem {
   image: string
 }
 
-function Store() {
+interface Props {
+  updateViewToRender: (view: string) => void
+}
+
+function Store(props: Props) {
   const { playerinfo, stats } = loadPlayerData()
+  // const [viewToRender, setViewToRender] = useState('home')
+
+  const handleReturnButton = () => {
+    props.updateViewToRender('home')
+  }
 
   function handleItemDoubleClick(item: ShopItem) {
     if (playerinfo.currency >= item.price) {
@@ -29,8 +39,20 @@ function Store() {
 
   return (
     <div className="menu-overlay">
-      <div className="store-listing">
-        <p>Current currency: ${playerinfo.currency}</p>
+      <div className="view">
+        <img
+          className="return-button"
+          src="/images/return-button.png"
+          onClick={handleReturnButton}
+          alt="return button"
+        />
+        <br></br>
+        <h2 className="menu-heading">Shop</h2>
+        <br></br>
+        <p className="currency-display">
+          Current Rations: &#10084; {playerinfo.currency}
+        </p>
+        <br></br>
         {items.map((item) => (
           <div className="item-container" key={item.id}>
             <p className="item-name">{item.name}</p>
@@ -40,7 +62,7 @@ function Store() {
               src={item.image}
               onDoubleClick={() => handleItemDoubleClick(item)}
             />
-            <p className="item-cost">${item.price} </p>
+            <p className="item-cost"> &#10084; {item.price} </p>
           </div>
         ))}
       </div>

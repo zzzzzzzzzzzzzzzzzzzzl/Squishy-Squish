@@ -1,7 +1,7 @@
 body {
   margin: 0;
   background-color: rgb(0, 0, 0);
-  color: #0a1520;
+  color: #774936;
   font-family: 'Poppins', sans-serif;
   text-align: center;
 }
@@ -34,10 +34,10 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  /* background-color: white;
   border: 2px solid black;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px; */
 }
 
 .menu {
@@ -52,15 +52,17 @@ main {
 }
 
 .menu li {
-  margin: 10px 0;
+  margin: 10px 10px;
 }
 
+
+
 .menu button {
-  background-color: black;
-  border: 2px solid aliceblue;
-  color: aliceblue;
+  border: solid #774936 5px;
+  border-radius: 20px;
+  background-color: #F7A9A8;
+  color: #774936;
   padding: 10px;
-  border-radius: 5px;
   cursor: pointer;
   font-size: 3rem;
   font-weight: bold;
@@ -69,32 +71,47 @@ main {
   border-radius: 20px;
 }
 
-.border {
-  border: solid black 2px;
-  background-color: antiquewhite;
-  padding: 40px;
-  border-radius: 20px;
-  
-}
-
-
 .leaderboard {
+  margin-top:40px;
   display: table;
   width: 100%;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
   text-align: center;
+  border: solid #774936 3px;
+  border-radius: 20px;
+  background: rgb(244,253,255);
+  background: linear-gradient(180deg, rgba(244,253,255,1) 0%, rgba(129,212,233,1) 100%);
+
+}
+
+.leaderboard-heading{
+  position: absolute;
+  top: 20px;
+  left:18%;
+  font-size: 40px;
+  margin:auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+  color: #774936;
+  border: solid #774936 3px;
+  border-radius: 20px;
+  background: rgb(255,247,230);
+  background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
+
+
 }
 
 .leaderboard th {
   font-size: 2rem;
   text-transform: uppercase;
   padding: 1rem;
-  border-bottom: 2px solid #fff;
+  /* border-bottom: 2px solid #fff; */
 }
 .leaderboard td {
   font-size: 1.8rem;
   padding: 1rem;
-  border-bottom: 1px solid #fff;
+  /* border-bottom: 1px solid #fff; */
 }
 
 .leaderboard td:first-child {
@@ -110,15 +127,23 @@ main {
 }
 
 .leaderboard tbody tr:first-child {
-  background-color: #ff0;
-  color: #000;
+  color: #774936;
   font-weight: bold;
+
+  margin:0px;
+  padding:0px;
+}
+
+.view{
+  border: solid #774936 5px;
+
 }
 .store-listing{
   border: solid black 2px;
+
   padding: 40px;
   border-radius: 20px;
-  background-color: pink;
+  background-color: #F7A9A8;
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-sizing: border-box;
@@ -134,4 +159,102 @@ main {
 .items{
   padding: 40px;
 
+}
+
+.return-button{
+  width: 50px;
+  position: absolute;
+  top:1px;
+  left:1px;
+}
+
+.menu-heading{
+  position: absolute;
+  top: 15px;
+  left:29%;
+  font-size: 50px;
+  margin:auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+  color: #774936;
+  border: solid #774936 3px;
+  border-radius: 20px;
+  background: rgb(255,247,230);
+  background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
+
+}
+
+.item-image{
+  border: solid #774936 3px;
+  border-radius: 20px;
+  background: rgb(255,247,230);
+  background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
+
+
+}
+
+.item-cost{
+  border: solid #774936 3px;
+  border-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-left: 15px ;
+  margin-right: 15px ;
+  background: rgb(255,247,230);
+  background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
+}
+
+.item-name{
+  font-weight: 1000;
+  border: solid #774936 3px;
+  border-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-left: 15px ;
+  margin-right: 15px ;
+  background: rgb(255,247,230);
+  background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
+}
+
+.currency-display{
+  position: relative;
+  top: 25px;
+  left:50%;
+
+}
+
+.item-image:hover{
+  border: solid #3a89bf 3px;
+  border-radius: 20px;
+  box-shadow: 3px 3px #263b5a;
+  background: rgb(244,253,255);
+  background: linear-gradient(180deg, rgba(244,253,255,1) 0%, rgba(129,212,233,1) 100%);
+}
+
+.leader-table{
+  border: solid #774936 3px;
+  border-radius: 20px;
+  background: rgb(255,247,230);
+  background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
+
+}
+
+.menu button:hover {
+  border: solid #3a89bf 5px;
+  border-radius: 20px;
+  background: rgb(244,253,255);
+  background: linear-gradient(180deg, rgba(244,253,255,1) 0%, rgba(129,212,233,1) 100%);
+  color: #000000;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: 'serif, Times New Roman', Times;
+  width: 350px;
+  box-shadow: 3px 3px #263b5a;
 }

@@ -3,7 +3,6 @@ import Home from './Home'
 import Store from './Store'
 import Leaderboard from './Leaderboard'
 
-
 import { useState } from 'react'
 
 function App() {
@@ -19,6 +18,10 @@ function App() {
     setViewToRender('leaderboard')
   }
 
+  function updateViewToRender(view: string) {
+    setViewToRender(view)
+  }
+
   function getViewToRender() {
     switch (viewToRender) {
       case 'home':
@@ -31,10 +34,10 @@ function App() {
         )
 
       case 'shop':
-        return <Store />
+        return <Store updateViewToRender={updateViewToRender} />
 
       case 'leaderboard':
-        return <Leaderboard />
+        return <Leaderboard updateViewToRender={updateViewToRender} />
 
       default:
         return null
