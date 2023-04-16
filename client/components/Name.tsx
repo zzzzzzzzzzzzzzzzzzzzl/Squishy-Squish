@@ -1,7 +1,10 @@
 import { SetStateAction, useState } from 'react'
 import { addToLeaderboard } from '../apiClient'
+import { useAppSelector } from '../hooks'
 
 function Name() {
+  const gameSlice = useAppSelector((state) => state.game)
+  console.log(gameSlice)
   const [name, setName] = useState('')
   const [score, setScore] = useState('')
 
@@ -10,7 +13,7 @@ function Name() {
 
     const newScore = {
       name: name,
-      score: score,
+      score: gameSlice.score,
     }
 
     addToLeaderboard(newScore)
@@ -28,12 +31,6 @@ function Name() {
     setName(event.target.value)
   }
 
-  function handleScoreChange(event: {
-    target: { value: SetStateAction<string> }
-  }) {
-    setScore(event.target.value)
-  }
-
   return (
     <div className="menu-overlay">
       <div className="border">
@@ -43,10 +40,7 @@ function Name() {
             <input type="text" value={name} onChange={handleNameChange} />
           </label>
           <br />
-          <label>
-            Score:
-            <input type="number" value={score} onChange={handleScoreChange} />
-          </label>
+          <h1>{gameSlice.score}</h1>
           <br />
           <button type="submit">Submit</button>
         </form>

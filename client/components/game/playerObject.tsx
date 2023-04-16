@@ -1,4 +1,6 @@
 import gravity from './gravity'
+import store from '../../store'
+import { test } from '../../slices/gameSlice'
 
 class playerObject {
   constructor(player) {
@@ -68,11 +70,10 @@ class playerObject {
     p5.rect(this.pos[0], this.pos[1], 20, 20)
   }
   jump() {
-
     if (this.grounded) {
       this.velocity[1] -= 8
     }
-}
+  }
   playerInput(p5) {
     if (p5.keyIsDown(87)) {
       //w
@@ -98,21 +99,24 @@ class playerObject {
       this.pos[0] = 50
     }
   }
-  death() {
+  death(score) {
     if (this.pos[1] > 900) {
       this.ded = true
+      store.dispatch(test(score))
     }
   }
-  updatePlayer(p5) {
-    this.death()
-    this.velocity = gravity(this.velocity)
-    this.playerInput(p5)
-    this.warpIfOffScreen()
-    this.sumForces()
-    this.updateSnailTrail(p5)
-    this.checkIfGrounded()
-    this.draw(p5)
-    this.updateColisionBoundries()
+  updatePlayer(p5, score) {
+    if (!this.ded) {
+      this.death(score)
+      this.velocity = gravity(this.velocity)
+      this.playerInput(p5)
+      this.warpIfOffScreen()
+      this.sumForces()
+      this.updateSnailTrail(p5)
+      this.checkIfGrounded()
+      this.draw(p5)
+      this.updateColisionBoundries()
+    }
   }
 }
 

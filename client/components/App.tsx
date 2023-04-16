@@ -2,10 +2,14 @@ import Canvas from './main'
 import Home from './Home'
 import Store from './Store'
 import Leaderboard from './Leaderboard'
+import Name from './Name'
+import gameSlice from '../slices/gameSlice'
+import { useAppSelector } from '../hooks'
 
 import { useState } from 'react'
 
 function App() {
+  const gameSlice = useAppSelector((state) => state.game)
   const [viewToRender, setViewToRender] = useState('home')
 
   const handleStart = () => {
@@ -47,7 +51,7 @@ function App() {
   return (
     <div>
       {getViewToRender()}
-
+      {gameSlice.dead && <Name />}
       {<Canvas />}
     </div>
   )
