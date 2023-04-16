@@ -3,6 +3,8 @@ import Home from './Home'
 import Store from './Store'
 import Leaderboard from './Leaderboard'
 import Name from './Name'
+import Lives from './Lives'
+import Armour from './Armour'
 import gameSlice from '../slices/gameSlice'
 import { useAppSelector } from '../hooks'
 
@@ -50,6 +52,8 @@ function App() {
 
   return (
     <div>
+      {<Lives />}
+      {<Armour />}
       {getViewToRender()}
       {gameSlice.dead && <Name />}
       {<Canvas />}
