@@ -49,6 +49,7 @@ function Leaderboard(props: Props) {
           <tbody>
             {leaderboard
               .sort((a, b) => b.score - a.score)
+              .slice(0, 5)
               .map((leader, index) => (
                 <tr key={leader.id}>
                   <td>{index + 1}</td>

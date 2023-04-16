@@ -27,11 +27,11 @@ describe('getWriteData', () => {
     const mockData = { leaderboard: [{ name: 'Alice', score: 100 }] }
     const mockedWriteFile = writeFile as jest.MockedFunction<typeof writeFile>
     mockedWriteFile.mockRejectedValueOnce(
-      new Error('Failed to write data file')
+      new Error('Failed to write to data file')
     )
 
     await expect(getWriteData(mockData)).rejects.toThrow(
-      'Failed to read data file'
+      'Failed to write to data file'
     )
   })
 })
