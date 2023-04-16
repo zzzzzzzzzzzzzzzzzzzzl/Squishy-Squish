@@ -68,10 +68,11 @@ class playerObject {
     p5.rect(this.pos[0], this.pos[1], 20, 20)
   }
   jump() {
+
     if (this.grounded){
 
       this.velocity[1] = -15
-    }
+
   }
   playerInput(p5) {
     if (p5.keyIsDown(87)) {//w
