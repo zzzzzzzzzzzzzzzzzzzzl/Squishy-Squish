@@ -12,6 +12,13 @@ class platform {
     }
   }
 
+  deleteOffCamera(y){
+    if(this.topCorner[1]>y){
+      return false
+    }
+    return true
+
+  }
    collision(player) {
 
     if(
