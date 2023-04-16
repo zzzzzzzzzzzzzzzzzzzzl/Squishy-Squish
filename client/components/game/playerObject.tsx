@@ -12,6 +12,7 @@ class playerObject {
     this.snailTrail = Array(7).fill([...this.pos])
     this.velocityArr = Array(3).fill([0, 0])
     this.ded = false
+    this.coins = 0
   }
   sumForces() {
     //is there a better way of doing this???/
@@ -68,7 +69,7 @@ class playerObject {
   }
   jump() {
     if (this.grounded) {
-      this.velocity[1] -= 15
+      this.velocity[1] -= 8
     }
   }
   playerInput(p5) {
@@ -98,9 +99,11 @@ class playerObject {
   }
   death() {
     if (this.pos[1] > 900) {
+      this.ded = true
     }
   }
   updatePlayer(p5) {
+    this.death()
     this.velocity = gravity(this.velocity)
     this.playerInput(p5)
     this.warpIfOffScreen()
