@@ -25,7 +25,15 @@ describe('Leaderboard', () => {
   })
 
   it('renders the leaderboard table with correct headers', async () => {
-    await act(async () => render(<Leaderboard />))
+    await act(async () =>
+      render(
+        <Leaderboard
+          updateViewToRender={function (view: string): void {
+            throw new Error('Function not implemented.')
+          }}
+        />
+      )
+    )
 
     const rankHeader = screen.getByText('Rank')
     const nameHeader = screen.getByText('Name')
@@ -37,7 +45,13 @@ describe('Leaderboard', () => {
   })
 
   it('renders the leaderboard with correct data and ranking order', async () => {
-    render(<Leaderboard />)
+    render(
+      <Leaderboard
+        updateViewToRender={function (view: string): void {
+          throw new Error('Function not implemented.')
+        }}
+      />
+    )
 
     await waitFor(() => {
       const leaderboardRows = screen.getAllByRole('row')
