@@ -43,7 +43,7 @@ class enviroment {
     this.platformArr.map((i) => {
       i.updatePlatform(this.p5, this.player)
     })
-    this.player.updatePlayer(this.p5)
+    this.player.updatePlayer(this.p5, -this.height)
   }
   panCamera() {
     if (!this.player.ded) {
