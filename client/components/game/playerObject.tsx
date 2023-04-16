@@ -34,8 +34,6 @@ class playerObject {
       else{
         this.grounded=false
       }
-      console.log(count)
-
 
   }
   updateSnailTrail(p5){//kind of cool visual effect
@@ -72,7 +70,7 @@ class playerObject {
   jump() {
     if (this.grounded){
 
-      this.velocity[1] += -8
+      this.velocity[1] = -12
     }
   }
   playerInput(p5) {

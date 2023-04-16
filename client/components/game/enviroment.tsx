@@ -5,11 +5,11 @@ import playerObject from './playerObject'
 class enviroment {
   constructor(envSize) {
     //array of platform objects//look at platform.tsx
-    this.platformArr = Array(50)
+    this.platformArr = Array(100)
       .fill()
       .map(() => {
         return new platform([
-          [Math.random() * 1000, Math.random() * 1000],
+          [Math.floor(Math.random() * 20),Math.floor(Math.random() * 20)],
           [50, 50],
         ])
       })
