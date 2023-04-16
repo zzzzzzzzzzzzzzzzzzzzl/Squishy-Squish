@@ -5,12 +5,12 @@ import playerObject from './playerObject'
 class enviroment {
   constructor(envSize) {
     //array of platform objects//look at platform.tsx
-    this.platforms=150
+    this.platforms = 150
     this.platformArr = Array(150)
       .fill()
       .map(() => {
         return new platform([
-          [Math.floor(Math.random() * 20),Math.floor(Math.random() * 20)],
+          [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
           [50, 50],
         ])
       })
@@ -20,7 +20,7 @@ class enviroment {
       [1000, 1000],
     ]
     this.platformArr.push(new platform(ground))
-    this.camera=[100,0]
+    this.camera = [100, 0]
 
     //playerObject look at playerObject.tsx
     this.player = new playerObject({
@@ -29,12 +29,13 @@ class enviroment {
       velocity: [0, 0],
       grounded: false,
     })
-    this.height=0
+    this.height = 0
     this.draw(envSize) //this will set up our canvas <--- and will setup our game loop <3
   }
 
   //this is where our game will take place
   update() {
+    this.drawScore()
     this.createObjects()
     this.deleteObjects()
     this.panCamera()
@@ -45,34 +46,37 @@ class enviroment {
     this.player.updatePlayer(this.p5)
   }
   panCamera() {
-    // this.height--
+    this.height--
     this.camera[1] = this.height
-    
-    // Translate the canvas to the camera position
-    this.p5.translate(-this.camera[0], -this.camera[1]);
-  }
-  drawScore(){
-    this.p5.fill(0);
-  
-    // Set the text size
-    this.p5.textSize(32);
-    
-    // Draw the text at position (50, 50)
-    this.p5.text("Hello, world!", 50, 50);
-  }
-  deleteObjects(){
-    this.platformArr=this.platformArr.filter((i)=>{
-      return i.deleteOffCamera(this.height+1000)
-    })
 
+    // Translate the canvas to the camera position
+    this.p5.translate(-this.camera[0], -this.camera[1])
   }
-  createObjects(){
-    if(Math.random()>.9)
-    (this.platformArr.push(new platform([
-      [Math.floor(Math.random() * 40),(Math.floor((this.height+50)/25))],
-      [50, 50]
-    ])))
-    
+  drawScore() {
+    const c = [225, Math.random() * 50, 100]
+    this.p5.fill(c)
+    this.p5.stroke(c)
+
+    // Set the text size
+    this.p5.textSize(64)
+
+    // Draw the text at position (50, 50)
+    this.p5.text(-this.height, 50, 50)
+  }
+  deleteObjects() {
+    this.platformArr = this.platformArr.filter((i) => {
+      return i.deleteOffCamera(this.height + 1000)
+    })
+  }
+  createObjects() {
+    if (Math.random() > 0.9)
+      this.platformArr.push(
+        new platform([
+          [Math.floor(Math.random() * 40), Math.floor((this.height + 50) / 25)],
+          [50, 50],
+        ])
+      )
+
     // = Array(100)
     //   .fill()
     //   .map(() => {
@@ -81,7 +85,6 @@ class enviroment {
     //       [50, 50],
     //     ])
     //   })
-
   }
   draw(envSize) {
     new p5((p5) => {

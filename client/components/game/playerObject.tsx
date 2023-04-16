@@ -6,62 +6,61 @@ class playerObject {
     this.acceleration = player.acceleration
     this.velocity = player.velocity
     this.size = 20
-    this.colour=[255, 255, 0]
-    this.pBot= [this.pos[0]+this.size,this.pos[1]+this.size]//playerBottom
+    this.colour = [255, 255, 0]
+    this.pBot = [this.pos[0] + this.size, this.pos[1] + this.size] //playerBottom
     this.updateColisionBoundries()
-    this.snailTrail=Array(7).fill([...this.pos])
-    this.velocityArr=Array(3).fill([0,0])
+    this.snailTrail = Array(7).fill([...this.pos])
+    this.velocityArr = Array(3).fill([0, 0])
+    this.ded = false
   }
   sumForces() {
     //is there a better way of doing this???/
-    this.pos[1] = Number(    (this.velocity[1]+this.pos[1]).toFixed(1))
+    this.pos[1] = Number((this.velocity[1] + this.pos[1]).toFixed(1))
 
-    this.pBot= [this.pos[0]+this.size,this.pos[1]+this.size]
-    this.pos[0]= Number(    (this.velocity[0]+this.pos[0]).toFixed(1))
-    this.velocity[0]*=.8
+    this.pBot = [this.pos[0] + this.size, this.pos[1] + this.size]
+    this.pos[0] = Number((this.velocity[0] + this.pos[0]).toFixed(1))
+    this.velocity[0] *= 0.8
   }
-  checkIfGrounded(){//get last 3 frames of velocity. and adds them all. if the total is less than .7 player is grounded
-    //if we change acceloration then we will need to change this 
+  checkIfGrounded() {
+    //get last 3 frames of velocity. and adds them all. if the total is less than .7 player is grounded
+    //if we change acceloration then we will need to change this
     this.velocityArr.unshift([...this.velocity])
-      this.velocityArr.pop()
-      let count=0
-      this.velocityArr.map((i)=>{
-        count+=Math.abs(i[1])
-      })
-      if (Math.abs(count)<.7){
-        this.grounded=true
-      }
-      else{
-        this.grounded=false
-      }
-
+    this.velocityArr.pop()
+    let count = 0
+    this.velocityArr.map((i) => {
+      count += Math.abs(i[1])
+    })
+    if (Math.abs(count) < 0.7) {
+      this.grounded = true
+    } else {
+      this.grounded = false
+    }
   }
-  updateSnailTrail(p5){//kind of cool visual effect
-    let c=[0,0,0]
+  updateSnailTrail(p5) {
+    //kind of cool visual effect
+    let c = [0, 0, 0]
     this.snailTrail.unshift([...this.pos])
     this.snailTrail.pop()
-    this.snailTrail.map((i,idx)=>{
-      let len=this.snailTrail.length-(idx+1)
-      c=[c[0]+30,Math.random()*55,Math.random()*255]
-      if(c[0]>255){
-        c=[50,50,0]
+    this.snailTrail.map((i, idx) => {
+      const len = this.snailTrail.length - (idx + 1)
+      c = [c[0] + 30, Math.random() * 55, Math.random() * 255]
+      if (c[0] > 255) {
+        c = [50, 50, 0]
       }
       p5.fill(c)
       p5.stroke(c)
       p5.rect(this.snailTrail[len][0], this.snailTrail[len][1], 20, 20)
     })
-
-   
   }
-  updateColisionBoundries(){
-    this.bounds={
-      tl:this.pos,
-      tr:[this.pos[0]+this.size,this.pos[1]],
-      bl:[this.pos[0],this.pos[1]+this.size],
-      br:[this.pos[0]+this.size,this.pos[1]+this.size]
+  updateColisionBoundries() {
+    this.bounds = {
+      tl: this.pos,
+      tr: [this.pos[0] + this.size, this.pos[1]],
+      bl: [this.pos[0], this.pos[1] + this.size],
+      br: [this.pos[0] + this.size, this.pos[1] + this.size],
     }
   }
-  
+
   draw(p5) {
     p5.fill(this.colour)
     p5.stroke(this.colour)
@@ -69,34 +68,40 @@ class playerObject {
   }
   jump() {
 
-    if (this.grounded){
-
-      this.velocity[1] = -15
-
-  }
+    if (this.grounded) {
+      this.velocity[1] -= 15
+    }
+}
   playerInput(p5) {
-    if (p5.keyIsDown(87)) {//w
+    if (p5.keyIsDown(87)) {
+      //w
       this.jump()
     }
-    if (p5.keyIsDown(65)) {//a
-       this.velocity[0]-=this.acceleration
+    if (p5.keyIsDown(65)) {
+      //a
+      this.velocity[0] -= this.acceleration
     }
-    if (p5.keyIsDown(83)) {//s
+    if (p5.keyIsDown(83)) {
+      //s
     }
-    if (p5.keyIsDown(68)) {//d
-       this.velocity[0]+=this.acceleration
+    if (p5.keyIsDown(68)) {
+      //d
+      this.velocity[0] += this.acceleration
     }
   }
-  warpIfOffScreen(){
-    if(this.pos[0]<50){
-      this.pos[0]=1100
+  warpIfOffScreen() {
+    if (this.pos[0] < 50) {
+      this.pos[0] = 1100
     }
-    if(this.pos[0]>1100){
-      this.pos[0]=50
+    if (this.pos[0] > 1100) {
+      this.pos[0] = 50
+    }
+  }
+  death() {
+    if (this.pos[1] > 900) {
     }
   }
   updatePlayer(p5) {
-    
     this.velocity = gravity(this.velocity)
     this.playerInput(p5)
     this.warpIfOffScreen()
