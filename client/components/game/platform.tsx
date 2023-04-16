@@ -21,33 +21,33 @@ class platform {
   }
    collision(player) {
 
-    if(
-      player.bounds.tl[0]<this.bounds.tr[0]&&
-      this.bounds.tr[1]<player.bounds.tl[1]&&
-      player.bounds.tl[1]<this.bounds.br[1]&&
+    // if(
+    //   player.bounds.tl[0]+5<this.bounds.tr[0]&&
+    //   this.bounds.tr[1]+5<player.bounds.tl[1]&&
+    //   player.bounds.tl[1]+5<this.bounds.br[1]&&
 
-      player.bounds.tl[0]>this.bounds.br[0]-this.bottomCorner[0]/4
+    //   player.bounds.tl[0]>this.bounds.br[0]-20
 
-    ){
-      console.log("right collision")
-      player.pos[0]=player.pos[0]+.2
-      player.velocity[0]=-player.velocity[0]/2
-      return player
-    }
-    if(
-      player.bounds.tr[0]>this.bounds.tl[0]&&
-      this.bounds.tl[1]<player.bounds.tr[1]&&
-      player.bounds.tr[1]<this.bounds.bl[1]&&
+    // ){
+    //   console.log("right collision")
+    //   player.pos[0]=player.pos[0]+1
+    //   player.velocity[0]=-player.velocity[0]/2
+    //   return player
+    // }
+    // if(
+    //   player.bounds.tr[0]>this.bounds.tl[0]&&
+    //   this.bounds.tl[1]<player.bounds.tr[1]&&
+    //   player.bounds.tr[1]<this.bounds.bl[1]&&
 
 
-      player.bounds.tr[0]<this.bounds.bl[0]+this.bottomCorner[0]/4
+    //   player.bounds.tr[0]<this.bounds.bl[0]+20
 
-    ){
-      console.log("left collision")
-      player.pos[0]=player.pos[0]-.2
-      player.velocity[0]=-player.velocity[0]/2
-      return player
-    }
+    // ){
+    //   console.log("left collision")
+    //   player.pos[0]=player.pos[0]-.2
+    //   player.velocity[0]=-player.velocity[0]/4
+    //   return player
+    // }
 
   
      if (
@@ -85,8 +85,9 @@ class platform {
     return player
   }
   draw(p5) {
-    p5.fill([25, Math.random() * 50, 100])
-    p5.stroke([Math.random() * 25, 255, 0])
+    const c=[25, Math.random() * 50, 100]
+    p5.fill(c)
+    p5.stroke(c)
     p5.rect(
       this.topCorner[0],
       this.topCorner[1],

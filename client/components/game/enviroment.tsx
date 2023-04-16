@@ -5,7 +5,8 @@ import playerObject from './playerObject'
 class enviroment {
   constructor(envSize) {
     //array of platform objects//look at platform.tsx
-    this.platformArr = Array(100)
+    this.platforms=150
+    this.platformArr = Array(150)
       .fill()
       .map(() => {
         return new platform([
@@ -44,7 +45,7 @@ class enviroment {
     this.player.updatePlayer(this.p5)
   }
   panCamera() {
-    this.height--
+    // this.height--
     this.camera[1] = this.height
     
     // Translate the canvas to the camera position
@@ -61,14 +62,14 @@ class enviroment {
   }
   deleteObjects(){
     this.platformArr=this.platformArr.filter((i)=>{
-      return i.deleteOffCamera(this.height+800)
+      return i.deleteOffCamera(this.height+1000)
     })
 
   }
   createObjects(){
     if(Math.random()>.9)
     (this.platformArr.push(new platform([
-      [Math.floor(Math.random() * 20),(Math.floor((this.height+50)/50))],
+      [Math.floor(Math.random() * 40),(Math.floor((this.height+50)/25))],
       [50, 50]
     ])))
     

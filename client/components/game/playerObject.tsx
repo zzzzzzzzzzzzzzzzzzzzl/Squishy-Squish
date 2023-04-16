@@ -86,9 +86,19 @@ class playerObject {
        this.velocity[0]+=this.acceleration
     }
   }
+  warpIfOffScreen(){
+    if(this.pos[0]<50){
+      this.pos[0]=1100
+    }
+    if(this.pos[0]>1100){
+      this.pos[0]=50
+    }
+  }
   updatePlayer(p5) {
+    
     this.velocity = gravity(this.velocity)
     this.playerInput(p5)
+    this.warpIfOffScreen()
     this.sumForces()
     this.updateSnailTrail(p5)
     this.checkIfGrounded()
