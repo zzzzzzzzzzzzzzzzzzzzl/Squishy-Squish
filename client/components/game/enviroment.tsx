@@ -4,91 +4,90 @@ import playerObject from './playerObject'
 
 class enviroment {
   constructor(envSize) {
-    this.platformArr = Array(10)
+    //array of platform objects//look at platform.tsx
+    this.platforms=150
+    this.platformArr = Array(150)
       .fill()
       .map(() => {
-        const rand = Math.random() * 1000
         return new platform([
-          [rand, rand],
+          [Math.floor(Math.random() * 20),Math.floor(Math.random() * 20)],
           [50, 50],
         ])
       })
-    this.groundHeight = 900
+    this.groundHeight = 900 //some grass for sue// just a platform bottom so we have somthing to stand on :)
     const ground = [
       [0, this.groundHeight],
       [1000, 1000],
     ]
     this.platformArr.push(new platform(ground))
+    this.camera=[100,0]
 
-    this.draw(envSize)
-
+    //playerObject look at playerObject.tsx
     this.player = new playerObject({
       pos: [250, 250],
       acceleration: 0.6,
-      velocity: [4, 1],
+      velocity: [0, 0],
       grounded: false,
     })
-  }
-  //should gravity be a class object??
-  gravity() {
-    this.player.velocity[1] += this.player.acceleration
-    if (this.player.pos[1] > this.groundHeight) {
-      this.player.velocity[1] = 0
-      this.player.pos[1] = this.groundHeight
-    }
-  }
-  //this will check all object collisions in the enviroment
-  collision() {
-    this.platformArr.map((i) => {
-      i.collision(this.player)
-    })
-  }
-  //this will draw the enviroment
-  drawAll() {
-    this.platformArr.map((i) => {
-      i.draw(this.p5)
-    })
+    this.height=0
+    this.draw(envSize) //this will set up our canvas <--- and will setup our game loop <3
   }
 
-  //not sure if this should go here
-  sumForces() {
-    this.player.pos[1] += this.player.velocity[1]
-    // this.player.pos[0] += this.player.velocity[0]
-  }
   //this is where our game will take place
   update() {
+    this.createObjects()
+    this.deleteObjects()
+    this.panCamera()
+    this.player.playerInput(this.p5)
+    this.platformArr.map((i) => {
+      i.updatePlatform(this.p5, this.player)
+    })
     this.player.updatePlayer(this.p5)
-    this.drawAll()
-    // this.gravity()
-    this.collision()
-    this.keyPressed()
-
-    this.sumForces()
-    // if (!this.ded) {
-    // }
   }
-
-  keyPressed() {
-    if (this.p5.keyIsDown(87)) {
-      // this.jump()
-    }
-    if (this.p5.keyIsDown(65)) {
-      this.player.pos[0] -= this.player.velocity[0]
-    }
-    if (this.p5.keyIsDown(83)) {
-      this.player.pos[1] -= this.player.velocity[1]
-    }
-    if (this.p5.keyIsDown(68)) {
-      this.player.pos[0] += this.player.velocity[0]
-    }
+  panCamera() {
+    // this.height--
+    this.camera[1] = this.height
+    
+    // Translate the canvas to the camera position
+    this.p5.translate(-this.camera[0], -this.camera[1]);
   }
+  drawScore(){
+    this.p5.fill(0);
+  
+    // Set the text size
+    this.p5.textSize(32);
+    
+    // Draw the text at position (50, 50)
+    this.p5.text("Hello, world!", 50, 50);
+  }
+  deleteObjects(){
+    this.platformArr=this.platformArr.filter((i)=>{
+      return i.deleteOffCamera(this.height+1000)
+    })
 
+  }
+  createObjects(){
+    if(Math.random()>.9)
+    (this.platformArr.push(new platform([
+      [Math.floor(Math.random() * 40),(Math.floor((this.height+50)/25))],
+      [50, 50]
+    ])))
+    
+    // = Array(100)
+    //   .fill()
+    //   .map(() => {
+    //     return new platform([
+    //       [Math.floor(Math.random() * 20),Math.floor(Math.random() * 20)],
+    //       [50, 50],
+    //     ])
+    //   })
+
+  }
   draw(envSize) {
     new p5((p5) => {
       this.p5 = p5
       this.p5.setup = () => {
         this.p5.createCanvas(envSize, envSize).parent('canvasParent')
-        this.p5.background(0)
       }
 
       this.p5.draw = () => {
