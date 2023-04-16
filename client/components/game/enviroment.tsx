@@ -46,10 +46,10 @@ class enviroment {
     this.player.updatePlayer(this.p5)
   }
   panCamera() {
-    this.height--
+    if (!this.player.ded) {
+      this.height--
+    }
     this.camera[1] = this.height
-
-    // Translate the canvas to the camera position
     this.p5.translate(-this.camera[0], -this.camera[1])
   }
   drawScore() {
@@ -69,7 +69,7 @@ class enviroment {
     })
   }
   createObjects() {
-    if (Math.random() > 0.9)
+    if (Math.random() > 0.9 && !this.player.ded)
       this.platformArr.push(
         new platform([
           [Math.floor(Math.random() * 40), Math.floor((this.height + 50) / 25)],
