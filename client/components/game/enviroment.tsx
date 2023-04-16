@@ -19,6 +19,7 @@ class enviroment {
       [1000, 1000],
     ]
     this.platformArr.push(new platform(ground))
+    this.camera=[100,0]
 
     //playerObject look at playerObject.tsx
     this.player = new playerObject({
@@ -33,13 +34,27 @@ class enviroment {
 
   //this is where our game will take place
   update() {
+    this.panCamera()
     this.player.playerInput(this.p5)
     this.platformArr.map((i) => {
       i.updatePlatform(this.p5, this.player)
     })
     this.player.updatePlayer(this.p5)
+  }a
+  panCamera() {
+    // Get the player's x position
+    const playerY = this.player.pos[1];
+    
+    // Calculate the amount to pan the camera based on the player's position
+    const panAmount = -1 // Subtract 100 to center the player
+    
+    // Pan the camera horizontally by the calculated amount
+    this.camera[1] += panAmount;
+    
+    // Translate the canvas to the camera position
+    this.p5.translate(-this.camera[0], -this.camera[1]);
   }
-
+  
   draw(envSize) {
     new p5((p5) => {
       this.p5 = p5
