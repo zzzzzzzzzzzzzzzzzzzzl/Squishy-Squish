@@ -95,7 +95,7 @@ class playerObject {
     }
   }
   warpIfOffScreen() {
-    if (this.pos[0] < -50) {
+    if (this.pos[0] < 50) {
       this.pos[0] = 1100
     }
     if (this.pos[0] > 1100) {

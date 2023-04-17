@@ -8,13 +8,13 @@ import store from '../../store'
 class enviroment {
   constructor(envSize) {
     //array of platform objects//look at platform.tsx
-    this.platforms = 5
-    this.platformArr = Array(1)
+    this.platforms = 150
+    this.platformArr = Array(150)
       .fill()
       .map(() => {
         return new platform([
           [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
-          [650, 50],
+          [50, 50],
         ])
       })
     this.groundHeight = 900 //some grass for sue// just a platform bottom so we have somthing to stand on :)
