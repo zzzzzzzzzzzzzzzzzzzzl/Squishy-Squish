@@ -6,7 +6,7 @@ import UpdateTodoComponent from '../components/UpdateTodoComponent'
 const initialState: string[] = []
 
 // {id:id,task:input,done:false}
-const sampleData = { score: 0, dead: false }
+const sampleData = { score: 0, inputName: false, highscore: false }
 
 // where our business logic goes
 export const gameSlice = createSlice({
@@ -18,7 +18,17 @@ export const gameSlice = createSlice({
       console.log(action.payload, 'here')
       const newState = state
       newState.score = action.payload
-      newState.dead = true
+      newState.inputName = true
+      return newState
+    },
+    highScore: (state, action) => {
+      const newState = state
+      newState.highscore = true
+      return newState
+    },
+    toggleInputName: (state) => {
+      const newState = state
+      newState.inputName = !newState.inputName
       return newState
     },
   },
@@ -28,7 +38,7 @@ export const gameSlice = createSlice({
 export const gameSelector = (state: RootState) => state.example
 
 // actions to be dispatched using dispatch(exampleAddToArray({ example: 'hi' }))
-export const { test } = gameSlice.actions
+export const { test, highScore, toggleInputName } = gameSlice.actions
 
 // the reducer to be used in store.js
 export default gameSlice.reducer

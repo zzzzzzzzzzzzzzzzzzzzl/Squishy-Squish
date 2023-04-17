@@ -1,12 +1,27 @@
 import { SetStateAction, useState } from 'react'
-import { addToLeaderboard } from '../apiClient'
-import { useAppSelector } from '../hooks'
+import { addToLeaderboard, getLeaderboard } from '../apiClient'
+import { useAppSelector, useAppDispatch } from '../hooks'
+import { highScore, toggleInputName } from '../slices/gameSlice'
 
 function Name() {
+  const dispatch = useAppDispatch()
   const gameSlice = useAppSelector((state) => state.game)
   console.log(gameSlice)
   const [name, setName] = useState('')
   const [score, setScore] = useState('')
+
+  function getLeaderboard() {
+    return fetchLeaderboard
+  }
+
+  function compareHighscores() {
+    const leaderboard = getLeaderboard()
+    dispatch(highScore)
+    leaderboard
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 5)
+      .map((i, index) => {})
+  }
 
   function handleSubmit(event: { preventDefault: () => void }) {
     event.preventDefault()
@@ -23,6 +38,9 @@ function Name() {
       .catch((error) => {
         console.log('Error adding score', error)
       })
+    {
+     dispatch(toggleInputName())
+    }
   }
 
   function handleNameChange(event: {

@@ -13,10 +13,15 @@ function App() {
 
   return (
     <div>
+<<<<<<< HEAD
+      {getViewToRender()}
+      {gameSlice.inputName && <Name />}
+=======
       {<Lives />}
       {<Armour />}
       {<Home />}
       {gameSlice.dead && <Name />}
+>>>>>>> master
       {<Canvas />}
     </div>
   )
