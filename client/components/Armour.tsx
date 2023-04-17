@@ -9,7 +9,7 @@ function Armour({ initialArmour = 1 }) {
         <img
           key={i}
           className={`armour-overlay armour-overlay${i}`}
-          src="assests/game-UI/lives.png"
+          src="assests/game-UI/armour.png"
           alt="armour"
         />
       ))}
