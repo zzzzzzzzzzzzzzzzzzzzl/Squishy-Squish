@@ -37,3 +37,5 @@ describe('Home', () => {
     expect(menuItems).toHaveLength(3)
   })
 })
+
+//comment to make a change and a commit
