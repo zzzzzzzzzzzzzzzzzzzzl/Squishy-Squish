@@ -1,17 +1,20 @@
 import p5 from 'p5'
 import platform from './platform'
 import playerObject from './playerObject'
+import score from './score'
+import store from '../../store'
+// import store from '../../store'
 
 class enviroment {
   constructor(envSize) {
     //array of platform objects//look at platform.tsx
-    this.platforms = 150
-    this.platformArr = Array(150)
+    this.platforms = 5
+    this.platformArr = Array(1)
       .fill()
       .map(() => {
         return new platform([
           [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
-          [50, 50],
+          [650, 50],
         ])
       })
     this.groundHeight = 900 //some grass for sue// just a platform bottom so we have somthing to stand on :)
@@ -33,24 +36,31 @@ class enviroment {
     this.draw(envSize) //this will set up our canvas <--- and will setup our game loop <3
   }
 
+  startGame() {
+    return store.getState().game.start
+  }
+
   //this is where our game will take place
   update() {
+    this.startGame()
     this.drawScore()
-    this.createObjects()
-    this.deleteObjects()
-    this.panCamera()
+    if (this.startGame()) {
+      this.createObjects()
+      this.deleteObjects()
+      this.panCamera()
+    }
     this.player.playerInput(this.p5)
     this.platformArr.map((i) => {
       i.updatePlatform(this.p5, this.player)
     })
-    this.player.updatePlayer(this.p5)
+    this.player.updatePlayer(this.p5, -this.height)
   }
   panCamera() {
     if (!this.player.ded) {
       this.height--
     }
     this.camera[1] = this.height
-    this.p5.translate(-this.camera[0], -this.camera[1])
+    this.p5.translate(-this.camera[0] + 100, -this.camera[1])
   }
   drawScore() {
     const c = [225, Math.random() * 50, 100]

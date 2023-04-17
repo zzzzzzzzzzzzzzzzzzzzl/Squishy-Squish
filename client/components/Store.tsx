@@ -1,6 +1,14 @@
 import items from '../shopItems'
 import { loadPlayerData, savePlayerData } from '../localPlayerData'
 import { useState } from 'react'
+import { useAppDispatch } from '../hooks'
+import {
+  increaseArmour,
+  increaseJumpHeight,
+  increaseLives,
+  increaseSpeed,
+} from '../slices/inventorySlice'
+// import inventorySlice from '../slices/inventorySlice'
 
 interface ShopItem {
   id: number
@@ -17,6 +25,7 @@ interface Props {
 
 function Store(props: Props) {
   const { playerinfo, stats } = loadPlayerData()
+  const dispatch = useAppDispatch()
   // const [viewToRender, setViewToRender] = useState('home')
 
   const handleReturnButton = () => {
@@ -33,16 +42,37 @@ function Store(props: Props) {
         ...stats,
       }
       savePlayerData(updatePlayerInfo, updatePlayerStats)
+
+      // dispatch the appropriate action based on the item id
+      switch (item.id) {
+        case 1:
+          dispatch(increaseJumpHeight())
+          break
+        case 2:
+          dispatch(increaseSpeed())
+          break
+        case 3:
+          dispatch(increaseLives())
+          break
+        case 4:
+          dispatch(increaseArmour())
+          break
+        default:
+          break
+      }
+
       alert(`Purchased!`)
-    } else alert(`Your poor bro`)
+    } else {
+      alert(`Your poor bro`)
+    }
   }
 
   return (
     <div className="menu-overlay">
-      <div className="view">
+      <div className="view store-listing">
         <img
           className="return-button"
-          src="/images/return-button.png"
+          src="/assests/main-menu/return-button.png"
           onClick={handleReturnButton}
           alt="return button"
         />

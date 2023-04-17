@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
-const filePath = path.join(__dirname, './data/data.json')
+const filePath = path.join(__dirname, './data/leaderboardData.json')
 
 export async function getReadData() {
   try {

@@ -1,53 +1,24 @@
 import Canvas from './main'
 import Home from './Home'
-import Store from './Store'
-import Leaderboard from './Leaderboard'
+import Name from './Name'
+import Lives from './Lives'
+import Armour from './Armour'
+import gameSlice from '../slices/gameSlice'
+import { useAppSelector } from '../hooks'
 
 import { useState } from 'react'
 
 function App() {
-  const [viewToRender, setViewToRender] = useState('home')
-
-  const handleStart = () => {
-    setViewToRender('start') // hide Home component when Start button is clicked
-  }
-  const handleShopButton = () => {
-    setViewToRender('shop')
-  }
-  const handleLeaderboardButton = () => {
-    setViewToRender('leaderboard')
-  }
-
-  function updateViewToRender(view: string) {
-    setViewToRender(view)
-  }
-
-  function getViewToRender() {
-    switch (viewToRender) {
-      case 'home':
-        return (
-          <Home
-            onStart={handleStart}
-            onShopButton={handleShopButton}
-            onLeaderboardButton={handleLeaderboardButton}
-          />
-        )
-
-      case 'shop':
-        return <Store updateViewToRender={updateViewToRender} />
-
-      case 'leaderboard':
-        return <Leaderboard updateViewToRender={updateViewToRender} />
-
-      default:
-        return null
-    }
-  }
+  const gameSlice = useAppSelector((state) => state.game)
 
   return (
     <div>
-      {getViewToRender()}
+      {gameSlice.inputName && gameSlice.highscore && <Name />}
 
+      {<Lives />}
+      {<Armour />}
+      {<Home />}
+      {/* {gameSlice.dead && <Name />} */}
       {<Canvas />}
     </div>
   )

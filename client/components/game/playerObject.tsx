@@ -1,7 +1,12 @@
 import gravity from './gravity'
+import store from '../../store'
+import { test } from '../../slices/gameSlice'
+import score from './score'
 
 class playerObject {
   constructor(player) {
+    this.score = new score()
+
     this.pos = player.pos
     this.acceleration = player.acceleration
     this.velocity = player.velocity
@@ -68,11 +73,10 @@ class playerObject {
     p5.rect(this.pos[0], this.pos[1], 20, 20)
   }
   jump() {
-
     if (this.grounded) {
       this.velocity[1] -= 8
     }
-}
+  }
   playerInput(p5) {
     if (p5.keyIsDown(87)) {
       //w
@@ -91,28 +95,33 @@ class playerObject {
     }
   }
   warpIfOffScreen() {
-    if (this.pos[0] < 50) {
+    if (this.pos[0] < -50) {
       this.pos[0] = 1100
     }
     if (this.pos[0] > 1100) {
       this.pos[0] = 50
     }
   }
-  death() {
+  death(score) {
     if (this.pos[1] > 900) {
+      this.score.newHighscore()
       this.ded = true
+      store.dispatch(test(score))
     }
   }
-  updatePlayer(p5) {
-    this.death()
-    this.velocity = gravity(this.velocity)
-    this.playerInput(p5)
-    this.warpIfOffScreen()
-    this.sumForces()
-    this.updateSnailTrail(p5)
-    this.checkIfGrounded()
-    this.draw(p5)
-    this.updateColisionBoundries()
+  updatePlayer(p5, score) {
+    if (!this.ded) {
+      this.score.updateScore(score)
+      this.death(score)
+      this.velocity = gravity(this.velocity)
+      this.playerInput(p5)
+      this.warpIfOffScreen()
+      this.sumForces()
+      this.updateSnailTrail(p5)
+      this.checkIfGrounded()
+      this.draw(p5)
+      this.updateColisionBoundries()
+    }
   }
 }
 
