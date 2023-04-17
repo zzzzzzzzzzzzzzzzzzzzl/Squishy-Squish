@@ -27,11 +27,11 @@ function Leaderboard(props: Props) {
   }, [])
 
   return (
-    <div className="menu-overlay">
-      <div className="view">
+    <div className="menu-overlay leaderboard-container">
+      <div className="">
         <img
           className="return-button"
-          src="/images/return-button.png"
+          src="/assests/main-menu/return-button.png"
           onClick={handleReturnButton}
           alt="return button"
         />
