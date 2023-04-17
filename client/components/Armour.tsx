@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Armour({ initialArmour = 0 }) {
+function Armour({ initialArmour = 1 }) {
   const [armour, setArmour] = useState(initialArmour)
 
   return (
@@ -9,7 +9,7 @@ function Armour({ initialArmour = 0 }) {
         <img
           key={i}
           className={`armour-overlay armour-overlay${i}`}
-          src="/images/health.png"
+          src="assests/game-UI/lives.png"
           alt="armour"
         />
       ))}
