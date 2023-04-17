@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Home from './MainMenu'
+import Home from '../../client/components/Home'
 
 describe('Home', () => {
   it('should call the onStart function when the Start button is clicked', () => {
@@ -37,3 +37,5 @@ describe('Home', () => {
     expect(menuItems).toHaveLength(3)
   })
 })
+
+//comment to make a change and a commit

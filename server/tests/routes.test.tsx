@@ -1,7 +1,6 @@
 import request from 'supertest'
 import server from '../server'
 import { getReadData, getWriteData } from '../dataService'
-import data from './routes'
 jest.mock('../dataService')
 
 describe('GET /', () => {
