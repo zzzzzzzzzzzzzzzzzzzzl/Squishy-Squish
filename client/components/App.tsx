@@ -13,11 +13,12 @@ function App() {
 
   return (
     <div>
-      {gameSlice.inputName && <Name />}
+      {gameSlice.inputName && gameSlice.highscore && <Name />}
+
       {<Lives />}
       {<Armour />}
       {<Home />}
-      {gameSlice.dead && <Name />}
+      {/* {gameSlice.dead && <Name />} */}
       {<Canvas />}
     </div>
   )

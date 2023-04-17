@@ -5,8 +5,8 @@ import score from './score'
 
 class playerObject {
   constructor(player) {
-    const newScore = new score()
-    console.log(newScore.getTopFive())
+    this.score = new score()
+
     this.pos = player.pos
     this.acceleration = player.acceleration
     this.velocity = player.velocity
@@ -104,12 +104,14 @@ class playerObject {
   }
   death(score) {
     if (this.pos[1] > 900) {
+      this.score.newHighscore()
       this.ded = true
       store.dispatch(test(score))
     }
   }
   updatePlayer(p5, score) {
     if (!this.ded) {
+      this.score.updateScore(score)
       this.death(score)
       this.velocity = gravity(this.velocity)
       this.playerInput(p5)

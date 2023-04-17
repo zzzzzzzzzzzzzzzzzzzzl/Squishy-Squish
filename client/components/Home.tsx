@@ -2,11 +2,26 @@ import Store from './Store'
 import Leaderboard from './Leaderboard'
 import MainMenu from './MainMenu'
 import { useState } from 'react'
+import { useAppDispatch } from '../hooks'
+import { startGame } from '../slices/gameSlice'
+
+interface StartProps {
+  onStart: () => void
+  onShopButton: () => void
+  onLeaderboardButton: () => void
+}
 
 function Home() {
+  const dispatch = useAppDispatch()
   const [viewToRender, setViewToRender] = useState('home')
 
+  // const handleStartClick = () => {
+  //   props.onStart()
+  //   dispatch(startGame())
+
   const handleStart = () => {
+    // props.onStart()
+    dispatch(startGame())
     setViewToRender('start') // hide Home component when Start button is clicked
   }
   const handleShopButton = () => {
@@ -44,4 +59,5 @@ function Home() {
 
   return <div>{getViewToRender()}</div>
 }
+
 export default Home
