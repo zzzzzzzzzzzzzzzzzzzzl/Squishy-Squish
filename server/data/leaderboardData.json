@@ -8,22 +8,22 @@
     {
       "id": 1,
       "name": "Rene",
-      "score": 323
+      "score": 3
     },
     {
       "id": 2,
       "name": "matt",
-      "score": 1003
+      "score": 13
     },
     {
       "id": 3,
       "name": "matt",
-      "score": 1003
+      "score": 3
     },
     {
       "id": 4,
       "name": "",
-      "score": 315
+      "score": 3
     },
     {
       "id": 5,
@@ -125,5 +125,6 @@
       "name": "Rob",
       "score": 1057
     }
+   
   ]
 }
