@@ -1,6 +1,6 @@
 import { render, screen, waitFor, act } from '@testing-library/react'
-import Leaderboard from './Leaderboard'
-import { getLeaderboard } from '../apiClient'
+import Leaderboard from '../../client/components/Leaderboard'
+import { getLeaderboard } from '../../client/apiClient'
 import '@testing-library/jest-dom'
 // import { act } from 'react-dom/test-utils'
 
