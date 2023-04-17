@@ -74,7 +74,7 @@ class playerObject {
   }
   jump() {
     if (this.grounded) {
-      this.velocity[1] -= 8
+      this.velocity[1] = -20
     }
   }
   playerInput(p5) {

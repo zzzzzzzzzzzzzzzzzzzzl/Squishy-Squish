@@ -9,7 +9,7 @@ class enviroment {
   constructor(envSize) {
     //array of platform objects//look at platform.tsx
     this.platforms = 150
-    this.platformArr = Array(150)
+    this.platformArr = Array(15)
       .fill()
       .map(() => {
         return new platform([
