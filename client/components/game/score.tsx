@@ -9,7 +9,7 @@ class score {
   updateScore(score) {
     this.score = score
   }
-  async newHighScore() {
+  async getLeaderboardData() {
     try {
       const data = await getLeaderboard()
       return data
@@ -18,10 +18,23 @@ class score {
     }
   }
   async getTopFive() {
-    const data = await this.newHighScore()
-    // console.log(data);
+    const data = await this.getLeaderboardData()
 
     return data
+  }
+  async newHighscore() {
+    const data = await this.getTopFive()
+
+    const arr = data.map((i) => {
+      return i.score
+    })
+    const topFive = arr.sort((a: number, b: number) => b - a).slice(0, 5)
+    console.log(topFive)
+    topFive.map((i) => {
+      if (i < this.score) {
+        store.dispatch(highScore())
+      }
+    })
   }
 }
 

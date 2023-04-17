@@ -1,3 +1,6 @@
+import { useAppDispatch } from '../hooks'
+import { startGame } from '../slices/gameSlice'
+
 interface StartProps {
   onStart: () => void
   onShopButton: () => void
@@ -5,8 +8,11 @@ interface StartProps {
 }
 
 function Home(props: StartProps) {
+  const dispatch = useAppDispatch()
+
   const handleStartClick = () => {
     props.onStart()
+    dispatch(startGame())
   }
 
   const handleShopButton = () => {

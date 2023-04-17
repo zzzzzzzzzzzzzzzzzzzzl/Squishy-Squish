@@ -51,7 +51,7 @@ function App() {
   return (
     <div>
       {getViewToRender()}
-      {gameSlice.inputName && <Name />}
+      {gameSlice.inputName && gameSlice.highscore && <Name />}
       {<Canvas />}
     </div>
   )
