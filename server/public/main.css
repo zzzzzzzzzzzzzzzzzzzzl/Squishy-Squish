@@ -40,6 +40,37 @@ main {
   padding: 20px; */
 }
 
+.health-overlay{
+  position: absolute;
+  top: 8%;
+  left: 69%;
+  transform: translate(-50%, -50%);
+  height: 75px;
+}
+.health-overlay1{
+  position: absolute;
+  top: 8%;
+  left: 66.5%;
+  transform: translate(-50%, -50%);
+  height: 75px;
+}
+.health-overlay2{
+  position: absolute;
+  top: 8%;
+  left: 64%;
+  transform: translate(-50%, -50%);
+  height: 75px;
+}
+
+.armour-overlay{
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 75px;
+  
+}
+
 .menu {
   display: flex;
   flex-direction: column;
@@ -55,7 +86,12 @@ main {
   margin: 10px 10px;
 }
 
-
+.leaderboard-container {
+  background-color: #F7A9A8;
+  border: solid #774936 5px;
+  border-radius: 20px;
+  padding: 10px;
+}
 
 .menu button {
   border: solid #774936 5px;
@@ -87,7 +123,7 @@ main {
 .leaderboard-heading{
   position: absolute;
   top: 20px;
-  left:18%;
+  left:14%;
   font-size: 40px;
   margin:auto;
   padding-left: 20px;

@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Home from './Home'
+import Home from './MainMenu'
 
 describe('Home', () => {
   it('should call the onStart function when the Start button is clicked', () => {

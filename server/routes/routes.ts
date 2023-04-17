@@ -5,7 +5,6 @@ import { getReadData, getWriteData } from '../dataService'
 router.get('/', async (req, res) => {
   try {
     const data = await getReadData()
-
     res.json(data.leaderboard)
   } catch (err) {
     console.error(err)

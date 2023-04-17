@@ -30,7 +30,7 @@ function loadPlayerData(): PlayerData {
 }
 
 // Usage example
-const newPlayerInfo = { username: '', score: 0, currency: 0 }
+const newPlayerInfo = { username: '', score: 0, currency: 2000 }
 const newStats = { movementspeed: 1, jumpheight: 1, lives: 1, armour: 0 }
 
 savePlayerData(newPlayerInfo, newStats)
