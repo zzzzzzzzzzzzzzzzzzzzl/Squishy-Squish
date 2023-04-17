@@ -29,6 +29,6 @@ export default [
     price: 1000,
     power: 1,
     value: 1,
-    image: '/assests/main-menu/speed-boost.png',
+    image: '/assests/main-menu/armour.png',
   },
 ]
