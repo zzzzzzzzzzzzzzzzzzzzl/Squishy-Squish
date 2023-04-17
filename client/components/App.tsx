@@ -51,7 +51,7 @@ function App() {
   return (
     <div>
       {getViewToRender()}
-      {gameSlice.dead && <Name />}
+      {gameSlice.inputName && <Name />}
       {<Canvas />}
     </div>
   )

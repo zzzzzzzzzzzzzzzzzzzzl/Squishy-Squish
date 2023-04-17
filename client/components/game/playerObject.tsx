@@ -1,9 +1,12 @@
 import gravity from './gravity'
 import store from '../../store'
 import { test } from '../../slices/gameSlice'
+import score from './score'
 
 class playerObject {
   constructor(player) {
+    const newScore = new score()
+    console.log(newScore.getTopFive())
     this.pos = player.pos
     this.acceleration = player.acceleration
     this.velocity = player.velocity
