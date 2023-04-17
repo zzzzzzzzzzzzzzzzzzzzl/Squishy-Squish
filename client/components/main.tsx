@@ -1,5 +1,5 @@
 import enviroment from './game/enviroment'
-import Home from './Home'
+import Home from './MainMenu'
 
 const a = new enviroment(1000)
 

@@ -9,7 +9,7 @@ function Lives({ initialLives = 3 }) {
         <img
           key={i}
           className={`health-overlay health-overlay${i}`}
-          src="/images/lives.png"
+          src="/assests/game-UI/lives.png"
           alt="health"
         />
       ))}
