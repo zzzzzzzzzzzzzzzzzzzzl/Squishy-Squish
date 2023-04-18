@@ -19,7 +19,7 @@ class playerObject {
     this.velocityArr = Array(3).fill([0, 0])
     this.ded = false
     this.coins = 0
-    this.lives = 3
+    this.lives = 2
   }
   sumForces() {
     //is there a better way of doing this???/
