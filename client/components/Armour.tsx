@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useAppSelector } from '../hooks'
 
 function Armour({ initialArmour = 1 }) {
-  const [armour, setArmour] = useState(initialArmour)
+  const armour = useAppSelector((state) => state.inventory.armour)
 
   return (
     <>

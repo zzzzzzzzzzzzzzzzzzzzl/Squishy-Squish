@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useAppSelector } from '../hooks'
 
-function Lives({ initialLives = 3 }) {
-  const [lives, setLives] = useState(initialLives)
+function Lives() {
+  const lives = useAppSelector((state) => state.inventory.lives)
 
   return (
     <>
