@@ -1,6 +1,10 @@
 import items from '../shopItems'
 import Message from './Message'
-import { loadPlayerData, savePlayerData, clearLocalStorage } from '../localPlayerData'
+import {
+  loadPlayerData,
+  savePlayerData,
+  clearLocalStorage,
+} from '../localPlayerData'
 import { useState } from 'react'
 import { useAppDispatch } from '../hooks'
 import {
@@ -31,10 +35,7 @@ interface Props {
 }
 
 function Store(props: Props) {
-
-
   const [message, setMessage] = useState('')
-
 
   const dispatch = useAppDispatch()
   // const [viewToRender, setViewToRender] = useState('home')
@@ -50,8 +51,8 @@ function Store(props: Props) {
 
   function resetPlayerButton() {
     clearLocalStorage()
-    alert(`Your stats have been reset!`)
     dispatch(resetInventory())
+    alert(`Your stats have been reset!`)
     dispatch(setDisplay('home'))
   }
 
@@ -76,7 +77,7 @@ function Store(props: Props) {
           }
           break
         case 2:
-          if (speed >= 10) {
+          if (speed >= 1) {
             setMessage(`Sorry, You have maxed out this skill`)
           } else {
             dispatch(increaseSpeed())
@@ -103,9 +104,7 @@ function Store(props: Props) {
           break
       }
     } else {
-
       setMessage(`You're too poor bro`)
-
     }
   }
 
@@ -147,7 +146,6 @@ function Store(props: Props) {
         {message && (
           <Message message={message} onClose={() => setMessage('')} />
         )}
-
       </div>
     </div>
   )
