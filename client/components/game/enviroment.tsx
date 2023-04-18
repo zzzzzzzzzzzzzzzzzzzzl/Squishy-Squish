@@ -36,10 +36,17 @@ class enviroment {
     })
     this.height = 0
     this.draw(envSize) //this will set up our canvas <--- and will setup our game loop <3
-    this.coinsArr = []
+    this.coinsArr = Array(15)
+      .fill()
+      .map(() => {
+        return new coin([
+          [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
+          [250, 50],
+        ])
+      })
     this.coinT = new coin(
       [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
-      [250, 50]
+      [2, 50]
     )
   }
 
@@ -55,6 +62,14 @@ class enviroment {
         ])
       })
     this.groundHeight = 900 //some grass for sue// just a platform bottom so we have somthing to stand on :)
+    this.coinArr = Array(15)
+      .fill()
+      .map(() => {
+        return new coin([
+          [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
+          [250, 50],
+        ])
+      })
     const ground = [
       [0, this.groundHeight],
       [1000, 1000],
@@ -78,7 +93,6 @@ class enviroment {
 
   //this is where our game will take place
   update() {
-    this.coinT.updateCoin(this.p5)
     this.startGame()
     if (this.player.ded) {
       this.reset()
@@ -91,16 +105,16 @@ class enviroment {
       this.panCamera()
     }
     this.player.playerInput(this.p5)
+    this.coinT.updateCoin(this.p5)
+    console.log(this.coinsArr)
+    this.coinsArr.map((i) => {
+      i.updateCoin(this.p5)
+    })
     this.platformArr.map((i) => {
       i.updatePlatform(this.p5, this.player)
     })
 
-    console.log(this.coinsArr[0])
-    this.coinsArr.map((i) => {
-      i.updateCoin(this.p5, this.player)
-    })
-    this.player.updatePlayer(this.p5, -this.height)
-
+    this.player.updatePlayer(this.p5, -this.height, this.start)
   }
   panCamera() {
     if (!this.player.ded) {
@@ -144,13 +158,13 @@ class enviroment {
         ])
       )
 
-    if (Math.random() > 0.5 && !this.player.ded)
-      this.coinsArr.push(
-        new coin([
-          [Math.floor(Math.random() * 40), Math.floor(this.height / 25)],
-          [50, 50],
-        ])
-      )
+    // if (Math.random() > 0.5 && !this.player.ded)
+    //   this.coinsArr.push(
+    //     new coin([
+    //       [Math.floor(Math.random() * 40), Math.floor(this.height / 25)],
+    //       [50, 50],
+    //     ])
+    //   )
 
     // = Array(100)
     //   .fill()

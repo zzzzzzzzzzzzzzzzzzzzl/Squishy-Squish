@@ -39,6 +39,11 @@ export const inventorySlice = createSlice({
       newState.lives += 1
       return newState
     },
+    decreaseLives: (state) => {
+      const newState = { ...state }
+      newState.lives -= 1
+      return newState
+    },
     increaseArmour: (state) => {
       const newState = { ...state }
       newState.armour += 1
@@ -56,6 +61,7 @@ export const {
   increaseJumpHeight,
   increaseLives,
   increaseSpeed,
+  decreaseLives,
 } = inventorySlice.actions
 
 // the reducer to be used in store.js
