@@ -1,4 +1,4 @@
-import { getReadData, getWriteData } from './dataService'
+import { getReadData, getWriteData } from '../dataService'
 import { readFile, writeFile } from 'node:fs/promises'
 
 jest.mock('node:fs/promises')

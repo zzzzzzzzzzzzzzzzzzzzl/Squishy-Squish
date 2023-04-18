@@ -11,7 +11,7 @@ interface StartProps {
   onLeaderboardButton: () => void
 }
 
-function Home(props: StartProps) {
+function Home() {
   const dispatch = useAppDispatch()
   const [viewToRender, setViewToRender] = useState('home')
 
