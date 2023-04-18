@@ -1,4 +1,4 @@
-   import items from '../shopItems'
+import items from '../shopItems'
 import { loadPlayerData, savePlayerData } from '../localPlayerData'
 import { useState } from 'react'
 import { useAppDispatch } from '../hooks'
@@ -9,6 +9,7 @@ import {
   increaseSpeed,
 } from '../slices/inventorySlice'
 // import inventorySlice from '../slices/inventorySlice'
+import { useAppSelector } from '../hooks'
 
 interface ShopItem {
   id: number
@@ -27,6 +28,10 @@ function Store(props: Props) {
   const { playerinfo, stats } = loadPlayerData()
   const dispatch = useAppDispatch()
   // const [viewToRender, setViewToRender] = useState('home')
+  const jump = useAppSelector((state) => state.inventory.jumpHeight)
+  const speed = useAppSelector((state) => state.inventory.speed)
+  const lives = useAppSelector((state) => state.inventory.lives)
+  const armour = useAppSelector((state) => state.inventory.armour)
 
   const handleReturnButton = () => {
     props.updateViewToRender('home')
@@ -46,22 +51,40 @@ function Store(props: Props) {
       // dispatch the appropriate action based on the item id
       switch (item.id) {
         case 1:
-          dispatch(increaseJumpHeight())
+          if (jump >= 20) {
+            alert(`Sorry, You have maxed out this skill`)
+          } else {
+            dispatch(increaseJumpHeight())
+            alert(`Purchased!`)
+          }
           break
         case 2:
-          dispatch(increaseSpeed())
+          if (speed >= 10) {
+            alert(`Sorry, You have maxed out this skill`)
+          } else {
+            dispatch(increaseSpeed())
+            alert(`Purchased!`)
+          }
           break
         case 3:
-          dispatch(increaseLives())
+          if (lives >= 3) {
+            alert(`Sorry, You have maxed out this skill`)
+          } else {
+            dispatch(increaseLives())
+            alert(`Purchased!`)
+          }
           break
         case 4:
-          dispatch(increaseArmour())
+          if (armour >= 3) {
+            alert(`Sorry, You have maxed out this skill`)
+          } else {
+            dispatch(increaseArmour())
+            alert(`Purchased!`)
+          }
           break
         default:
           break
       }
-
-      alert(`Purchased!`)
     } else {
       alert(`Your poor bro`)
     }

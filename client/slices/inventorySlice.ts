@@ -8,7 +8,7 @@ interface InitialState {
 }
 
 // {id:id,task:input,done:false}
-const sampleData = { jumpHeight: 8, speed: 0.8, lives: 1, armour: 0 }
+const sampleData = { jumpHeight: 25, speed: 0.8, lives: 1, armour: 0 }
 
 // where our business logic goes
 export const inventorySlice = createSlice({
