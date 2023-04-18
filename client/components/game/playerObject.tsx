@@ -2,6 +2,7 @@ import gravity from './gravity'
 import store from '../../store'
 import { setDisplay, startGame, test } from '../../slices/gameSlice'
 import score from './score'
+import { useAppSelector } from '../../hooks'
 
 class playerObject {
   constructor(player) {
@@ -18,6 +19,7 @@ class playerObject {
     this.velocityArr = Array(3).fill([0, 0])
     this.ded = false
     this.coins = 0
+    this.inventory = store.getState().inventory
   }
   sumForces() {
     //is there a better way of doing this???/
@@ -74,7 +76,8 @@ class playerObject {
   }
   jump() {
     if (this.grounded) {
-      this.velocity[1] = -18
+      this.velocity[1] -= this.inventory.jumpHeight
+
     }
   }
   playerInput(p5) {
