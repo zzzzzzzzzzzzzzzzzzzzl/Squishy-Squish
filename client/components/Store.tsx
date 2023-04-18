@@ -1,4 +1,5 @@
 import items from '../shopItems'
+import Message from './Message'
 import { loadPlayerData, savePlayerData } from '../localPlayerData'
 import { useState } from 'react'
 import { useAppDispatch } from '../hooks'
@@ -14,7 +15,6 @@ import { useAppSelector } from '../hooks'
 
 import { setDisplay } from '../slices/gameSlice'
 
-
 interface ShopItem {
   id: number
   name: string
@@ -29,6 +29,7 @@ interface Props {
 }
 
 function Store(props: Props) {
+  const [message, setMessage] = useState('')
   const { playerinfo, stats } = loadPlayerData()
   const dispatch = useAppDispatch()
   // const [viewToRender, setViewToRender] = useState('home')
@@ -56,43 +57,47 @@ function Store(props: Props) {
       switch (item.id) {
         case 1:
           if (jump >= 20) {
-            alert(`Sorry, You have maxed out this skill`)
+            setMessage(`Sorry, You have maxed out this skill`)
           } else {
             dispatch(increaseJumpHeight())
-            alert(`Purchased!`)
+            setMessage(`Purchased!`)
           }
           break
         case 2:
           if (speed >= 10) {
-            alert(`Sorry, You have maxed out this skill`)
+            setMessage(`Sorry, You have maxed out this skill`)
           } else {
             dispatch(increaseSpeed())
-            alert(`Purchased!`)
+            setMessage(`Purchased!`)
           }
           break
         case 3:
           if (lives >= 3) {
-            alert(`Sorry, You have maxed out this skill`)
+            setMessage(`Sorry, You have maxed out this skill`)
           } else {
             dispatch(increaseLives())
-            alert(`Purchased!`)
+            setMessage(`Purchased!`)
           }
           break
         case 4:
           if (armour >= 3) {
-            alert(`Sorry, You have maxed out this skill`)
+            setMessage(`Sorry, You have maxed out this skill`)
           } else {
             dispatch(increaseArmour())
-            alert(`Purchased!`)
+            setMessage(`Purchased!`)
           }
           break
         default:
           break
       }
     } else {
-      alert(`Your poor bro`)
+      setMessage(`Your poor bro`)
     }
   }
+
+  // function handleCloseMessage() {
+  //   setMessage('')
+  // }
 
   return (
     <div className="menu-overlay">
@@ -122,6 +127,9 @@ function Store(props: Props) {
             <p className="item-cost"> &#10084; {item.price} </p>
           </div>
         ))}
+        {message && (
+          <Message message={message} onClose={() => setMessage('')} />
+        )}
       </div>
     </div>
   )

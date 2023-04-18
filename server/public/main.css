@@ -30,7 +30,7 @@ main {
 }
 
 .menu-overlay {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -195,7 +195,7 @@ main {
 }
 .store-listing{
   border: solid black 2px;
-
+height: 750px;
   padding: 40px;
   border-radius: 20px;
   background-color: #F7A9A8;
@@ -242,6 +242,7 @@ main {
 
 .item-image{
   border: solid #774936 3px;
+  height: 150px;
   border-radius: 20px;
   background: rgb(255,247,230);
   background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
@@ -313,3 +314,14 @@ main {
   width: 350px;
   box-shadow: 3px 3px #263b5a;
 }
+
+.message-container{
+  transform: translate(50%, -500%);
+  border: solid #774936 3px;
+  background-color: rgb(255,247,230);
+  border-radius: 10px;
+
+
+
+}
+
