@@ -19,7 +19,6 @@ class playerObject {
     this.velocityArr = Array(3).fill([0, 0])
     this.ded = false
     this.coins = 0
-    this.inventory = store.getState().inventory
   }
   sumForces() {
     //is there a better way of doing this???/
@@ -76,8 +75,7 @@ class playerObject {
   }
   jump() {
     if (this.grounded) {
-      this.velocity[1] -= this.inventory.jumpHeight
-
+      this.velocity[1] = -this.inventory.jumpHeight
     }
   }
   playerInput(p5) {
@@ -87,14 +85,15 @@ class playerObject {
     }
     if (p5.keyIsDown(65)) {
       //a
-      this.velocity[0] -= this.acceleration
+      console.log(this.inventory.speed)
+      this.velocity[0] -= this.inventory.speed
     }
     if (p5.keyIsDown(83)) {
       //s
     }
     if (p5.keyIsDown(68)) {
       //d
-      this.velocity[0] += this.acceleration
+      this.velocity[0] += this.inventory.speed
     }
   }
   warpIfOffScreen() {
@@ -116,6 +115,7 @@ class playerObject {
   }
   updatePlayer(p5, score) {
     if (!this.ded) {
+      this.inventory = store.getState().inventory
       this.score.updateScore(score)
       this.death(score)
       this.velocity = gravity(this.velocity)
