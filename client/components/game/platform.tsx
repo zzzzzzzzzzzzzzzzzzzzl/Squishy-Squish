@@ -23,9 +23,6 @@ class platform {
   }
   newcollision(player) {
     const col = checkCollision(player.bounds, this.bounds, player.velocity)
-    if (col) {
-      console.log(col)
-    }
 
     if (col == 'tc') {
       player.velocity[1] = -player.velocity[1] * 0.5

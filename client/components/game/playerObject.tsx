@@ -1,6 +1,6 @@
 import gravity from './gravity'
 import store from '../../store'
-import { test } from '../../slices/gameSlice'
+import { setDisplay, startGame, test } from '../../slices/gameSlice'
 import score from './score'
 
 class playerObject {
@@ -104,7 +104,9 @@ class playerObject {
   }
   death(score) {
     if (this.pos[1] > 900) {
-      this.score.newHighscore()
+      if (this.score.newHighscore()) {
+        store.dispatch(setDisplay('home'))
+      }
       this.ded = true
       store.dispatch(test(score))
     }
