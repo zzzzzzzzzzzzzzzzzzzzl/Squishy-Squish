@@ -34,6 +34,8 @@ class score {
     topFive.map((i) => {
       if (i < this.score) {
         newhighscore = true
+      }
+      if (newhighscore) {
         store.dispatch(highScore())
       }
     })
