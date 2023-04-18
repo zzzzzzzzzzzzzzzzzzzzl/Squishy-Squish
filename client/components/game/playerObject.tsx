@@ -75,7 +75,7 @@ class playerObject {
   }
   jump() {
     if (this.grounded) {
-      this.velocity[1] = -this.inventory.jumpHeight
+      this.velocity[1] = -this.inventory.jumpHeight * 2
     }
   }
   playerInput(p5) {
@@ -85,7 +85,6 @@ class playerObject {
     }
     if (p5.keyIsDown(65)) {
       //a
-      console.log(this.inventory.speed)
       this.velocity[0] -= this.inventory.speed
     }
     if (p5.keyIsDown(83)) {
