@@ -4,6 +4,7 @@ import playerObject from './playerObject'
 import score from './score'
 import store from '../../store'
 import { setDisplay } from '../../slices/gameSlice'
+import coin from './coin'
 // import store from '../../store'
 
 class enviroment {
@@ -35,6 +36,11 @@ class enviroment {
     })
     this.height = 0
     this.draw(envSize) //this will set up our canvas <--- and will setup our game loop <3
+    this.coinsArr = []
+    this.coinT = new coin(
+      [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
+      [250, 50]
+    )
   }
 
   reset() {
@@ -72,6 +78,7 @@ class enviroment {
 
   //this is where our game will take place
   update() {
+    this.coinT.updateCoin(this.p5)
     this.startGame()
     if (this.player.ded) {
       this.reset()
@@ -87,7 +94,13 @@ class enviroment {
     this.platformArr.map((i) => {
       i.updatePlatform(this.p5, this.player)
     })
-    this.player.updatePlayer(this.p5, -this.height, this.start)
+
+    console.log(this.coinsArr[0])
+    this.coinsArr.map((i) => {
+      i.updateCoin(this.p5, this.player)
+    })
+    this.player.updatePlayer(this.p5, -this.height)
+
   }
   panCamera() {
     if (!this.player.ded) {
@@ -128,6 +141,14 @@ class enviroment {
         new platform([
           [Math.floor(Math.random() * 40), Math.floor(this.height / 25)],
           [200, 50],
+        ])
+      )
+
+    if (Math.random() > 0.5 && !this.player.ded)
+      this.coinsArr.push(
+        new coin([
+          [Math.floor(Math.random() * 40), Math.floor(this.height / 25)],
+          [50, 50],
         ])
       )
 
