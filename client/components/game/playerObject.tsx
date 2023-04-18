@@ -118,7 +118,8 @@ class playerObject {
     if (!start) {
       this.rebirth(score)
     }
-    if (this.lives < 0) {
+    console.log(this.lives,"here")
+    if (this.lives > 0&&this.pos[1] > 1000 - score) {
       this.rebirth(score)
       this.lives--
     }
