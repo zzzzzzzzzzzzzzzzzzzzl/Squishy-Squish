@@ -19,6 +19,7 @@ class playerObject {
     this.velocityArr = Array(3).fill([0, 0])
     this.ded = false
     this.coins = 0
+    this.lives = 3
   }
   sumForces() {
     //is there a better way of doing this???/
@@ -75,9 +76,7 @@ class playerObject {
   }
   jump() {
     if (this.grounded) {
-
-      this.velocity[1] -= this.inventory.jumpHeight + 10
-
+      this.velocity[1] = -this.inventory.jumpHeight - 10
     }
   }
   playerInput(p5) {
@@ -113,6 +112,10 @@ class playerObject {
   async death(score, start) {
     if (!start) {
       this.rebirth(score)
+    }
+    if (this.lives < 0) {
+      this.rebirth(score)
+      this.lives--
     }
     if (this.pos[1] > 1000 - score) {
       store.dispatch(startGame())
