@@ -1,4 +1,4 @@
-import items from '../shopItems'
+   import items from '../shopItems'
 import { loadPlayerData, savePlayerData } from '../localPlayerData'
 import { useState } from 'react'
 import { useAppDispatch } from '../hooks'
