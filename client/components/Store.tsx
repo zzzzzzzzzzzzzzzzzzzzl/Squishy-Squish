@@ -1,6 +1,6 @@
 import items from '../shopItems'
 import Message from './Message'
-import { loadPlayerData, savePlayerData } from '../localPlayerData'
+import { loadPlayerData, savePlayerData, clearLocalStorage } from '../localPlayerData'
 import { useState } from 'react'
 import { useAppDispatch } from '../hooks'
 import {
@@ -8,6 +8,8 @@ import {
   increaseJumpHeight,
   increaseLives,
   increaseSpeed,
+  playerCurrency,
+  resetInventory,
 } from '../slices/inventorySlice'
 
 // import inventorySlice from '../slices/inventorySlice'
@@ -29,29 +31,39 @@ interface Props {
 }
 
 function Store(props: Props) {
+
+
   const [message, setMessage] = useState('')
-  const { playerinfo, stats } = loadPlayerData()
+
+
   const dispatch = useAppDispatch()
   // const [viewToRender, setViewToRender] = useState('home')
   const jump = useAppSelector((state) => state.inventory.jumpHeight)
-  const speed = useAppSelector((state) => state.inventory.speed)
+  const speed = useAppSelector((state) => state.inventory.movementSpeed)
   const lives = useAppSelector((state) => state.inventory.lives)
   const armour = useAppSelector((state) => state.inventory.armour)
+  const currency = useAppSelector((state) => state.inventory.currency)
 
   const handleReturnButton = () => {
     dispatch(setDisplay('home'))
   }
 
+  function resetPlayerButton() {
+    clearLocalStorage()
+    alert(`Your stats have been reset!`)
+    dispatch(resetInventory())
+    dispatch(setDisplay('home'))
+  }
+
   function handleItemDoubleClick(item: ShopItem) {
-    if (playerinfo.currency >= item.price) {
-      const updatePlayerInfo = {
-        ...playerinfo,
-        currency: playerinfo.currency - item.price,
-      }
-      const updatePlayerStats = {
-        ...stats,
-      }
-      savePlayerData(updatePlayerInfo, updatePlayerStats)
+    // if (playerStats.currency >= item.price) {
+    //   const updatePlayerStats = {
+    //     ...playerStats,
+    //     currency: playerStats.currency - item.price,
+    //   }
+    if (currency >= item.price) {
+      const updateCurrency = currency - item.price
+      dispatch(playerCurrency(updateCurrency))
 
       // dispatch the appropriate action based on the item id
       switch (item.id) {
@@ -91,7 +103,9 @@ function Store(props: Props) {
           break
       }
     } else {
-      setMessage(`Your poor bro`)
+
+      setMessage(`You're too poor bro`)
+
     }
   }
 
@@ -111,9 +125,7 @@ function Store(props: Props) {
         <br></br>
         <h2 className="menu-heading">Shop</h2>
         <br></br>
-        <p className="currency-display">
-          Current Rations: &#10084; {playerinfo.currency}
-        </p>
+        <p className="currency-display">Current Rations: &#10084; {currency}</p>
         <br></br>
         {items.map((item) => (
           <div className="item-container" key={item.id}>
@@ -127,9 +139,15 @@ function Store(props: Props) {
             <p className="item-cost"> &#10084; {item.price} </p>
           </div>
         ))}
+
+        <div className="reset-button" onDoubleClick={resetPlayerButton}>
+          Reset Player
+        </div>
+
         {message && (
           <Message message={message} onClose={() => setMessage('')} />
         )}
+
       </div>
     </div>
   )
