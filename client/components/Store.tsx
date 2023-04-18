@@ -1,4 +1,4 @@
-   import items from '../shopItems'
+import items from '../shopItems'
 import { loadPlayerData, savePlayerData } from '../localPlayerData'
 import { useState } from 'react'
 import { useAppDispatch } from '../hooks'
@@ -8,7 +8,7 @@ import {
   increaseLives,
   increaseSpeed,
 } from '../slices/inventorySlice'
-// import inventorySlice from '../slices/inventorySlice'
+import { setDisplay } from '../slices/gameSlice'
 
 interface ShopItem {
   id: number
@@ -29,7 +29,7 @@ function Store(props: Props) {
   // const [viewToRender, setViewToRender] = useState('home')
 
   const handleReturnButton = () => {
-    props.updateViewToRender('home')
+    dispatch(setDisplay('home'))
   }
 
   function handleItemDoubleClick(item: ShopItem) {

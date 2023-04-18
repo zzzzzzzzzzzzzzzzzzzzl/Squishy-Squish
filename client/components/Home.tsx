@@ -4,7 +4,6 @@ import MainMenu from './MainMenu'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { setDisplay, startGame } from '../slices/gameSlice'
-import Reset from './Reset'
 
 interface StartProps {
   onStart: () => void

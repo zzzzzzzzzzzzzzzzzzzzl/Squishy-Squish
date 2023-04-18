@@ -1,14 +1,14 @@
 import { SetStateAction, useState } from 'react'
-import { addToLeaderboard, getLeaderboard } from '../apiClient'
+import { addToLeaderboard } from '../apiClient'
 import { useAppSelector, useAppDispatch } from '../hooks'
-import { highScore, setDisplay, toggleInputName } from '../slices/gameSlice'
+import { setDisplay, toggleInputName } from '../slices/gameSlice'
 
 function Name() {
   const dispatch = useAppDispatch()
   const gameSlice = useAppSelector((state) => state.game)
   console.log(gameSlice)
   const [name, setName] = useState('')
-  const [score, setScore] = useState('')
+  // const [score, setScore] = useState('')
 
   // function getLeaderboard() {
   //   return fetchLeaderboard
