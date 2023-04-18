@@ -5,6 +5,7 @@ import Lives from './Lives'
 import Armour from './Armour'
 import gameSlice from '../slices/gameSlice'
 import { useAppSelector } from '../hooks'
+import Reset from './Reset'
 
 import { useState } from 'react'
 
@@ -14,7 +15,7 @@ function App() {
   return (
     <div>
       {gameSlice.inputName && gameSlice.highscore && <Name />}
-
+      {<Reset />}
       {<Lives />}
       {<Armour />}
       {<Home />}
