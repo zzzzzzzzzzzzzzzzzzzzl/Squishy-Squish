@@ -76,6 +76,7 @@ class playerObject {
   jump() {
     if (this.grounded) {
       this.velocity[1] = -this.inventory.jumpHeight * 2
+
     }
   }
   playerInput(p5) {
@@ -103,20 +104,29 @@ class playerObject {
       this.pos[0] = 19
     }
   }
-  death(score) {
-    if (this.pos[1] > 900) {
-      if (this.score.newHighscore()) {
+  rebirth(score) {
+    if (this.pos[1] > 1000 - score) {
+      this.pos[1] = -score - 100
+    }
+  }
+  async death(score, start) {
+    if (!start) {
+      this.rebirth(score)
+    }
+    if (this.pos[1] > 1000 - score) {
+      store.dispatch(startGame())
+      if (!(await this.score.newHighscore())) {
         store.dispatch(setDisplay('home'))
       }
       this.ded = true
       store.dispatch(test(score))
     }
   }
-  updatePlayer(p5, score) {
+  updatePlayer(p5, score, start) {
     if (!this.ded) {
       this.inventory = store.getState().inventory
       this.score.updateScore(score)
-      this.death(score)
+      this.death(score, start)
       this.velocity = gravity(this.velocity)
       this.playerInput(p5)
       this.warpIfOffScreen()
