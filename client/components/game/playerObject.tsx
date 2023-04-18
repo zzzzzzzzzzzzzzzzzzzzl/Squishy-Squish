@@ -75,7 +75,10 @@ class playerObject {
   }
   jump() {
     if (this.grounded) {
+
       this.velocity[1] -= this.inventory.jumpHeight
+
+
     }
   }
   playerInput(p5) {
@@ -85,14 +88,15 @@ class playerObject {
     }
     if (p5.keyIsDown(65)) {
       //a
-      this.velocity[0] -= this.acceleration
+      console.log(this.inventory.speed)
+      this.velocity[0] -= this.inventory.speed
     }
     if (p5.keyIsDown(83)) {
       //s
     }
     if (p5.keyIsDown(68)) {
       //d
-      this.velocity[0] += this.acceleration
+      this.velocity[0] += this.inventory.speed
     }
   }
   warpIfOffScreen() {
