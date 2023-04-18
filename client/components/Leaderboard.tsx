@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { getLeaderboard } from '../apiClient'
+import { useAppDispatch } from '../hooks'
+import { setDisplay } from '../slices/gameSlice'
 
 type Leader = {
   id: number
@@ -7,15 +9,12 @@ type Leader = {
   score: number
 }
 
-interface Props {
-  updateViewToRender: (view: string) => void
-}
-
-function Leaderboard(props: Props) {
+function Leaderboard() {
+  const dispatch = useAppDispatch()
   const [leaderboard, setLeaderboard] = useState<Leader[]>([])
 
   const handleReturnButton = () => {
-    props.updateViewToRender('home')
+    dispatch(setDisplay('home'))
   }
 
   useEffect(() => {

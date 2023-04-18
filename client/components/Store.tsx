@@ -8,8 +8,12 @@ import {
   increaseLives,
   increaseSpeed,
 } from '../slices/inventorySlice'
+
 // import inventorySlice from '../slices/inventorySlice'
 import { useAppSelector } from '../hooks'
+
+import { setDisplay } from '../slices/gameSlice'
+
 
 interface ShopItem {
   id: number
@@ -34,7 +38,7 @@ function Store(props: Props) {
   const armour = useAppSelector((state) => state.inventory.armour)
 
   const handleReturnButton = () => {
-    props.updateViewToRender('home')
+    dispatch(setDisplay('home'))
   }
 
   function handleItemDoubleClick(item: ShopItem) {

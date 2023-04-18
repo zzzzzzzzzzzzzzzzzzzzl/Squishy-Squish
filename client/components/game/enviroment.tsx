@@ -3,6 +3,7 @@ import platform from './platform'
 import playerObject from './playerObject'
 import score from './score'
 import store from '../../store'
+import { setDisplay } from '../../slices/gameSlice'
 // import store from '../../store'
 
 class enviroment {
