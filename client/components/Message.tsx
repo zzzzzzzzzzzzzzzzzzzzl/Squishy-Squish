@@ -14,12 +14,12 @@ function Message({ message, onClose }: MessageProps) {
   }
 
   return (
-    show && (
-      <div className="message-container">
+    <div className="message-container">
+      <div style={{ display: show ? 'block' : 'none' }}>
         <p>{message}</p>
         <button onClick={handleClick}>Close</button>
       </div>
-    )
+    </div>
   )
 }
 
