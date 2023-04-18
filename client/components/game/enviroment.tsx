@@ -9,12 +9,12 @@ class enviroment {
   constructor(envSize) {
     //array of platform objects//look at platform.tsx
     this.platforms = 150
-    this.platformArr = Array(150)
+    this.platformArr = Array(15)
       .fill()
       .map(() => {
         return new platform([
           [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
-          [50, 50],
+          [250, 50],
         ])
       })
     this.groundHeight = 900 //some grass for sue// just a platform bottom so we have somthing to stand on :)
@@ -79,11 +79,21 @@ class enviroment {
     })
   }
   createObjects() {
-    if (Math.random() > 0.9 && !this.player.ded)
+    if (Math.random() > 0.92 && !this.player.ded)
       this.platformArr.push(
         new platform([
-          [Math.floor(Math.random() * 40), Math.floor((this.height + 50) / 25)],
+          [
+            Math.floor(Math.random() * 40),
+            Math.floor((this.height - 100) / 25),
+          ],
           [50, 50],
+        ])
+      )
+    if (Math.random() > 0.95 && !this.player.ded)
+      this.platformArr.push(
+        new platform([
+          [Math.floor(Math.random() * 40), Math.floor(this.height / 25)],
+          [200, 50],
         ])
       )
 

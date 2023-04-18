@@ -1,7 +1,8 @@
 // WARNING: this file is only a guide! not to be used as part of the challenge!
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store'
-import UpdateTodoComponent from '../components/UpdateTodoComponent'
+
+import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory'
 
 const initialState: string[] = []
 
@@ -11,6 +12,8 @@ const sampleData = {
   inputName: false,
   highscore: false,
   start: false,
+  reset: false,
+  display: 'home', //start home leaderboard shop none
 }
 
 // where our business logic goes
@@ -41,14 +44,31 @@ export const gameSlice = createSlice({
       newState.start = !newState.start
       return newState
     },
+    resetGame: (state) => {
+      const newState = state
+      newState.reset = !newState.reset
+      return newState
+    },
+    setDisplay: (state, action) => {
+      const newState = state
+      newState.display = action.payload
+      return newState
+    },
   },
 })
 
 // a selector to be used as: const example = useSelector(exampleSelector)
-export const gameSelector = (state: RootState) => state.example
+export const gameSelector = (state: RootState) => state.game
 
 // actions to be dispatched using dispatch(exampleAddToArray({ example: 'hi' }))
-export const { test, highScore, toggleInputName, startGame } = gameSlice.actions
+export const {
+  test,
+  highScore,
+  toggleInputName,
+  startGame,
+  resetGame,
+  setDisplay,
+} = gameSlice.actions
 
 // the reducer to be used in store.js
 export default gameSlice.reducer

@@ -1,6 +1,6 @@
 import gravity from './gravity'
 import store from '../../store'
-import { test } from '../../slices/gameSlice'
+import { setDisplay, startGame, test } from '../../slices/gameSlice'
 import score from './score'
 import { useAppSelector } from '../../hooks'
 
@@ -77,6 +77,7 @@ class playerObject {
   jump() {
     if (this.grounded) {
       this.velocity[1] -= this.inventory.jumpHeight
+
     }
   }
   playerInput(p5) {
@@ -97,16 +98,18 @@ class playerObject {
     }
   }
   warpIfOffScreen() {
-    if (this.pos[0] < 50) {
-      this.pos[0] = 1100
+    if (this.pos[0] < -20) {
+      this.pos[0] = 999
     }
-    if (this.pos[0] > 1100) {
-      this.pos[0] = 50
+    if (this.pos[0] > 1000) {
+      this.pos[0] = 19
     }
   }
   death(score) {
     if (this.pos[1] > 900) {
-      this.score.newHighscore()
+      if (this.score.newHighscore()) {
+        store.dispatch(setDisplay('home'))
+      }
       this.ded = true
       store.dispatch(test(score))
     }

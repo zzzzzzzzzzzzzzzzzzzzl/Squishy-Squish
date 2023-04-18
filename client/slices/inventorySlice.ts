@@ -47,7 +47,7 @@ export const inventorySlice = createSlice({
 })
 
 // a selector to be used as: const example = useSelector(exampleSelector)
-export const gameSelector = (state: RootState) => state.example
+export const gameSelector = (state: RootState) => state.game
 
 // actions to be dispatched using dispatch(exampleAddToArray({ example: 'hi' }))
 export const {

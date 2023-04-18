@@ -2,18 +2,21 @@ import Store from './Store'
 import Leaderboard from './Leaderboard'
 import MainMenu from './MainMenu'
 import { useState } from 'react'
-import { useAppDispatch } from '../hooks'
-import { startGame } from '../slices/gameSlice'
+import { useAppDispatch, useAppSelector } from '../hooks'
+import { setDisplay, startGame } from '../slices/gameSlice'
+import Reset from './Reset'
 
 interface StartProps {
   onStart: () => void
   onShopButton: () => void
   onLeaderboardButton: () => void
+  onReset: () => void
 }
 
-function Home(props: StartProps) {
+function Home() {
+  const gameState = useAppSelector((state) => state.game)
   const dispatch = useAppDispatch()
-  const [viewToRender, setViewToRender] = useState('home')
+  // const [viewToRender, setViewToRender] = useState('home')
 
   // const handleStartClick = () => {
   //   props.onStart()
@@ -22,27 +25,35 @@ function Home(props: StartProps) {
   const handleStart = () => {
     // props.onStart()
     dispatch(startGame())
-    setViewToRender('start') // hide Home component when Start button is clicked
+    dispatch(setDisplay('none'))
+    // setViewToRender('start') // hide Home component when Start button is clicked
   }
   const handleShopButton = () => {
-    setViewToRender('shop')
+    dispatch(setDisplay('shop'))
+    // setViewToRender('shop')
   }
   const handleLeaderboardButton = () => {
-    setViewToRender('leaderboard')
+    dispatch(setDisplay('leaderboard'))
+    // setViewToRender('leaderboard')
   }
 
   function updateViewToRender(view: string) {
-    setViewToRender(view)
+    dispatch(setDisplay('view'))
+    // setViewToRender(view)
   }
+  // const handleResetView = () => {
+  //   setViewToRender('shop')
+  // }
 
   function getViewToRender() {
-    switch (viewToRender) {
+    switch (gameState.display) {
       case 'home':
         return (
           <MainMenu
             onStart={handleStart}
             onShopButton={handleShopButton}
             onLeaderboardButton={handleLeaderboardButton}
+            // onReset={handleResetView}
           />
         )
 

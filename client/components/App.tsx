@@ -14,7 +14,6 @@ function App() {
   return (
     <div>
       {gameSlice.inputName && gameSlice.highscore && <Name />}
-
       {<Lives />}
       {<Armour />}
       {<Home />}
