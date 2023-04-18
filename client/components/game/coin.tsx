@@ -1,6 +1,6 @@
 class coin {
   constructor(pos) {
-    this.topCorner = pos
+    this.topCorner = [Math.random() * 100, Math.random() * 100]
     this.bottomCorner = [20, 20]
 
     this.bounds = {
