@@ -5,6 +5,7 @@ class platform {
     pos[0] = [pos[0][0] * 50, pos[0][1] * 50]
     this.topCorner = pos[0]
     this.bottomCorner = pos[1]
+    this.colour = [25, Math.random() * 50, 100]
 
     this.bounds = {
       tl: pos[0],
@@ -50,7 +51,7 @@ class platform {
   }
 
   draw(p5) {
-    const c = [25, Math.random() * 50, 100]
+    const c = this.colour
     p5.fill(c)
     p5.stroke(c)
     p5.rect(
