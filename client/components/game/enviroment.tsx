@@ -159,7 +159,7 @@ class enviroment {
         ])
       )
     }
-    if (Math.random() > .99 && !this.player.ded){
+    if (Math.random() > .995 && !this.player.ded){
       this.coinsArr.push(
         new coin([
           [Math.floor(Math.random() * 1000), Math.floor(this.height )],
