@@ -7,7 +7,7 @@ import { useAppSelector } from '../../hooks'
 class playerObject {
   constructor(player) {
     this.score = new score()
-
+    this.coins=0
     this.pos = player.pos
     this.acceleration = player.acceleration
     this.velocity = player.velocity

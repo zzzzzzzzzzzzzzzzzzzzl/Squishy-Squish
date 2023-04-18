@@ -4,7 +4,8 @@ import checkCollision, { checkCollisionCoin } from "./checkCollision"
 class coin {
   constructor(pos) {
     this.topCorner = pos[0]
-    this.bottomCorner = [10, 10]
+    this.bottomCorner = [20, 20]
+    this.contact=false
 
     this.bounds = {
       tl: pos[0],
@@ -20,17 +21,15 @@ class coin {
     }
     return true
   }
-  collision(player,coinArr){
+  collision(player){
     const collision=checkCollisionCoin(player.bounds,this.bounds)
     if(collision){
-      console.log('eatCoins',collision)
-      console.log(coinArr)
-      console.log(
-         coinArr.filter((i)=>{return collision})
-      )
+      console.log("help")
+      this.contact=true
+    player.coins++  
+    console.log(player.coins)
     }
-  }
-  eatCoin(coinArr,player){
+    
   }
 
   draw(p5) {
@@ -46,6 +45,7 @@ class coin {
   }
 
   updateCoin(p5, player) {
+    this.collision(player)
     this.draw(p5)
   }
 }

@@ -95,10 +95,11 @@ class enviroment {
     this.coinsArr.map((i) => {
       i.updateCoin(this.p5,this.player)
     })
-    let newArr
-    this.coinsArr.map((i) => {
-      newArr=i.collision(this.player,this.coinArr)
+    this.coinsArr=this.coinsArr.filter((i)=>{
+      return !i.contact
     })
+
+ 
     
     this.platformArr.map((i) => {
       i.updatePlatform(this.p5, this.player)
@@ -119,7 +120,9 @@ class enviroment {
     this.p5.stroke(c)
     this.p5.textSize(64)
     this.p5.text(-this.height, 50, 50)
+    this.p5.text(this.player.coins, 50, 150)
   }
+  
   deleteObjects() {
     this.platformArr = this.platformArr.filter((i) => {
       return i.deleteOffCamera(this.height + 1000)
@@ -156,7 +159,7 @@ class enviroment {
         ])
       )
     }
-    if (Math.random() > 0.95 && !this.player.ded){
+    if (Math.random() > .99 && !this.player.ded){
       this.coinsArr.push(
         new coin([
           [Math.floor(Math.random() * 1000), Math.floor(this.height )],
