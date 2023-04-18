@@ -1,7 +1,9 @@
 // WARNING: this file is only a guide! not to be used as part of the challenge!
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store'
-//import UpdateTodoComponent from '../components/UpdateTodoComponent'
+
+import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory'
+
 
 const initialState: string[] = []
 
@@ -11,6 +13,7 @@ const sampleData = {
   inputName: false,
   highscore: false,
   start: false,
+  reset: false,
 }
 
 // where our business logic goes
@@ -41,6 +44,11 @@ export const gameSlice = createSlice({
       newState.start = !newState.start
       return newState
     },
+    resetGame: (state) => {
+      const newState = state
+      newState.reset = !newState.reset
+      return newState
+    },
   },
 })
 
@@ -48,7 +56,8 @@ export const gameSlice = createSlice({
 export const gameSelector = (state: RootState) => state.game
 
 // actions to be dispatched using dispatch(exampleAddToArray({ example: 'hi' }))
-export const { test, highScore, toggleInputName, startGame } = gameSlice.actions
+export const { test, highScore, toggleInputName, startGame, resetGame } =
+  gameSlice.actions
 
 // the reducer to be used in store.js
 export default gameSlice.reducer
