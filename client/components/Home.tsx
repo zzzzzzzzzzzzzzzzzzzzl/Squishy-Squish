@@ -15,6 +15,7 @@ interface StartProps {
 function Home() {
   const gameState = useAppSelector((state) => state.game)
   const dispatch = useAppDispatch()
+
   // const [viewToRender, setViewToRender] = useState('home')
 
   // const handleStartClick = () => {
