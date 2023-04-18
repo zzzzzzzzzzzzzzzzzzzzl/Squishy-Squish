@@ -10,18 +10,18 @@ function Name() {
   const [name, setName] = useState('')
   const [score, setScore] = useState('')
 
-  function getLeaderboard() {
-    return fetchLeaderboard
-  }
+  // function getLeaderboard() {
+  //   return fetchLeaderboard
+  // }
 
-  function compareHighscores() {
-    const leaderboard = getLeaderboard()
-    dispatch(highScore)
-    leaderboard
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 5)
-      .map((i, index) => {})
-  }
+  // function compareHighscores() {
+  //   const leaderboard = getLeaderboard()
+  //   dispatch(highScore)
+  //   leaderboard
+  //     .sort((a, b) => b.score - a.score)
+  //     .slice(0, 5)
+  //     .map((i, index) => {})
+  // }
 
   function handleSubmit(event: { preventDefault: () => void }) {
     event.preventDefault()
@@ -39,7 +39,7 @@ function Name() {
         console.log('Error adding score', error)
       })
     {
-     dispatch(toggleInputName())
+      dispatch(toggleInputName())
     }
   }
 

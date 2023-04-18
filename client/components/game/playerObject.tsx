@@ -74,7 +74,7 @@ class playerObject {
   }
   jump() {
     if (this.grounded) {
-      this.velocity[1] -= 8
+      this.velocity[1] = -18
     }
   }
   playerInput(p5) {
@@ -95,11 +95,11 @@ class playerObject {
     }
   }
   warpIfOffScreen() {
-    if (this.pos[0] < 50) {
-      this.pos[0] = 1100
+    if (this.pos[0] < -20) {
+      this.pos[0] = 999
     }
-    if (this.pos[0] > 1100) {
-      this.pos[0] = 50
+    if (this.pos[0] > 1000) {
+      this.pos[0] = 19
     }
   }
   death(score) {
