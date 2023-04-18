@@ -1,8 +1,11 @@
+import checkCollision from './checkCollision'
+
 class platform {
   constructor(pos) {
     pos[0] = [pos[0][0] * 50, pos[0][1] * 50]
     this.topCorner = pos[0]
     this.bottomCorner = pos[1]
+    this.colour = [25, Math.random() * 50, 100]
 
     this.bounds = {
       tl: pos[0],
@@ -18,64 +21,37 @@ class platform {
     }
     return true
   }
-  collision(player) {
-    if (
-      player.bounds.tl[0] + 5 < this.bounds.tr[0] &&
-      this.bounds.tr[1] + 5 < player.bounds.tl[1] &&
-      player.bounds.tl[1] + 5 < this.bounds.br[1] &&
-      player.bounds.tl[0] > this.bounds.br[0] - 20
-    ) {
-      console.log('right collision')
-      player.pos[0] = player.pos[0] + 1
-      player.velocity[0] = -player.velocity[0] / 2
-      return player
-    }
-    if (
-      player.bounds.tr[0] > this.bounds.tl[0] &&
-      this.bounds.tl[1] < player.bounds.tr[1] &&
-      player.bounds.tr[1] < this.bounds.bl[1] &&
-      player.bounds.tr[0] < this.bounds.bl[0] + 20
-    ) {
-      console.log('left collision')
-      player.pos[0] = player.pos[0] - 0.2
-      player.velocity[0] = -player.velocity[0] / 4
-      return player
+  newcollision(player) {
+    const col = checkCollision(player.bounds, this.bounds, player.velocity)
+    if (col) {
+      console.log(col)
     }
 
-    if (
-      (this.bounds.tl[0] < player.bounds.bl[0] && //this handles top collision// there is probably a better way to do this.
-        player.bounds.bl[0] < this.bounds.tr[0] && //chunkey if stat,ems
-        this.bounds.tr[1] < player.bounds.bl[1] &&
-        this.bounds.tr[1] + this.bottomCorner[1] / 2 > player.bounds.bl[1]) ||
-      (this.bounds.tl[0] < player.bounds.br[0] &&
-        player.bounds.br[0] < this.bounds.tr[0] &&
-        this.bounds.tr[1] < player.bounds.br[1] &&
-        this.bounds.tr[1] + this.bottomCorner[1] / 2 > player.bounds.br[1])
-    ) {
+    if (col == 'tc') {
       player.velocity[1] = -player.velocity[1] * 0.5
       player.pos[1] = this.bounds.tl[1] - player.size
       player.grounded = true
       return player
     }
-
-    if (
-      (this.bounds.bl[0] < player.bounds.tl[0] && //this handles top collision// there is probably a better way to do this.
-        player.bounds.tl[0] < this.bounds.br[0] &&
-        this.bounds.br[1] - this.bottomCorner[1] / 2 < player.bounds.tl[1] &&
-        this.bounds.br[1] > player.bounds.tl[1]) ||
-      (this.bounds.bl[0] < player.bounds.tr[0] &&
-        player.bounds.tr[0] < this.bounds.br[0] &&
-        this.bounds.br[1] - this.bottomCorner[1] / 2 < player.bounds.tr[1] &&
-        this.bounds.br[1] > player.bounds.tr[1])
-    ) {
+    if (col == 'bc') {
       player.pos[1] = this.bounds.bl[1]
       player.velocity[1] = -player.velocity[1]
       return player
     }
-    return player
+    if (col == 'slc') {
+      player.pos[0] = player.pos[0] - 0.6
+      player.velocity[0] = -player.velocity[0]
+      return player
+    }
+    if (col == 'src') {
+      player.pos[0] = player.pos[0] + 0.6
+      player.velocity[0] = -player.velocity[0]
+      return player
+    }
   }
+
   draw(p5) {
-    const c = [25, Math.random() * 50, 100]
+    const c = this.colour
     p5.fill(c)
     p5.stroke(c)
     p5.rect(
@@ -87,8 +63,9 @@ class platform {
   }
 
   updatePlatform(p5, player) {
+    this.newcollision(player)
     this.draw(p5)
-    this.collision(player)
+    // this.collision(player)
   }
 }
 
