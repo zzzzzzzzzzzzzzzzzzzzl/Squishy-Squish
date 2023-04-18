@@ -37,7 +37,5 @@ savePlayerData(newPlayerInfo, newStats)
 
 const { playerinfo, stats } = loadPlayerData()
 
-console.log(playerinfo) // 100
-console.log(stats) // { level: 5, experience: 500 }
 
 export { loadPlayerData, savePlayerData }

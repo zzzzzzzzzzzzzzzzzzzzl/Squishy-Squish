@@ -46,19 +46,24 @@ class playerObject {
   }
   updateSnailTrail(p5) {
     //kind of cool visual effect
-    let c = [0, 0, 0]
-    this.snailTrail.unshift([...this.pos])
-    this.snailTrail.pop()
-    this.snailTrail.map((i, idx) => {
-      const len = this.snailTrail.length - (idx + 1)
-      c = [c[0] + 30, Math.random() * 55, Math.random() * 255]
-      if (c[0] > 255) {
-        c = [50, 50, 0]
-      }
-      p5.fill(c)
-      p5.stroke(c)
-      p5.rect(this.snailTrail[len][0], this.snailTrail[len][1], 20, 20)
-    })
+   
+
+      let c = [0, 0, 0]
+      this.snailTrail.unshift([...this.pos])
+      this.snailTrail.pop()
+      this.snailTrail.map((i, idx) => {
+      
+          const len = this.snailTrail.length - (idx + 1)
+          c = [c[0] + 30, Math.random() * 55, Math.random() * 255]
+          if (c[0] > 255) {
+            c = [50, 50, 0]
+          }
+          p5.fill(c)
+          p5.stroke(c)
+          p5.rect(this.snailTrail[len][0], this.snailTrail[len][1], 20, 20)
+        
+      })
+    
   }
   updateColisionBoundries() {
     this.bounds = {
@@ -70,7 +75,7 @@ class playerObject {
   }
 
   draw(p5) {
-    p5.fill(this.colour)
+    p5.fill([255,120,0])
     p5.stroke(this.colour)
     p5.rect(this.pos[0], this.pos[1], 20, 20)
   }
@@ -86,14 +91,14 @@ class playerObject {
     }
     if (p5.keyIsDown(65)) {
       //a
-      this.velocity[0] -= this.inventory.speed
+      this.velocity[0] -= .9//this.inventory.speed
     }
     if (p5.keyIsDown(83)) {
       //s
     }
     if (p5.keyIsDown(68)) {
       //d
-      this.velocity[0] += this.inventory.speed
+      this.velocity[0] += .9//this.inventory.speed
     }
   }
   warpIfOffScreen() {

@@ -64,4 +64,18 @@ function checkPoint(bounds, p) {
   return false
 }
 
+export function checkCollisionCoin(bounds1, bounds2) {
+  const keys = Object.keys(bounds1)
+
+  const c = keys.map((i) => {
+    return checkPoint(bounds2, bounds1[i])
+  })
+  for(let i=0;i<c.length;i++){
+    if(c[i]){
+      return true
+    }
+  }
+  return false
+}
+
 export default checkCollision

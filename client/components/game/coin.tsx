@@ -1,7 +1,10 @@
+import checkCollision, { checkCollisionCoin } from "./checkCollision"
+
+
 class coin {
   constructor(pos) {
-    this.topCorner = [Math.random() * 100, Math.random() * 100]
-    this.bottomCorner = [20, 20]
+    this.topCorner = pos[0]
+    this.bottomCorner = [10, 10]
 
     this.bounds = {
       tl: pos[0],
@@ -17,9 +20,21 @@ class coin {
     }
     return true
   }
+  collision(player,coinArr){
+    const collision=checkCollisionCoin(player.bounds,this.bounds)
+    if(collision){
+      console.log('eatCoins',collision)
+      console.log(coinArr)
+      console.log(
+         coinArr.filter((i)=>{return collision})
+      )
+    }
+  }
+  eatCoin(coinArr,player){
+  }
 
   draw(p5) {
-    const c = [225, Math.random() * 50 + 100, 50]
+    const c = [Math.random() *225, Math.random() * 50 + 100,  Math.random() * 150]
     p5.fill(c)
     p5.stroke(c)
     p5.rect(
