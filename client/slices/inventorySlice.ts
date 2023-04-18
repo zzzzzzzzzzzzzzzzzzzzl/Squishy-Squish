@@ -12,7 +12,7 @@ const { playerStats } = loadPlayerData()
 
 const newPlayerStats = {
   movementSpeed: 0.8,
-  jumpHeight: 8,
+  jumpHeight: 10,
   lives: 1,
   armour: 0,
   currency: 10000,
@@ -31,21 +31,21 @@ const inventorySlice = createSlice({
   initialState: initialState,
   reducers: {
     increaseJumpHeight: (state) => {
-      if (state.jumpHeight >= 20) return state
+      // if (state.jumpHeight >= 20) return state
       const newState = { ...state }
       newState.jumpHeight += 2
       savePlayerData({ ...newState })
       return newState
     },
     increaseSpeed: (state) => {
-      if (state.movementSpeed >= 10) return state
+      // if (state.movementSpeed >= 10) return state
       const newState = { ...state }
-      newState.movementSpeed += 0.4
+      newState.movementSpeed += 0.04
       savePlayerData({ ...newState })
       return newState
     },
     increaseLives: (state) => {
-      if (state.lives >= 3) return state
+      // if (state.lives >= 3) return state
       const newState = { ...state }
       newState.lives += 1
       savePlayerData({ ...newState })
@@ -57,7 +57,7 @@ const inventorySlice = createSlice({
       return newState
     },
     increaseArmour: (state) => {
-      if (state.armour >= 3) return state
+      // if (state.armour >= 3) return state
       const newState = { ...state }
       newState.armour += 1
       savePlayerData({ ...newState })
@@ -68,7 +68,7 @@ const inventorySlice = createSlice({
       savePlayerData({ ...state })
       return state
     },
-    resetInventory: () => initialState,
+    resetInventory: () => newPlayerStats,
   },
 })
 
