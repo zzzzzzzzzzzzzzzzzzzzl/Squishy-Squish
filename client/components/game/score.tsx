@@ -30,11 +30,15 @@ class score {
     })
     const topFive = arr.sort((a: number, b: number) => b - a).slice(0, 5)
     console.log(topFive)
+    let newhighscore = false
     topFive.map((i) => {
       if (i < this.score) {
+        newhighscore = true
         store.dispatch(highScore())
       }
     })
+
+    return newhighscore
   }
 }
 

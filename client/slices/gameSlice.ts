@@ -4,7 +4,6 @@ import { RootState } from '../store'
 
 import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory'
 
-
 const initialState: string[] = []
 
 // {id:id,task:input,done:false}
@@ -14,6 +13,7 @@ const sampleData = {
   highscore: false,
   start: false,
   reset: false,
+  display: 'home', //start home leaderboard shop none
 }
 
 // where our business logic goes
@@ -49,6 +49,11 @@ export const gameSlice = createSlice({
       newState.reset = !newState.reset
       return newState
     },
+    setDisplay: (state, action) => {
+      const newState = state
+      newState.display = action.payload
+      return newState
+    },
   },
 })
 
@@ -56,8 +61,14 @@ export const gameSlice = createSlice({
 export const gameSelector = (state: RootState) => state.game
 
 // actions to be dispatched using dispatch(exampleAddToArray({ example: 'hi' }))
-export const { test, highScore, toggleInputName, startGame, resetGame } =
-  gameSlice.actions
+export const {
+  test,
+  highScore,
+  toggleInputName,
+  startGame,
+  resetGame,
+  setDisplay,
+} = gameSlice.actions
 
 // the reducer to be used in store.js
 export default gameSlice.reducer
