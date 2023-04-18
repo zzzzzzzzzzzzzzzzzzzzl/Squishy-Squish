@@ -1,7 +1,7 @@
 import { SetStateAction, useState } from 'react'
 import { addToLeaderboard } from '../apiClient'
 import { useAppSelector, useAppDispatch } from '../hooks'
-import { setDisplay, toggleInputName } from '../slices/gameSlice'
+import { highScore, setDisplay, toggleInputName } from '../slices/gameSlice'
 
 function Name() {
   const dispatch = useAppDispatch()
@@ -25,6 +25,7 @@ function Name() {
 
   function handleSubmit(event: { preventDefault: () => void }) {
     dispatch(setDisplay('home'))
+    dispatch(highScore())
     event.preventDefault()
 
     const newScore = {
