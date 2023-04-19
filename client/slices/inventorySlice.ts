@@ -7,7 +7,7 @@ const { playerStats } = loadPlayerData()
 const newPlayerStats = {
   movementSpeed: 0.8,
   jumpHeight: 10,
-  lives: 1,
+  lives: 2,
   armour: 0,
   currency: 10000,
 }
@@ -55,11 +55,12 @@ const inventorySlice = createSlice({
       const newState = { ...state }
       if (action.payload == 100) {
         newState.currency += action.payload
+        savePlayerData({ ...newState })
         return newState
       } else {
         newState.currency = action.payload
         console.log(action.payload)
-        savePlayerData({ ...state })
+        savePlayerData({ ...newState })
         return newState
       }
     },

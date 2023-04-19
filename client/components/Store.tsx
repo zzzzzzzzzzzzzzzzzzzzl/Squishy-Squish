@@ -52,7 +52,7 @@ function Store(props: Props) {
   function handleItemDoubleClick(item: ShopItem) {
     if (currency >= item.price) {
       const updateCurrency = currency - item.price
-      dispatch(playerCurrency(updateCurrency))
+      // dispatch(playerCurrency(updateCurrency))
 
       // dispatch the appropriate action based on the item id
       switch (item.id) {
@@ -60,6 +60,7 @@ function Store(props: Props) {
           if (jump >= 20) {
             setMessage(`Sorry, You have maxed out this skill`)
           } else {
+            dispatch(playerCurrency(updateCurrency))
             dispatch(increaseJumpHeight())
             setMessage(`Purchased!`)
           }
@@ -68,6 +69,7 @@ function Store(props: Props) {
           if (speed >= 1) {
             setMessage(`Sorry, You have maxed out this skill`)
           } else {
+            dispatch(playerCurrency(updateCurrency))
             dispatch(increaseSpeed())
             setMessage(`Purchased!`)
           }
@@ -76,6 +78,7 @@ function Store(props: Props) {
           if (lives >= 3) {
             setMessage(`Sorry, You have maxed out this skill`)
           } else {
+            dispatch(playerCurrency(updateCurrency))
             dispatch(increaseLives())
             setMessage(`Purchased!`)
           }
@@ -84,6 +87,7 @@ function Store(props: Props) {
           if (armour >= 3) {
             setMessage(`Sorry, You have maxed out this skill`)
           } else {
+            dispatch(playerCurrency(updateCurrency))
             dispatch(increaseArmour())
             setMessage(`Purchased!`)
           }
