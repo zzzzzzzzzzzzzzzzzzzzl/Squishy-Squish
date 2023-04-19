@@ -6,8 +6,6 @@ import Armour from './Armour'
 import gameSlice from '../slices/gameSlice'
 import { useAppSelector } from '../hooks'
 
-
-
 function App() {
   const gameSlice = useAppSelector((state) => state.game)
 

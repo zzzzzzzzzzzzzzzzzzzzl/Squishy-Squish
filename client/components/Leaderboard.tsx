@@ -26,7 +26,7 @@ function Leaderboard() {
   }, [])
 
   return (
-    <div className="menu-overlay leaderboard-container">
+    <div className="leaderboard-overlay leaderboard-container">
       <div className="">
         <img
           className="return-button"
@@ -48,7 +48,7 @@ function Leaderboard() {
           <tbody>
             {leaderboard
               .sort((a, b) => b.score - a.score)
-              .slice(0, 5)
+              .slice(0, 10)
               .map((leader, index) => (
                 <tr key={leader.id}>
                   <td>{index + 1}</td>

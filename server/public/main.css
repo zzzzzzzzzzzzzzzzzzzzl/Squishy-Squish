@@ -5,6 +5,9 @@ body {
   font-family: 'Press Start 2P', cursive;
   text-align: center;
 }
+#app {
+  position: relative;
+}
 
 /* .p5Canvas {
 } */
@@ -34,8 +37,45 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-height: 400px;
+  max-width: 550px;
+  min-height: 400px;
+  min-width: 550px;
+  /* background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px; */
+}
+.store-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* bottom: 0;
+  right: 0; */
+  /* margin: auto; */
+transform: translate(-50%, -50%);
   max-height: 800px;
-  min-width: 500px;
+  max-width: 550px;
+  min-height: 800px;
+  min-width: 550px;
+  /* background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px; */
+}
+.leaderboard-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 775px;
+  max-width: 600px;
+  min-height: 775px;
+  min-width: 600px;
+  background-color: #F7A9A8;
+  border: solid #774936 5px;
+  border-radius: 20px;
+  padding: 10px;
   /* background-color: white;
   border: 2px solid black;
   border-radius: 10px;
@@ -52,14 +92,14 @@ main {
 .health-overlay1{
   position: absolute;
   top: 8%;
-  left: 71%;
+  left: 72%;
   transform: translate(-50%, -50%);
   height: 75px;
 }
 .health-overlay2{
   position: absolute;
   top: 8%;
-  left: 68%;
+  left: 70%;
   transform: translate(-50%, -50%);
   height: 75px;
 }
@@ -67,7 +107,7 @@ main {
 .armour-overlay{
   position: absolute;
   top: 8%;
-  left: 50%;
+  left: 65%;
   transform: translate(-50%, -50%);
   height: 75px;
   
@@ -76,7 +116,7 @@ main {
 .armour-overlay1{
   position: absolute;
   top: 8%;
-  left: 47%;
+  left: 62.5%;
   transform: translate(-50%, -50%);
   height: 75px;
   
@@ -85,7 +125,7 @@ main {
 .armour-overlay2{
   position: absolute;
   top: 8%;
-  left: 44%;
+  left: 60%;
   transform: translate(-50%, -50%);
   height: 75px;
   
@@ -107,12 +147,12 @@ main {
   margin: 10px 10px;
 }
 
-.leaderboard-container {
+/* .leaderboard-container {
   background-color: #F7A9A8;
   border: solid #774936 5px;
   border-radius: 20px;
   padding: 10px;
-}
+} */
 
 .menu button {
   border: solid #774936 5px;
@@ -145,11 +185,11 @@ main {
   position: absolute;
   font-size: 1em;
   height: 1em;
-  top: 2px;
-  left:8%;
+  top: 8px;
+ right: 50px;
   font-size: 40px;
   margin:auto;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-left: 20px;
   padding-right: 20px;
   justify-content: center;
@@ -158,8 +198,6 @@ main {
   border-radius: 20px;
   background: rgb(255,247,230);
   background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
-
-
 }
 
 .leaderboard th {
@@ -198,26 +236,54 @@ main {
   border: solid #774936 5px;
 
 }
-.store-listing{
+/* .store-listing{
   border: solid black 2px;
-  height: auto;
-  padding: 40px;
+  
+  height: auto; 
+  padding: 20px; 
   border-radius: 20px;
   background-color: #F7A9A8;
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-sizing: border-box;
-  
-  /* max-width: 800px; */
- 
-  /* top: 20px; */
+  /* justify-content: center;
+  /* list-style: none; 
+  align-items: center;  
+} 
 
+
+.store-container{
+  display: flex;
   justify-content: center;
-  /* padding: 20px, 0, 20px, 0px; */
-  list-style: none;
-
-  
+  align-items: center;
+} */
+.store-listing {
+  border: solid black 2px;
+  position: absolute;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #F7A9A8;
+  display: grid;
+  grid-template-columns: 275px 275px;
+  box-sizing: border-box;
+  margin: auto;
+  /* border: 10px; */
+  /* margin-top: 20px; */
+  justify-content: center;
+  align-items: center;
+  /* top: 50%; */
 }
+
+.store-container {
+  position: relative;
+}
+
+.item-container {
+  position: relative;
+  top: 5%;
+}
+
+
 
 .items{
   padding: 40px;
@@ -227,18 +293,33 @@ main {
 .return-button{
   width: 50px;
   position: absolute;
-  top:1px;
-  left:1px;
+  top: 10px;
+  left: 10px;
+  border: solid #774936 3px;
+  border-radius: 10px;
+}
+.return-button:hover{
+  border: solid #774936 3px;
+  border-radius: 10px;
+  box-shadow: 3px 3px #263b5a;
+  background: rgb(244,253,255);
+  background: linear-gradient(180deg, rgba(244,253,255,1) 0%, rgba(129,212,233,1) 100%);
+  color: #000000;
+  cursor: pointer;
+  box-shadow: 3px 3px #263b5a;
 }
 
 .menu-heading{
   position: absolute;
-  top: 15px;
-  left: 33%;
-  font-size: 50px;
+  text-decoration: underline 3px;
+  top: 5px;
   margin:auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* margin-bottom: 10px; */
+  right: 29%;
+  font-size: 50px;
+  padding:5px 20px 10px 20px;
+  /* padding-left: 20px;
+  padding-right: 20px; */
   justify-content: center;
   color: #774936;
   border: solid #774936 3px;
@@ -249,7 +330,7 @@ main {
 }
 
 .item-image{
-  margin-right: 100px;
+  margin:auto;
   border: solid #774936 3px;
   height: 150px;
   border-radius: 20px;
@@ -267,23 +348,26 @@ main {
   padding-bottom: 5px;
   padding-left: 2px;
   padding-right: 2px;
-  margin-left: 50px ;
-  margin-right: 15px ;
+  margin-left: auto ;
+  margin-right: auto ;
   background: rgb(255,247,230);
   background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
 }
 
+
 .item-name{
+  text-decoration: underline 2px
+  ;
   font-weight: 1000;
   width: 200px;
   border: solid #774936 3px;
-  border-radius: 20px;
+  border-radius: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 2px;
   padding-right: 2px;
-  margin-left: 50px ;
-  margin-right: 15px ;
+  margin-left: auto ;
+  margin-right: auto ;
   background: rgb(255,247,230);
   background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
 }
@@ -294,31 +378,34 @@ main {
   background: rgb(255,247,230);
   background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
   position: relative;
-  top: 20px;
-  left:50%;
-  
+  top: 30px;
+  left: 50%;
+  right: 50%;
+  padding: 5px;
 
+  
 }
 .reset-button{
  position: relative;
-  left: 50%;
-  width: 280px;
-
+ right: 50%;
+ bottom: 5%;
+  /* width: 280px; */
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 2px;
   padding-right: 2px;
-  margin-top:70px;
+  margin-top: 20px;
   margin-left: 15px ;
   margin-right: 15px ;
+  /* margin: auto; */
   border: solid #774936 3px;
-  border-radius: 20px;
+  border-radius: 5px;
   background: rgb(255,247,230);
   background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
 }
 .reset-button:hover{
   border: solid #3a89bf 3px;
-  border-radius: 20px;
+  border-radius: 5px;
   box-shadow: 3px 3px #263b5a;
   background: rgb(244,253,255);
   background: linear-gradient(180deg, rgba(244,253,255,1) 0%, rgba(129,212,233,1) 100%);
@@ -328,12 +415,14 @@ main {
 }
 
 
+
 .item-image:hover{
   border: solid #3a89bf 3px;
   border-radius: 20px;
   box-shadow: 3px 3px #263b5a;
   background: rgb(244,253,255);
   background: linear-gradient(180deg, rgba(244,253,255,1) 0%, rgba(129,212,233,1) 100%);
+  cursor: pointer;
 }
 
 .leader-table{
@@ -364,6 +453,10 @@ main {
   border: solid #774936 3px;
   background-color: rgb(255,247,230);
   border-radius: 10px;
+  position: relative;
+  left: 50%;
+  border: auto
+  ;
   /* padding: 20px; */
   }
 
