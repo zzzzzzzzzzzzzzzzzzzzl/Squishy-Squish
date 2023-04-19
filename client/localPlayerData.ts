@@ -27,8 +27,5 @@ function clearLocalStorage() {
   localStorage.clear()
 }
 
-// const { playerStats } = loadPlayerData()
-
-// console.log(playerStats)
 
 export { loadPlayerData, savePlayerData, clearLocalStorage }

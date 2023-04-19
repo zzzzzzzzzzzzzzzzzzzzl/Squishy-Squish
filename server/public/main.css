@@ -355,6 +355,103 @@ main {
   background-color: rgb(255,247,230);
   border-radius: 10px;
   /* padding: 20px; */
+  }
+
+/* Name page */
+
+.lableName {
+  position:relative;
+  top: 5px;
+  transform: translate(80%, 0%);
+  font-size: 4em;
+  font-weight: bold;
+  font-family: 'serif, Times New Roman', Times;
+  justify-content: center;
+  color: #edd9d0;
+  text-shadow: 3px 3px #afaead;
   
 }
 
+.inputName {
+  border-radius: 20px;
+  align-items: center;
+  transform: translate(5%, 12%);
+  top: 10px;
+  font-size: 0.75em;
+  font-weight: bold;
+  font-family: 'serif, Times New Roman', Times;
+  background: rgb(212, 202, 181);
+  border: solid #301e15 3px;
+  background: linear-gradient(180deg, rgb(251, 219, 145) 0%,
+   rgb(218, 210, 164) 100%);
+   box-shadow: 3px 3px #263b5a;
+   width: 350px;
+   height: 0.75em;
+   padding: 10px;
+
+}
+
+
+.inputName:hover {
+  color: #000000;
+  border: solid #350c0c 4px;
+  border-radius: 20px;
+  background: rgb(197, 247, 185);
+  background: linear-gradient(180deg, rgb(105, 212, 171) 0%,
+   rgb(186, 207, 197) 100%);
+  box-shadow: 3px 3px #2f476a;
+}
+
+.scoreh1 {
+  width: 3.5em;
+  align-items: center;
+  transform: translate(70%, 8%);
+  top: 5px;
+  font-size: 4em;
+  padding-top: 10px;
+  color:#350c0c;
+  text-shadow: 3px 4px #ec9c77;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'serif, Times New Roman', Times;
+  border: solid #301e15 3px;
+  background: linear-gradient(180deg, rgb(251, 219, 145) 0%,
+   rgb(138, 129, 80) 100%);
+   border-radius: 20px;
+   box-shadow: 3px 3px #263b5a;
+}
+
+.scoreh1:hover {
+    border: solid #350c0c 4px;
+    background: rgb(197, 247, 185);
+    background: linear-gradient(180deg, rgb(170, 238, 212) 0%,
+     rgb(170, 233, 203) 100%);
+    color: #000000;
+  }
+
+  .submitbtn {
+    border-radius: 20px;
+  align-items: center;
+  transform: translate(-0%, -40%);
+  top: 15px;
+  font-size: 2em;
+  text-shadow: 3px 3px #afaead;
+  font-weight: bold;
+  font-family: 'serif, Times New Roman', Times;
+  background: rgb(212, 202, 181);
+  border: solid #301e15 3px;
+  background: linear-gradient(180deg, rgb(251, 219, 145) 0%,
+   rgb(138, 129, 80) 100%);
+   box-shadow: 3px 3px #3a5781;
+   padding: 10px;
+   width: 290px;
+}
+.submitbtn:hover {
+  border: solid #350c0c 4px;
+    background: rgb(197, 247, 185);
+    background: linear-gradient(180deg, rgb(105, 212, 171) 0%,
+     rgb(48, 125, 88) 100%);
+    color: #000000;
+    cursor: pointer;
+    box-shadow: 3px 4px #263b5a;
+} 

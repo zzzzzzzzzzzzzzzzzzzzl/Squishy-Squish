@@ -1,10 +1,6 @@
 import items from '../shopItems'
 import Message from './Message'
-import {
-  loadPlayerData,
-  savePlayerData,
-  clearLocalStorage,
-} from '../localPlayerData'
+import { clearLocalStorage } from '../localPlayerData'
 import { useState } from 'react'
 import { useAppDispatch } from '../hooks'
 import {
@@ -15,10 +11,7 @@ import {
   playerCurrency,
   resetInventory,
 } from '../slices/inventorySlice'
-
-// import inventorySlice from '../slices/inventorySlice'
 import { useAppSelector } from '../hooks'
-
 import { setDisplay } from '../slices/gameSlice'
 
 interface ShopItem {
@@ -51,17 +44,12 @@ function Store(props: Props) {
 
   function resetPlayerButton() {
     clearLocalStorage()
+    setMessage(`Your stats have been reset!`)
     dispatch(resetInventory())
-    alert(`Your stats have been reset!`)
     dispatch(setDisplay('home'))
   }
 
   function handleItemDoubleClick(item: ShopItem) {
-    // if (playerStats.currency >= item.price) {
-    //   const updatePlayerStats = {
-    //     ...playerStats,
-    //     currency: playerStats.currency - item.price,
-    //   }
     if (currency >= item.price) {
       const updateCurrency = currency - item.price
       dispatch(playerCurrency(updateCurrency))
@@ -107,10 +95,6 @@ function Store(props: Props) {
       setMessage(`You're too poor bro`)
     }
   }
-
-  // function handleCloseMessage() {
-  //   setMessage('')
-  // }
 
   return (
     <div className="menu-overlay">

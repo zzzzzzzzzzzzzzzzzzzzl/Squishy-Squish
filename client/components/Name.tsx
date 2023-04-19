@@ -6,22 +6,7 @@ import { highScore, setDisplay, toggleInputName } from '../slices/gameSlice'
 function Name() {
   const dispatch = useAppDispatch()
   const gameSlice = useAppSelector((state) => state.game)
-  console.log(gameSlice)
   const [name, setName] = useState('')
-  // const [score, setScore] = useState('')
-
-  // function getLeaderboard() {
-  //   return fetchLeaderboard
-  // }
-
-  // function compareHighscores() {
-  //   const leaderboard = getLeaderboard()
-  //   dispatch(highScore)
-  //   leaderboard
-  //     .sort((a, b) => b.score - a.score)
-  //     .slice(0, 5)
-  //     .map((i, index) => {})
-  // }
 
   function handleSubmit(event: { preventDefault: () => void }) {
     dispatch(setDisplay('home'))
@@ -53,18 +38,24 @@ function Name() {
 
   return (
     <div className="menu-overlay">
-      <div className="border">
-        <form onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <input type="text" value={name} onChange={handleNameChange} />
-          </label>
-          <br />
-          <h1>{gameSlice.score}</h1>
-          <br />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <label className="lableName">
+          Name:
+          <input
+            className="inputName"
+            placeholder="Write your name"
+            type="text"
+            value={name}
+            onChange={handleNameChange}
+          />
+        </label>
+        <br />
+        <h1 className="scoreh1">{gameSlice.score}</h1>
+        <br />
+        <button className="submitbtn" type="submit">
+          Submit
+        </button>
+      </form>
     </div>
   )
 }

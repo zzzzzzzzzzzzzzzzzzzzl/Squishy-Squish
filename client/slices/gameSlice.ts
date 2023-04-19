@@ -4,8 +4,6 @@ import { RootState } from '../store'
 
 import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory'
 
-const initialState: string[] = []
-
 // {id:id,task:input,done:false}
 const sampleData = {
   score: 0,

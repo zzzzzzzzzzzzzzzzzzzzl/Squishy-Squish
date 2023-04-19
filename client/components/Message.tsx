@@ -6,6 +6,7 @@ interface MessageProps {
 }
 
 function Message({ message }: MessageProps) {
+
   const [show, setShow] = useState(true)
 
   return (
