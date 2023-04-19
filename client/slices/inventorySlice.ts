@@ -42,6 +42,7 @@ const inventorySlice = createSlice({
     decreaseLives: (state) => {
       const newState = { ...state }
       newState.lives -= 1
+      savePlayerData({ ...newState })
       return newState
     },
     increaseArmour: (state) => {
@@ -51,7 +52,8 @@ const inventorySlice = createSlice({
       return newState
     },
     playerCurrency: (state, action) => {
-      state.currency = action.payload
+      console.log(action.payload)
+      state.currency += action.payload
       savePlayerData({ ...state })
       return state
     },

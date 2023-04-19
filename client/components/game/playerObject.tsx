@@ -2,7 +2,7 @@ import gravity from './gravity'
 import store from '../../store'
 import { setDisplay, startGame, test } from '../../slices/gameSlice'
 import score from './score'
-import { useAppSelector } from '../../hooks'
+import { decreaseLives } from '../../slices/inventorySlice'
 
 class playerObject {//<3
   constructor(player) {
@@ -19,7 +19,7 @@ class playerObject {//<3
     this.velocityArr = Array(3).fill([0, 0])
     this.ded = false
     this.coins = 0
-    this.lives = 1
+    this.lives = store.getState().inventory.lives-1
   }
   sumForces() {
     this.pos[1] = Number((this.velocity[1] + this.pos[1]).toFixed(1));
@@ -112,6 +112,9 @@ class playerObject {//<3
       this.rebirth(score)
     }
     if (this.lives > 0&&this.pos[1] > 1000 - score) {
+
+      //dispatch()
+      store.dispatch(decreaseLives())
       this.rebirth(score)
       this.lives--
     }

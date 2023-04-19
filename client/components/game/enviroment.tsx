@@ -48,25 +48,6 @@ class enviroment {
     })
    
     this.draw(envSize) //this will set up our canvas <--- and will setup our game loop <3
-
-
-    this.coinsArr = []
-    this.colour=[0,0,0]
-
-       this.coinsArr = Array(15)
-        .fill()
-         .map(() => {
-           return new coin([
-            [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
-             [250, 50],
-         ])
-         })
-        this.coinT = new coin(
-        [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
-         [2, 50]
-       )
-
-
   }
 
   reset() {//this will reset the enviroment class essentialy as if we created a new one//except for our draw function which will create another p5 canvas
@@ -79,22 +60,8 @@ class enviroment {
           [250, 50],
         ])
       })
-
-
-    this.groundHeight = 900 //some grass for sue// just a platform bottom so we have somthing to stand on :)
-
-
+    this.groundHeight = 900 
     this.coinArr =[]
-
-    this.coinArr = Array(15)
-       .fill()
-       .map(() => {
-         return new coin([
-          [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
-          [250, 50],
-       ])
-
-
     const ground = [
       [0, this.groundHeight],
       [1000, 1000],
@@ -117,7 +84,6 @@ class enviroment {
   
 
   update() {//this is where our game will take place
-    console.log(this.platformArr.length)
     this.startGame()
     if (this.player.ded) {
       this.reset()
@@ -130,18 +96,18 @@ class enviroment {
       this.panCamera()
     }
     this.player.playerInput(this.p5)
+
+
+
     this.coinsArr.map((i) => {
       i.updateCoin(this.p5,this.player)
     })
     this.coinsArr=this.coinsArr.filter((i)=>{
       return !i.contact
     })
-     this.coinT.updateCoin(this.p5)
-     console.log(this.coinsArr)
-     this.coinsArr.map((i) => {
-       i.updateCoin(this.p5)
-    })
 
+ 
+    
     this.platformArr.map((i) => {
       i.updatePlatform(this.p5, this.player)
     })
@@ -160,8 +126,10 @@ class enviroment {
     this.p5.fill(c)
     this.p5.stroke(c)
     this.p5.textSize(64)
-    this.p5.text(-this.height, 50, 50)
-    this.p5.text(this.player.coins, 50, 150)
+    this.p5.text(-this.height, 190, 50)
+    this.p5.text(this.player.coins, 190, 150)
+    this.p5.text('score', 20, 50)
+    this.p5.text('coin', 20, 150)
   }
   
   deleteObjects() {
