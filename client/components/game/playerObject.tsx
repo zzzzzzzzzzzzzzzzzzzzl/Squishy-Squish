@@ -7,7 +7,7 @@ import { useAppSelector } from '../../hooks'
 class playerObject {
   constructor(player) {
     this.score = new score()
-    this.coins=0
+    this.inventory = store.getState().inventory
     this.pos = player.pos
     this.acceleration = player.acceleration
     this.velocity = player.velocity
@@ -91,14 +91,17 @@ class playerObject {
     }
     if (p5.keyIsDown(65)) {
       //a
-      this.velocity[0] -= .9//this.inventory.speed
+      this.velocity[0] -= this.inventory.movementSpeed
+
     }
     if (p5.keyIsDown(83)) {
       //s
     }
     if (p5.keyIsDown(68)) {
       //d
-      this.velocity[0] += .9//this.inventory.speed
+
+      this.velocity[0] += this.inventory.movementSpeed
+
     }
   }
   warpIfOffScreen() {

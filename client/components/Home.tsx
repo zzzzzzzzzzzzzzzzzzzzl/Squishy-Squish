@@ -1,7 +1,6 @@
 import Store from './Store'
 import Leaderboard from './Leaderboard'
 import MainMenu from './MainMenu'
-import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { setDisplay, startGame } from '../slices/gameSlice'
 
@@ -15,34 +14,21 @@ interface StartProps {
 function Home() {
   const gameState = useAppSelector((state) => state.game)
   const dispatch = useAppDispatch()
-  // const [viewToRender, setViewToRender] = useState('home')
-
-  // const handleStartClick = () => {
-  //   props.onStart()
-  //   dispatch(startGame())
 
   const handleStart = () => {
-    // props.onStart()
     dispatch(startGame())
     dispatch(setDisplay('none'))
-    // setViewToRender('start') // hide Home component when Start button is clicked
   }
   const handleShopButton = () => {
     dispatch(setDisplay('shop'))
-    // setViewToRender('shop')
   }
   const handleLeaderboardButton = () => {
     dispatch(setDisplay('leaderboard'))
-    // setViewToRender('leaderboard')
   }
 
   function updateViewToRender(view: string) {
     dispatch(setDisplay('view'))
-    // setViewToRender(view)
   }
-  // const handleResetView = () => {
-  //   setViewToRender('shop')
-  // }
 
   function getViewToRender() {
     switch (gameState.display) {
@@ -52,10 +38,8 @@ function Home() {
             onStart={handleStart}
             onShopButton={handleShopButton}
             onLeaderboardButton={handleLeaderboardButton}
-            // onReset={handleResetView}
           />
         )
-
       case 'shop':
         return <Store updateViewToRender={updateViewToRender} />
 
@@ -66,7 +50,6 @@ function Home() {
         return null
     }
   }
-
   return <div>{getViewToRender()}</div>
 }
 
