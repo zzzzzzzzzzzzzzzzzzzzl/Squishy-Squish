@@ -1,6 +1,6 @@
 import items from '../shopItems'
 import Message from './Message'
-import { loadPlayerData, savePlayerData, clearLocalStorage } from '../localPlayerData'
+import { clearLocalStorage } from '../localPlayerData'
 import { useState } from 'react'
 import { useAppDispatch } from '../hooks'
 import {
@@ -11,10 +11,7 @@ import {
   playerCurrency,
   resetInventory,
 } from '../slices/inventorySlice'
-
-// import inventorySlice from '../slices/inventorySlice'
 import { useAppSelector } from '../hooks'
-
 import { setDisplay } from '../slices/gameSlice'
 
 interface ShopItem {
@@ -31,10 +28,7 @@ interface Props {
 }
 
 function Store(props: Props) {
-
-
   const [message, setMessage] = useState('')
-
 
   const dispatch = useAppDispatch()
   // const [viewToRender, setViewToRender] = useState('home')
@@ -50,17 +44,12 @@ function Store(props: Props) {
 
   function resetPlayerButton() {
     clearLocalStorage()
-    alert(`Your stats have been reset!`)
+    setMessage(`Your stats have been reset!`)
     dispatch(resetInventory())
     dispatch(setDisplay('home'))
   }
 
   function handleItemDoubleClick(item: ShopItem) {
-    // if (playerStats.currency >= item.price) {
-    //   const updatePlayerStats = {
-    //     ...playerStats,
-    //     currency: playerStats.currency - item.price,
-    //   }
     if (currency >= item.price) {
       const updateCurrency = currency - item.price
       dispatch(playerCurrency(updateCurrency))
@@ -76,7 +65,7 @@ function Store(props: Props) {
           }
           break
         case 2:
-          if (speed >= 10) {
+          if (speed >= 1) {
             setMessage(`Sorry, You have maxed out this skill`)
           } else {
             dispatch(increaseSpeed())
@@ -103,15 +92,9 @@ function Store(props: Props) {
           break
       }
     } else {
-
       setMessage(`You're too poor bro`)
-
     }
   }
-
-  // function handleCloseMessage() {
-  //   setMessage('')
-  // }
 
   return (
     <div className="menu-overlay">
@@ -147,7 +130,6 @@ function Store(props: Props) {
         {message && (
           <Message message={message} onClose={() => setMessage('')} />
         )}
-
       </div>
     </div>
   )
