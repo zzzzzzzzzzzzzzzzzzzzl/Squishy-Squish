@@ -44,7 +44,7 @@ function Home() {
         return <Store updateViewToRender={updateViewToRender} />
 
       case 'leaderboard':
-        return <Leaderboard updateViewToRender={updateViewToRender} />
+        return <Leaderboard />
 
       default:
         return null

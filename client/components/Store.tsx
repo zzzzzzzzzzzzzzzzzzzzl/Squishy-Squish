@@ -101,37 +101,41 @@ function Store(props: Props) {
   }
 
   return (
-    <div className="menu-overlay">
-      <div className="view store-listing">
-        <img
-          className="return-button"
-          src="/assests/main-menu/return-button.png"
-          onClick={handleReturnButton}
-          alt="return button"
-        />
-        <br></br>
-        <h2 className="menu-heading">Shop</h2>
-        <br></br>
-        <p className="currency-display">Current Rations: &#10084; {currency}</p>
-        <br></br>
-        {items.map((item) => (
-          <div className="item-container" key={item.id}>
-            <p className="item-name">{item.name}</p>
-            <img
-              className="item-image"
-              alt=""
-              src={item.image}
-              onDoubleClick={() => handleItemDoubleClick(item)}
-            />
-            <p className="item-cost"> &#10084; {item.price} </p>
-          </div>
-        ))}
+    <div className="store-overlay">
+      <div className="store-container">
+        <div className="view store-listing">
+          <img
+            className="return-button"
+            src="/assests/main-menu/return-button.png"
+            onClick={handleReturnButton}
+            alt="return button"
+          />
+          <br></br>
+          <h2 className="menu-heading">Shop</h2>
+          <br></br>
+          <p className="currency-display">
+            Current Rations: &#10084;{currency}
+          </p>
+          <br></br>
+          {items.map((item) => (
+            <div className="item-container" key={item.id}>
+              <p className="item-name">{item.name}</p>
+              <img
+                className="item-image"
+                alt=""
+                src={item.image}
+                onDoubleClick={() => handleItemDoubleClick(item)}
+              />
+              <p className="item-cost"> &#10084; {item.price} </p>
+            </div>
+          ))}
 
-        <div className="reset-button" onDoubleClick={resetPlayerButton}>
-          Reset Player
+          <div>{message && <Message message={message} />}</div>
+          <div className="reset-button" onDoubleClick={resetPlayerButton}>
+            Reset Player
+          </div>
         </div>
       </div>
-      {message && <Message message={message} onClose={() => setMessage('')} />}
     </div>
   )
 }
