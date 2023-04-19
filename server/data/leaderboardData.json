@@ -1,28 +1,26 @@
 {
   "leaderboard": [
     {
-      "id": null,
+      "id": 1,
       "name": "my name",
       "score": 3
     },
     {
-      "id": 1,
-      "name": "Rene",
-      "score": 3
-    },
-    {
       "id": 2,
-      "name": "matt",
-      "score": 13
+      "name": "Rene",
+      "score": 1082
     },
     {
       "id": 3,
-      "name": "matt",
-      "score": 3
+      "name": "Sue",
+      "score": 585
     },
     {
       "id": 4,
       "name": "",
+
+      "score": 1169
+
       "score": 3
     },
     {
@@ -79,6 +77,7 @@
       "id": 12,
       "name": "yas",
       "score": 8015
+
 
     }
   ]

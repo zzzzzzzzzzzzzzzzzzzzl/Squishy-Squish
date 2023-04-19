@@ -34,6 +34,8 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-height: 800px;
+  min-width: 500px;
   /* background-color: white;
   border: 2px solid black;
   border-radius: 10px;
@@ -195,15 +197,16 @@ main {
 }
 .store-listing{
   border: solid black 2px;
-height: 750px;
+  height: auto;
   padding: 40px;
   border-radius: 20px;
   background-color: #F7A9A8;
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-sizing: border-box;
-  position: relative;
-  top: 10px;
+ 
+  /* top: 20px; */
+
   justify-content: center;
   /* padding: 20px, 0, 20px, 0px; */
   list-style: none;
@@ -226,7 +229,7 @@ height: 750px;
 .menu-heading{
   position: absolute;
   top: 15px;
-  left: 50%;
+  left: 33%;
   font-size: 50px;
   margin:auto;
   padding-left: 20px;
@@ -283,7 +286,7 @@ height: 750px;
   background: rgb(255,247,230);
   background: linear-gradient(180deg, rgba(255,247,230,1) 0%, rgba(255,219,153,1) 100%);
   position: relative;
-  top: 50px;
+  top: 20px;
   left:50%;
   
 
@@ -295,6 +298,7 @@ height: 750px;
   padding-bottom: 5px;
   padding-left: 2px;
   padding-right: 2px;
+  margin-top:70px;
   margin-left: 15px ;
   margin-right: 15px ;
   border: solid #774936 3px;
@@ -346,12 +350,12 @@ height: 750px;
 }
 
 .message-container{
-  transform: translate(50%, -500%);
+  transform: translate(0%, -255%);
   border: solid #774936 3px;
   background-color: rgb(255,247,230);
   border-radius: 10px;
-
-}
+  /* padding: 20px; */
+  }
 
 /* Name page */
 

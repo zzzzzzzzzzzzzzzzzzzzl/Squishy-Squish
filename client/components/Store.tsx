@@ -126,11 +126,8 @@ function Store(props: Props) {
         <div className="reset-button" onDoubleClick={resetPlayerButton}>
           Reset Player
         </div>
-
-        {message && (
-          <Message message={message} onClose={() => setMessage('')} />
-        )}
       </div>
+      {message && <Message message={message} onClose={() => setMessage('')} />}
     </div>
   )
 }
