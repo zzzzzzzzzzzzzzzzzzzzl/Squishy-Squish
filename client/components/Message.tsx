@@ -5,19 +5,13 @@ interface MessageProps {
   onClose: () => void
 }
 
-function Message({ message, onClose }: MessageProps) {
+function Message({ message }: MessageProps) {
   const [show, setShow] = useState(true)
-
-  function handleClick() {
-    setShow(false)
-    onClose()
-  }
 
   return (
     <div className="message-container">
       <div style={{ display: show ? 'block' : 'none' }}>
         <p>{message}</p>
-        <button onClick={handleClick}>Close</button>
       </div>
     </div>
   )

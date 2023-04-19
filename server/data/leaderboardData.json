@@ -1,154 +1,24 @@
 {
   "leaderboard": [
     {
-      "id": null,
+      "id": 1,
       "name": "my name",
       "score": 379
     },
     {
-      "id": 1,
-      "name": "Rene",
-      "score": 3
-    },
-    {
       "id": 2,
-      "name": "matt",
-      "score": 13
+      "name": "Rene",
+      "score": 1082
     },
     {
       "id": 3,
-      "name": "matt",
-      "score": 3
+      "name": "Sue",
+      "score": 585
     },
     {
       "id": 4,
       "name": "",
-      "score": 3
-    },
-    {
-      "id": 5,
-      "name": "hello",
-      "score": 665
-    },
-    {
-      "id": 6,
-      "name": "hello",
-      "score": 665
-    },
-    {
-      "id": 7,
-      "name": "asdas",
-      "score": 747
-    },
-    {
-      "id": 8,
-      "name": "dsfds",
-      "score": 110
-    },
-    {
-      "id": 9,
-      "name": "",
-      "score": 168
-    },
-    {
-      "id": 10,
-      "name": "red",
-      "score": 1871
-    },
-    {
-      "id": 11,
-      "name": "high score baby lets go",
-      "score": 452
-    },
-    {
-      "id": 12,
-      "name": "i love you computer",
-      "score": 624
-    },
-    {
-      "id": 13,
-      "name": "kys",
-      "score": 120
-    },
-    {
-      "id": 14,
-      "name": "asda",
-      "score": 403
-    },
-    {
-      "id": 15,
-      "name": "asd",
-      "score": 62
-    },
-    {
-      "id": 16,
-      "name": "",
-      "score": 122
-    },
-    {
-      "id": 17,
-      "name": "asd",
-      "score": 801
-    },
-    {
-      "id": 18,
-      "name": "",
-      "score": 161
-    },
-    {
-      "id": 19,
-      "name": "the best",
-      "score": 1938
-    },
-    {
-      "id": 20,
-      "name": "asd",
-      "score": 195
-    },
-    {
-      "id": 21,
-      "name": "",
-      "score": 122
-    },
-    {
-      "id": 22,
-      "name": "",
-      "score": 122
-    },
-    {
-      "id": 23,
-      "name": "",
-      "score": 176
-    },
-    {
-      "id": 24,
-      "name": "",
-      "score": 1308
-    },
-    {
-      "id": 25,
-      "name": "help me",
-      "score": 750
-    },
-    {
-      "id": 26,
-      "name": "Otroy",
-      "score": 1668
-    },
-    {
-      "id": 27,
-      "name": "Santa",
-      "score": 2340
-    },
-    {
-      "id": 28,
-      "name": "",
-      "score": 4699
-    },
-    {
-      "id": 29,
-      "name": "doine",
-      "score": 9697
+      "score": 1169
     }
   ]
 }

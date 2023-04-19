@@ -35,7 +35,7 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   max-height: 800px;
-  min-width: 550px;
+  min-width: 500px;
   /* background-color: white;
   border: 2px solid black;
   border-radius: 10px;
@@ -204,8 +204,9 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-sizing: border-box;
-  position: relative;
-  top: 10px;
+ 
+  /* top: 20px; */
+
   justify-content: center;
   /* padding: 20px, 0, 20px, 0px; */
   list-style: none;
@@ -228,7 +229,7 @@ main {
 .menu-heading{
   position: absolute;
   top: 15px;
-  left: 35%;
+  left: 33%;
   font-size: 50px;
   margin:auto;
   padding-left: 20px;
@@ -297,6 +298,7 @@ main {
   padding-bottom: 5px;
   padding-left: 2px;
   padding-right: 2px;
+  margin-top:70px;
   margin-left: 15px ;
   margin-right: 15px ;
   border: solid #774936 3px;
@@ -348,12 +350,11 @@ main {
 }
 
 .message-container{
-  transform: translate(0%, -500%);
+  transform: translate(0%, -255%);
   border: solid #774936 3px;
   background-color: rgb(255,247,230);
   border-radius: 10px;
-
-
-
+  /* padding: 20px; */
+  
 }
 
