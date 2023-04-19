@@ -114,7 +114,7 @@ class enviroment {
       i.updatePlatform(this.p5, this.player)
     })
 
-    this.player.updatePlayer(this.p5, -this.height, this.start)
+    this.player.updatePlayer(this.p5, -this.height.toFixed(0), this.start)
   }
   panCamera() {
     this.increaseCameraSpeed()
@@ -133,7 +133,7 @@ class enviroment {
     this.p5.fill(c)
     this.p5.stroke(c)
     this.p5.textSize(64)
-    this.p5.text(-this.height, 190, 50)
+    this.p5.text(-this.height.toFixed(0), 190, 50)
     this.p5.text(this.player.coins, 190, 150)
     this.p5.text('score', 20, 50)
     this.p5.text('coin', 20, 150)
@@ -178,7 +178,7 @@ class enviroment {
         ])
       )
     }
-    if (Math.random() > .998 && !this.player.ded){
+    if (Math.random() > .996 && !this.player.ded){
       this.coinsArr.push(
         new coin([
           [Math.floor(Math.random() * 1000), Math.floor(this.height )-2],
