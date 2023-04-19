@@ -27,7 +27,9 @@ function MainMenu(props: StartProps) {
             <button onClick={handleShopButton}>Shop</button>
           </li>
           <li>
-            <button onClick={handleLeaderboardButton}>LeaderBoard</button>
+            <button className="leaderBoard" onClick={handleLeaderboardButton}>
+              Leader Board
+            </button>
           </li>
         </ul>
       </div>

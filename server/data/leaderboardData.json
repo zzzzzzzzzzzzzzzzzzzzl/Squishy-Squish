@@ -2,73 +2,98 @@
   "leaderboard": [
     {
       "id": 1,
-      "name": "my name",
+      "name": "Rene",
+      "score": 3
+    },
+    {
+      "id": 1,
+      "name": "Rene",
+      "score": 3
+    },
+    {
+      "id": 1,
+      "name": "Rene",
+      "score": 3
+    },
+    {
+      "id": 1,
+      "name": "Rene",
+      "score": 3
+    },
+    {
+      "id": 1,
+      "name": "Rene",
       "score": 3
     },
     {
       "id": 2,
-      "name": "Rene",
-      "score": 1082
+      "name": "1321564",
+      "score": 399
     },
     {
       "id": 3,
-      "name": "Sue",
-      "score": 585
+      "name": "james",
+      "score": 801
     },
     {
       "id": 4,
-      "name": "winner winner",
-      "score": 124
+      "name": "",
+      "score": 3094
     },
     {
       "id": 5,
       "name": "",
-      "score": 50
+      "score": 195
     },
     {
       "id": 6,
       "name": "",
-      "score": 455
+      "score": 217
     },
     {
       "id": 7,
-      "name": "",
-      "score": 5662
+      "name": "Jiho",
+      "score": 2065
     },
     {
       "id": 8,
-      "name": "",
-      "score": 807
+      "name": "Zephyr",
+      "score": 2915
     },
     {
       "id": 9,
-      "name": "",
-      "score": 3250
+      "name": "Rob",
+      "score": 572
     },
     {
       "id": 10,
-      "name": "",
-      "score": 1559
+      "name": "Rene",
+      "score": 862
     },
     {
       "id": 11,
-      "name": "",
-      "score": 2008
+      "name": "Sue",
+      "score": 1023
     },
     {
       "id": 12,
       "name": "",
-      "score": 7182
+      "score": 1402
     },
     {
       "id": 13,
-      "name": "",
-      "score": 2458
+      "name": "Maycon",
+      "score": 3478
     },
     {
       "id": 14,
-      "name": "",
-      "score": 2323
+      "name": "111",
+      "score": 3331
+    },
+    {
+      "id": 15,
+      "name": "Sarah",
+      "score": 4920
     }
   ]
 }

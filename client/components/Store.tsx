@@ -127,7 +127,7 @@ function Store(props: Props) {
           Reset Player
         </div>
       </div>
-      {message && <Message message={message} onClose={() => setMessage('')} />}
+      {message && <Message message={message} />}
     </div>
   )
 }

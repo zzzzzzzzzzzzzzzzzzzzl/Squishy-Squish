@@ -35,7 +35,7 @@ function Leaderboard() {
           alt="return button"
         />
         <br></br>
-        <h2 className="leaderboard-heading">Leader Board</h2>
+        <h2 className="leaderboard-heading">LeaderBoard</h2>
         <br></br>
         <table className="leaderboard">
           <thead>

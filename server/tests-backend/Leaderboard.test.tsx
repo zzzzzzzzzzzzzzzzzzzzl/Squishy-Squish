@@ -2,6 +2,8 @@ import { render, screen, waitFor, act } from '@testing-library/react'
 import Leaderboard from '../../client/components/Leaderboard'
 import { getLeaderboard } from '../../client/apiClient'
 import '@testing-library/jest-dom'
+import { Provider } from 'react-redux'
+import store from '../../client/store'
 // import { act } from 'react-dom/test-utils'
 
 jest.mock('../../client/apiClient')
@@ -27,11 +29,9 @@ describe('Leaderboard', () => {
   it('renders the leaderboard table with correct headers', async () => {
     await act(async () =>
       render(
-        <Leaderboard
-          updateViewToRender={function (view: string): void {
-            throw new Error('Function not implemented.')
-          }}
-        />
+        <Provider store={store}>
+          <Leaderboard />
+        </Provider>
       )
     )
 
@@ -46,11 +46,9 @@ describe('Leaderboard', () => {
 
   it('renders the leaderboard with correct data and ranking order', async () => {
     render(
-      <Leaderboard
-        updateViewToRender={function (view: string): void {
-          throw new Error('Function not implemented.')
-        }}
-      />
+      <Provider store={store}>
+        <Leaderboard />
+      </Provider>
     )
 
     await waitFor(() => {
