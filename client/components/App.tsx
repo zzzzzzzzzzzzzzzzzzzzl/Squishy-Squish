@@ -17,7 +17,7 @@ function App() {
       {<Lives />}
       {<Armour />}
       {<Home />}
-      {/* {gameSlice.dead && <Name />} */}
+      {gameSlice.dead && <Name />}
       {<Canvas />}
     </div>
   )

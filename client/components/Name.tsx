@@ -53,18 +53,24 @@ function Name() {
 
   return (
     <div className="menu-overlay">
-      <div className="border">
-        <form onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <input type="text" value={name} onChange={handleNameChange} />
-          </label>
-          <br />
-          <h1>{gameSlice.score}</h1>
-          <br />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <label className="lableName">
+          Name:
+          <input
+            className="inputName"
+            placeholder="Write your name"
+            type="text"
+            value={name}
+            onChange={handleNameChange}
+          />
+        </label>
+        <br />
+        <h1 className="scoreh1">{gameSlice.score}</h1>
+        <br />
+        <button className="submitbtn" type="submit">
+          Submit
+        </button>
+      </form>
     </div>
   )
 }
