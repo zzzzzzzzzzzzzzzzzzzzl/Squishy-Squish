@@ -2,7 +2,6 @@ import gravity from './gravity'
 import store from '../../store'
 import { setDisplay, startGame, test } from '../../slices/gameSlice'
 import score from './score'
-import { useAppSelector } from '../../hooks'
 import { decreaseLives } from '../../slices/inventorySlice'
 
 class playerObject {//<3

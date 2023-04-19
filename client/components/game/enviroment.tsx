@@ -84,7 +84,6 @@ class enviroment {
   
 
   update() {//this is where our game will take place
-    console.log(this.platformArr.length)
     this.startGame()
     if (this.player.ded) {
       this.reset()
@@ -127,8 +126,10 @@ class enviroment {
     this.p5.fill(c)
     this.p5.stroke(c)
     this.p5.textSize(64)
-    this.p5.text(-this.height, 50, 50)
-    this.p5.text(this.player.coins, 50, 150)
+    this.p5.text(-this.height, 190, 50)
+    this.p5.text(this.player.coins, 190, 150)
+    this.p5.text('score', 20, 50)
+    this.p5.text('coin', 20, 150)
   }
   
   deleteObjects() {

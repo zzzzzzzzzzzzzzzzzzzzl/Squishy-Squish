@@ -1,4 +1,6 @@
 import checkCollision, { checkCollisionCoin } from "./checkCollision"
+import store from '../../store'
+import { playerCurrency } from '../../slices/inventorySlice'
 
 //<3
 class coin {
@@ -27,6 +29,7 @@ class coin {
     if(collision){
       this.contact=true
     player.coins++  
+    store.dispatch(playerCurrency(100))
     }
     
   }

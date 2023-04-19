@@ -52,7 +52,8 @@ const inventorySlice = createSlice({
       return newState
     },
     playerCurrency: (state, action) => {
-      state.currency = action.payload
+      console.log(action.payload)
+      state.currency += action.payload
       savePlayerData({ ...state })
       return state
     },
