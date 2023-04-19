@@ -52,10 +52,16 @@ const inventorySlice = createSlice({
       return newState
     },
     playerCurrency: (state, action) => {
-      console.log(action.payload)
-      state.currency += action.payload
-      savePlayerData({ ...state })
-      return state
+      const newState = { ...state }
+      if (action.payload == 100) {
+        newState.currency += action.payload
+        return newState
+      } else {
+        newState.currency = action.payload
+        console.log(action.payload)
+        savePlayerData({ ...state })
+        return newState
+      }
     },
     resetInventory: () => newPlayerStats,
   },
