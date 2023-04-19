@@ -7,7 +7,7 @@ function checkCollision(bounds1, bounds2, v) {
 
   let collision = null
   if (c[0] && c[1] && c[2] && c[3]) {
-    collision = 'inside'
+    collision = 'tc'
   }
   if (!c[0] && !c[1] && !c[2] && c[3]) {
     if (v[1] > -0.7) {
@@ -60,6 +60,20 @@ function checkPoint(bounds, p) {
     p[1] < bounds.br[1]
   ) {
     return true
+  }
+  return false
+}
+
+export function checkCollisionCoin(bounds1, bounds2) {
+  const keys = Object.keys(bounds1)
+
+  const c = keys.map((i) => {
+    return checkPoint(bounds2, bounds1[i])
+  })
+  for(let i=0;i<c.length;i++){
+    if(c[i]){
+      return true
+    }
   }
   return false
 }

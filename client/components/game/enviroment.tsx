@@ -36,18 +36,23 @@ class enviroment {
     })
     this.height = 0
     this.draw(envSize) //this will set up our canvas <--- and will setup our game loop <3
-    //   this.coinsArr = Array(15)
-    //     .fill()
-    //     .map(() => {
-    //       return new coin([
-    //         [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
-    //         [250, 50],
-    //       ])
-    //     })
-    //   this.coinT = new coin(
-    //     [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
-    //     [2, 50]
-    //   )
+
+    this.coinsArr = []
+    this.colour=[0,0,0]
+
+       this.coinsArr = Array(15)
+        .fill()
+         .map(() => {
+           return new coin([
+            [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
+             [250, 50],
+         ])
+         })
+        this.coinT = new coin(
+        [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
+         [2, 50]
+       )
+
   }
 
   reset() {
@@ -62,13 +67,17 @@ class enviroment {
         ])
       })
     this.groundHeight = 900 //some grass for sue// just a platform bottom so we have somthing to stand on :)
-    // this.coinArr = Array(15)
-    //   .fill()
-    //   .map(() => {
-    //     return new coin([
-    //       [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
-    //       [250, 50],
-    //     ])
+
+    this.coinArr =[]
+
+    this.coinArr = Array(15)
+       .fill()
+       .map(() => {
+         return new coin([
+          [Math.floor(Math.random() * 20), Math.floor(Math.random() * 20)],
+          [250, 50],
+       ])
+
 
     const ground = [
       [0, this.groundHeight],
@@ -90,6 +99,7 @@ class enviroment {
   startGame() {
     this.start = store.getState().game.start
   }
+  
 
   //this is where our game will take place
   update() {
@@ -105,11 +115,18 @@ class enviroment {
       this.panCamera()
     }
     this.player.playerInput(this.p5)
-    // this.coinT.updateCoin(this.p5)
-    // console.log(this.coinsArr)
-    // this.coinsArr.map((i) => {
-    //   i.updateCoin(this.p5)
-    // })
+    this.coinsArr.map((i) => {
+      i.updateCoin(this.p5,this.player)
+    })
+    this.coinsArr=this.coinsArr.filter((i)=>{
+      return !i.contact
+    })
+     this.coinT.updateCoin(this.p5)
+     console.log(this.coinsArr)
+     this.coinsArr.map((i) => {
+       i.updateCoin(this.p5)
+    })
+
     this.platformArr.map((i) => {
       i.updatePlatform(this.p5, this.player)
     })
@@ -127,20 +144,21 @@ class enviroment {
     const c = [225, Math.random() * 50, 100]
     this.p5.fill(c)
     this.p5.stroke(c)
-
-    // Set the text size
     this.p5.textSize(64)
-
-    // Draw the text at position (50, 50)
     this.p5.text(-this.height, 50, 50)
+    this.p5.text(this.player.coins, 50, 150)
   }
+  
   deleteObjects() {
     this.platformArr = this.platformArr.filter((i) => {
       return i.deleteOffCamera(this.height + 1000)
     })
+    this.coinsArr = this.coinsArr.filter((i) => {
+      return i.deleteOffCamera(this.height + 1000)
+    })
   }
   createObjects() {
-    if (Math.random() > 0.92 && !this.player.ded)
+    if (Math.random() > 0.9 && !this.player.ded){
       this.platformArr.push(
         new platform([
           [
@@ -150,30 +168,32 @@ class enviroment {
           [50, 50],
         ])
       )
-    if (Math.random() > 0.95 && !this.player.ded)
+    }
+    if (Math.random() > 0.95 && !this.player.ded){
+      this.platformArr.push(
+        new platform([
+          [Math.floor(Math.random() * 40), Math.floor(this.height / 25)],
+          [100, 50],
+        ])
+      )
+    }
+    if (Math.random() > 0.96 && !this.player.ded){
       this.platformArr.push(
         new platform([
           [Math.floor(Math.random() * 40), Math.floor(this.height / 25)],
           [200, 50],
         ])
       )
-
-    // if (Math.random() > 0.5 && !this.player.ded)
-    //   this.coinsArr.push(
-    //     new coin([
-    //       [Math.floor(Math.random() * 40), Math.floor(this.height / 25)],
-    //       [50, 50],
-    //     ])
-    //   )
-
-    // = Array(100)
-    //   .fill()
-    //   .map(() => {
-    //     return new platform([
-    //       [Math.floor(Math.random() * 20),Math.floor(Math.random() * 20)],
-    //       [50, 50],
-    //     ])
-    //   })
+    }
+    if (Math.random() > .995 && !this.player.ded){
+      this.coinsArr.push(
+        new coin([
+          [Math.floor(Math.random() * 1000), Math.floor(this.height )],
+          
+        ])
+      )
+    }
+    
   }
   draw(envSize) {
     new p5((p5) => {
@@ -185,9 +205,10 @@ class enviroment {
       this.p5.draw = () => {
         this.p5.background(
           255,
-          Math.random() * 5 + 100,
-          Math.random() * 5 + 100
+          Math.random() * 10 + 200,
+          Math.random() * 10 + 100
         )
+        // this.p5.background(this.colour)
         this.update()
       }
     })

@@ -27,4 +27,5 @@ function clearLocalStorage() {
   localStorage.clear()
 }
 
+
 export { loadPlayerData, savePlayerData, clearLocalStorage }

@@ -19,7 +19,7 @@ class playerObject {
     this.velocityArr = Array(3).fill([0, 0])
     this.ded = false
     this.coins = 0
-    this.lives = 3
+    this.lives = 2
   }
   sumForces() {
     //is there a better way of doing this???/
@@ -46,19 +46,24 @@ class playerObject {
   }
   updateSnailTrail(p5) {
     //kind of cool visual effect
-    let c = [0, 0, 0]
-    this.snailTrail.unshift([...this.pos])
-    this.snailTrail.pop()
-    this.snailTrail.map((i, idx) => {
-      const len = this.snailTrail.length - (idx + 1)
-      c = [c[0] + 30, Math.random() * 55, Math.random() * 255]
-      if (c[0] > 255) {
-        c = [50, 50, 0]
-      }
-      p5.fill(c)
-      p5.stroke(c)
-      p5.rect(this.snailTrail[len][0], this.snailTrail[len][1], 20, 20)
-    })
+   
+
+      let c = [0, 0, 0]
+      this.snailTrail.unshift([...this.pos])
+      this.snailTrail.pop()
+      this.snailTrail.map((i, idx) => {
+      
+          const len = this.snailTrail.length - (idx + 1)
+          c = [c[0] + 30, Math.random() * 55, Math.random() * 255]
+          if (c[0] > 255) {
+            c = [50, 50, 0]
+          }
+          p5.fill(c)
+          p5.stroke(c)
+          p5.rect(this.snailTrail[len][0], this.snailTrail[len][1], 20, 20)
+        
+      })
+    
   }
   updateColisionBoundries() {
     this.bounds = {
@@ -70,7 +75,7 @@ class playerObject {
   }
 
   draw(p5) {
-    p5.fill(this.colour)
+    p5.fill([255,120,0])
     p5.stroke(this.colour)
     p5.rect(this.pos[0], this.pos[1], 20, 20)
   }
@@ -87,13 +92,16 @@ class playerObject {
     if (p5.keyIsDown(65)) {
       //a
       this.velocity[0] -= this.inventory.movementSpeed
+
     }
     if (p5.keyIsDown(83)) {
       //s
     }
     if (p5.keyIsDown(68)) {
       //d
+
       this.velocity[0] += this.inventory.movementSpeed
+
     }
   }
   warpIfOffScreen() {
@@ -113,7 +121,8 @@ class playerObject {
     if (!start) {
       this.rebirth(score)
     }
-    if (this.lives < 0) {
+    console.log(this.lives,"here")
+    if (this.lives > 0&&this.pos[1] > 1000 - score) {
       this.rebirth(score)
       this.lives--
     }
