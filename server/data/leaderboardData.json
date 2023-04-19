@@ -17,68 +17,28 @@
     },
     {
       "id": 4,
-      "name": "",
-
-      "score": 1169
-
-      "score": 3
+      "name": "winner winner",
+      "score": 124
     },
     {
       "id": 5,
-      "name": "hello",
-      "score": 1
+      "name": "",
+      "score": 50
     },
     {
       "id": 6,
-      "name": "test",
-      "score": 123
+      "name": "",
+      "score": 455
     },
     {
       "id": 7,
-      "name": "yoza",
-      "score": 799
+      "name": "",
+      "score": 5662
     },
     {
       "id": 8,
-      "name": "yoza my brtother",
-      "score": 356
-    },
-    {
-      "id": 9,
-      "name": "perfecto",
-      "score": 6058
-    },
-    {
-      "id": 10,
       "name": "",
-      "score": 3508
-    },
-    {
-      "id": 11,
-      "name": "",
-      "score": 4308
-    },
-    {
-
-      "id": 29,
-      "name": "doine",
-      "score": 9697
-    },
-    {
-      "id": 30,
-      "name": "",
-      "score": 0
-    },
-    {
-      "id": 31,
-      "name": "sss",
-      "score": 0
-
-      "id": 12,
-      "name": "yas",
-      "score": 8015
-
-
+      "score": 807
     }
   ]
 }
