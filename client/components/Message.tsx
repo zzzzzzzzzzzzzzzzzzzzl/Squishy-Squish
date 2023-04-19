@@ -4,7 +4,6 @@ interface MessageProps {
   message: string
   onClose: () => void
 }
-
 function Message({ message, onClose }: MessageProps) {
   const [show, setShow] = useState(true)
 
