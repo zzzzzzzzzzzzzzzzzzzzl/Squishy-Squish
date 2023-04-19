@@ -4,7 +4,7 @@ import { setDisplay, startGame, test } from '../../slices/gameSlice'
 import score from './score'
 import { useAppSelector } from '../../hooks'
 
-class playerObject {
+class playerObject {//<3
   constructor(player) {
     this.score = new score()
     this.inventory = store.getState().inventory
@@ -19,34 +19,24 @@ class playerObject {
     this.velocityArr = Array(3).fill([0, 0])
     this.ded = false
     this.coins = 0
-    this.lives = 2
+    this.lives = 1
   }
   sumForces() {
-    //is there a better way of doing this???/
-    this.pos[1] = Number((this.velocity[1] + this.pos[1]).toFixed(1))
-
-    this.pBot = [this.pos[0] + this.size, this.pos[1] + this.size]
-    this.pos[0] = Number((this.velocity[0] + this.pos[0]).toFixed(1))
-    this.velocity[0] *= 0.8
+    this.pos[1] = Number((this.velocity[1] + this.pos[1]).toFixed(1));
+    this.pBot = [this.pos[0] + this.size, this.pos[1] + this.size];
+    this.pos[0] = Number((this.velocity[0] + this.pos[0]).toFixed(1));
+    this.velocity[0] *= 0.8;
   }
   checkIfGrounded() {
-    //get last 3 frames of velocity. and adds them all. if the total is less than .7 player is grounded
-    //if we change acceloration then we will need to change this
-    this.velocityArr.unshift([...this.velocity])
-    this.velocityArr.pop()
-    let count = 0
+    this.velocityArr.unshift([...this.velocity]);
+    this.velocityArr.pop();
+    let count = 0;
     this.velocityArr.map((i) => {
-      count += Math.abs(i[1])
-    })
-    if (Math.abs(count) < 0.7) {
-      this.grounded = true
-    } else {
-      this.grounded = false
-    }
+      count += Math.abs(i[1]);
+    });
+    this.grounded = Math.abs(count) < 0.7;
   }
   updateSnailTrail(p5) {
-    //kind of cool visual effect
-   
 
       let c = [0, 0, 0]
       this.snailTrail.unshift([...this.pos])
@@ -54,7 +44,7 @@ class playerObject {
       this.snailTrail.map((i, idx) => {
       
           const len = this.snailTrail.length - (idx + 1)
-          c = [c[0] + 30, Math.random() * 55, Math.random() * 255]
+          c = [c[0] + 30, Math.random() * 65+30, Math.random() * 255]
           if (c[0] > 255) {
             c = [50, 50, 0]
           }
@@ -85,22 +75,22 @@ class playerObject {
     }
   }
   playerInput(p5) {
-    if (p5.keyIsDown(87)) {
-      //w
+    if (p5.keyIsDown(87)) {//w
       this.jump()
     }
-    if (p5.keyIsDown(65)) {
+
+  if (p5.keyIsDown(65)) {
       //a
       this.velocity[0] -= this.inventory.movementSpeed
+      }
+    if (p5.keyIsDown(83)) {//s
+    }
 
-    }
-    if (p5.keyIsDown(83)) {
-      //s
-    }
-    if (p5.keyIsDown(68)) {
+   if (p5.keyIsDown(68)) {
       //d
 
       this.velocity[0] += this.inventory.movementSpeed
+
 
     }
   }
@@ -121,7 +111,6 @@ class playerObject {
     if (!start) {
       this.rebirth(score)
     }
-    console.log(this.lives,"here")
     if (this.lives > 0&&this.pos[1] > 1000 - score) {
       this.rebirth(score)
       this.lives--

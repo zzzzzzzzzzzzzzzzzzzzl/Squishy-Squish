@@ -1,7 +1,7 @@
 function checkCollision(bounds1, bounds2, v) {
   const keys = Object.keys(bounds1)
 
-  const c = keys.map((i) => {
+  const c = keys.map((i) => {//<3
     return checkPoint(bounds2, bounds1[i])
   })
 
