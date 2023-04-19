@@ -483,11 +483,13 @@ transform: translate(-50%, -50%);
   color: #252220;
   font-size: 0.75em;
   font-weight: bold;
+
   font-family: 'Press Start 2P', cursive;
   background: rgb(212, 202, 181);
+
   border: solid #301e15 3px;
-  background: linear-gradient(180deg, rgb(251, 219, 145) 0%,
-   rgb(218, 210, 164) 100%);
+  background: linear-gradient(180deg, rgb(231, 204, 142) 0%,
+   rgb(184, 177, 138) 100%);
    box-shadow: 3px 3px #263b5a;
    width: 350px;
    height: 0.75em;

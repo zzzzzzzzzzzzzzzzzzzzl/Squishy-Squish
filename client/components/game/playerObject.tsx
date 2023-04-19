@@ -4,7 +4,8 @@ import { setDisplay, startGame, test } from '../../slices/gameSlice'
 import score from './score'
 import { decreaseLives } from '../../slices/inventorySlice'
 
-class playerObject {//<3
+class playerObject {
+  //<3
   constructor(player) {
     this.score = new score()
     this.inventory = store.getState().inventory
@@ -19,41 +20,37 @@ class playerObject {//<3
     this.velocityArr = Array(3).fill([0, 0])
     this.ded = false
     this.coins = 0
-    this.lives = store.getState().inventory.lives-1
+    this.lives = store.getState().inventory.lives - 1
   }
   sumForces() {
-    this.pos[1] = Number((this.velocity[1] + this.pos[1]).toFixed(1));
-    this.pBot = [this.pos[0] + this.size, this.pos[1] + this.size];
-    this.pos[0] = Number((this.velocity[0] + this.pos[0]).toFixed(1));
-    this.velocity[0] *= 0.8;
+    this.pos[1] = Number((this.velocity[1] + this.pos[1]).toFixed(1))
+    this.pBot = [this.pos[0] + this.size, this.pos[1] + this.size]
+    this.pos[0] = Number((this.velocity[0] + this.pos[0]).toFixed(1))
+    this.velocity[0] *= 0.8
   }
   checkIfGrounded() {
-    this.velocityArr.unshift([...this.velocity]);
-    this.velocityArr.pop();
-    let count = 0;
+    this.velocityArr.unshift([...this.velocity])
+    this.velocityArr.pop()
+    let count = 0
     this.velocityArr.map((i) => {
-      count += Math.abs(i[1]);
-    });
-    this.grounded = Math.abs(count) < 0.7;
+      count += Math.abs(i[1])
+    })
+    this.grounded = Math.abs(count) < 0.7
   }
   updateSnailTrail(p5) {
-
-      let c = [0, 0, 0]
-      this.snailTrail.unshift([...this.pos])
-      this.snailTrail.pop()
-      this.snailTrail.map((i, idx) => {
-      
-          const len = this.snailTrail.length - (idx + 1)
-          c = [c[0] + 30, Math.random() * 65+30, Math.random() * 255]
-          if (c[0] > 255) {
-            c = [50, 50, 0]
-          }
-          p5.fill(c)
-          p5.stroke(c)
-          p5.rect(this.snailTrail[len][0], this.snailTrail[len][1], 20, 20)
-        
-      })
-    
+    let c = [0, 0, 0]
+    this.snailTrail.unshift([...this.pos])
+    this.snailTrail.pop()
+    this.snailTrail.map((i, idx) => {
+      const len = this.snailTrail.length - (idx + 1)
+      c = [c[0] + 30, Math.random() * 65 + 30, Math.random() * 255]
+      if (c[0] > 255) {
+        c = [50, 50, 0]
+      }
+      p5.fill(c)
+      p5.stroke(c)
+      p5.rect(this.snailTrail[len][0], this.snailTrail[len][1], 20, 20)
+    })
   }
   updateColisionBoundries() {
     this.bounds = {
@@ -65,7 +62,7 @@ class playerObject {//<3
   }
 
   draw(p5) {
-    p5.fill([255,120,0])
+    p5.fill([255, 120, 0])
     p5.stroke(this.colour)
     p5.rect(this.pos[0], this.pos[1], 20, 20)
   }
@@ -75,23 +72,23 @@ class playerObject {//<3
     }
   }
   playerInput(p5) {
-    if (p5.keyIsDown(87)) {//w
+    if (p5.keyIsDown(87)) {
+      //w
       this.jump()
     }
 
-  if (p5.keyIsDown(65)) {
+    if (p5.keyIsDown(65)) {
       //a
       this.velocity[0] -= this.inventory.movementSpeed
-      }
-    if (p5.keyIsDown(83)) {//s
+    }
+    if (p5.keyIsDown(83)) {
+      //s
     }
 
-   if (p5.keyIsDown(68)) {
+    if (p5.keyIsDown(68)) {
       //d
 
       this.velocity[0] += this.inventory.movementSpeed
-
-
     }
   }
   warpIfOffScreen() {
@@ -111,8 +108,7 @@ class playerObject {//<3
     if (!start) {
       this.rebirth(score)
     }
-    if (this.lives > 0&&this.pos[1] > 1000 - score) {
-
+    if (this.lives > 0 && this.pos[1] > 1000 - score) {
       //dispatch()
       store.dispatch(decreaseLives())
       this.rebirth(score)
