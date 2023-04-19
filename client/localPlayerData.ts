@@ -1,41 +1,31 @@
 // Define types for the player's currency and stats
 interface PlayerData {
-  playerinfo: {
-    username: string
-    score: number
+  playerStats: {
+    // username: string
+    // score: number
     currency: number
-  }
-  stats: {
-    movementspeed: number
-    jumpheight: number
+    movementSpeed: number
+    jumpHeight: number
     lives: number
     armour: number
   }
 }
 
 // Function to save the player's data to Local Storage
-function savePlayerData(
-  playerinfo: PlayerData['playerinfo'],
-  stats: PlayerData['stats']
-) {
-  localStorage.setItem('playerinfo', JSON.stringify(playerinfo))
-  localStorage.setItem('stats', JSON.stringify(stats))
+function savePlayerData(playerStats: PlayerData['playerStats']) {
+  localStorage.setItem('playerStats', JSON.stringify(playerStats))
 }
 
 // Function to load the player's data from Local Storage
 function loadPlayerData(): PlayerData {
-  const playerinfo = JSON.parse(localStorage.getItem('playerinfo') || '{}')
-  const stats = JSON.parse(localStorage.getItem('stats') || '{}')
-  return { playerinfo, stats }
+  const playerStats = JSON.parse(localStorage.getItem('playerStats') || '{}')
+  return { playerStats }
 }
 
-// Usage example
-const newPlayerInfo = { username: '', score: 0, currency: 2000 }
-const newStats = { movementspeed: 1, jumpheight: 1, lives: 1, armour: 0 }
-
-savePlayerData(newPlayerInfo, newStats)
-
-const { playerinfo, stats } = loadPlayerData()
+// Function to clear the player's data from Local Storage
+function clearLocalStorage() {
+  localStorage.clear()
+}
 
 
-export { loadPlayerData, savePlayerData }
+export { loadPlayerData, savePlayerData, clearLocalStorage }
