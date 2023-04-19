@@ -1,6 +1,6 @@
 import checkCollision, { checkCollisionCoin } from "./checkCollision"
 
-
+//<3
 class coin {
   constructor(pos) {
     this.topCorner = pos[0]
@@ -21,13 +21,12 @@ class coin {
     }
     return true
   }
+
   collision(player){
     const collision=checkCollisionCoin(player.bounds,this.bounds)
     if(collision){
-      console.log("help")
       this.contact=true
     player.coins++  
-    console.log(player.coins)
     }
     
   }

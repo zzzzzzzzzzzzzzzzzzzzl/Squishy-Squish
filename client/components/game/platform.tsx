@@ -1,12 +1,11 @@
 import checkCollision from './checkCollision'
 
-class platform {
+class platform {//<3
   constructor(pos) {
-    this.colour=[0,0,0]
     pos[0] = [pos[0][0] * 50, pos[0][1] * 50]
     this.topCorner = pos[0]
     this.bottomCorner = pos[1]
-    this.colour = [25, Math.random() * 50, 100]
+    this.colour = [Math.random()*25+30,Math.random()*25+80,Math.random()*25+100]  
 
     this.bounds = {
       tl: pos[0],
@@ -49,7 +48,8 @@ class platform {
   }
 
   draw(p5) {
-    const c =  [Math.random()*25+30,Math.random()*25+80,Math.random()*25+100]   //this.colour
+    this.colour[0]+=.15
+    const c =  [Math.random()*25+this.colour[0],Math.random()*25+this.colour[1],Math.random()*25+this.colour[2]]   //this.colour
     p5.fill(c)
     p5.stroke(c)
     p5.rect(
@@ -63,7 +63,6 @@ class platform {
   updatePlatform(p5, player) {
     this.newcollision(player)
     this.draw(p5)
-    // this.collision(player)
   }
 }
 

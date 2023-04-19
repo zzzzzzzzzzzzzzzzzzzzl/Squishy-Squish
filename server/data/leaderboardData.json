@@ -3,7 +3,7 @@
     {
       "id": null,
       "name": "my name",
-      "score": 379
+      "score": 3
     },
     {
       "id": 1,
@@ -28,147 +28,42 @@
     {
       "id": 5,
       "name": "hello",
-      "score": 665
+      "score": 1
     },
     {
       "id": 6,
-      "name": "hello",
-      "score": 665
+      "name": "test",
+      "score": 123
     },
     {
       "id": 7,
-      "name": "asdas",
-      "score": 747
+      "name": "yoza",
+      "score": 799
     },
     {
       "id": 8,
-      "name": "dsfds",
-      "score": 110
+      "name": "yoza my brtother",
+      "score": 356
     },
     {
       "id": 9,
-      "name": "",
-      "score": 168
+      "name": "perfecto",
+      "score": 6058
     },
     {
       "id": 10,
-      "name": "red",
-      "score": 1871
+      "name": "",
+      "score": 3508
     },
     {
       "id": 11,
-      "name": "high score baby lets go",
-      "score": 452
+      "name": "",
+      "score": 4308
     },
     {
       "id": 12,
-      "name": "i love you computer",
-      "score": 624
-    },
-    {
-      "id": 13,
-      "name": "kys",
-      "score": 120
-    },
-    {
-      "id": 14,
-      "name": "asda",
-      "score": 403
-    },
-    {
-      "id": 15,
-      "name": "asd",
-      "score": 62
-    },
-    {
-      "id": 16,
-      "name": "",
-      "score": 122
-    },
-    {
-      "id": 17,
-      "name": "asd",
-      "score": 801
-    },
-    {
-      "id": 18,
-      "name": "",
-      "score": 161
-    },
-    {
-      "id": 19,
-      "name": "the best",
-      "score": 1938
-    },
-    {
-      "id": 20,
-      "name": "asd",
-      "score": 195
-    },
-    {
-      "id": 21,
-      "name": "",
-      "score": 122
-    },
-    {
-      "id": 22,
-      "name": "",
-      "score": 122
-    },
-    {
-      "id": 23,
-      "name": "",
-      "score": 176
-    },
-    {
-      "id": 24,
-      "name": "",
-      "score": 1308
-    },
-    {
-      "id": 25,
-      "name": "help me",
-      "score": 750
-    },
-    {
-      "id": 26,
-      "name": "Otroy",
-      "score": 1668
-    },
-    {
-      "id": 27,
-      "name": "Santa",
-      "score": 2340
-    },
-    {
-      "id": 28,
-      "name": "",
-      "score": 4699
-    },
-    {
-      "id": 29,
-      "name": "doine",
-      "score": 9697
-    },
-    {
-      "id": 30,
-      "name": "die",
-      "score": 4590
-    },
-    {
-      "id": 31,
-      "name": "dymb",
-      "score": 2258
-    },
-    {
-      "id": 32,
-      "name": "vkiii",
-      "score": 16113
-    },
-    {
-      "id": 33,
-      "name": "asd",
-      "score": 2497
+      "name": "yas",
+      "score": 8015
     }
   ]
 }
