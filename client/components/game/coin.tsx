@@ -24,11 +24,13 @@ class coin {
     return true
   }
 
-  collision(player){
+  collision(player,scrollSpeed){
     const collision=checkCollisionCoin(player.bounds,this.bounds)
     if(collision){
       this.contact=true
-    player.coins++  
+       player.coins++  
+       scrollSpeed[0]*=.8
+    
     store.dispatch(playerCurrency(100))
     }
     
@@ -46,8 +48,8 @@ class coin {
     )
   }
 
-  updateCoin(p5, player) {
-    this.collision(player)
+  updateCoin(p5, player,scrollSpeed) {
+    this.collision(player,scrollSpeed)
     this.draw(p5)
   }
 }

@@ -11,6 +11,7 @@ class enviroment {
   constructor(envSize) {
     //array of platform objects//look at platform.tsx
     this.height = 0//this is camera position//it also will double as our game score
+    this.scrollSpeed=[.6]//this will control the camera speed fo the game
     this.coinsArr = []
     this.platforms = 150
     this.camera = [100, 0]
@@ -51,6 +52,7 @@ class enviroment {
   }
 
   reset() {//this will reset the enviroment class essentialy as if we created a new one//except for our draw function which will create another p5 canvas
+    this.scrollSpeed=[.6]
     this.platforms = 150
     this.platformArr = Array(15)
       .fill()
@@ -61,7 +63,7 @@ class enviroment {
         ])
       })
     this.groundHeight = 900 
-    this.coinArr =[]
+    this.coinsArr =[]
     const ground = [
       [0, this.groundHeight],
       [1000, 1000],
@@ -100,7 +102,7 @@ class enviroment {
 
 
     this.coinsArr.map((i) => {
-      i.updateCoin(this.p5,this.player)
+      i.updateCoin(this.p5,this.player,this.scrollSpeed)
     })
     this.coinsArr=this.coinsArr.filter((i)=>{
       return !i.contact
@@ -115,11 +117,16 @@ class enviroment {
     this.player.updatePlayer(this.p5, -this.height, this.start)
   }
   panCamera() {
+    this.increaseCameraSpeed()
     if (!this.player.ded) {
-      this.height--
+      this.height-=this.scrollSpeed[0]
     }
     this.camera[1] = this.height
     this.p5.translate(-this.camera[0] + 100, -this.camera[1])
+  }
+  increaseCameraSpeed(){
+    this.scrollSpeed[0]+=.001
+
   }
   drawScore() {
     const c = [225, Math.random() * 50, 100]
@@ -171,7 +178,7 @@ class enviroment {
         ])
       )
     }
-    if (Math.random() > .995 && !this.player.ded){
+    if (Math.random() > .998 && !this.player.ded){
       this.coinsArr.push(
         new coin([
           [Math.floor(Math.random() * 1000), Math.floor(this.height )-2],
