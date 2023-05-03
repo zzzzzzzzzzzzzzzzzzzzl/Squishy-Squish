@@ -2,53 +2,13 @@
   "leaderboard": [
     {
       "id": 1,
-      "name": "Rene",
+      "name": "Josh",
       "score": 3
-    },
-    {
-      "id": 1,
-      "name": "Rene",
-      "score": 3
-    },
-    {
-      "id": 1,
-      "name": "Rene",
-      "score": 3
-    },
-    {
-      "id": 1,
-      "name": "Rene",
-      "score": 3
-    },
-    {
-      "id": 1,
-      "name": "Rene",
-      "score": 3
-    },
-    {
-      "id": 2,
-      "name": "1321564",
-      "score": 399
     },
     {
       "id": 3,
       "name": "james",
       "score": 801
-    },
-    {
-      "id": 4,
-      "name": "",
-      "score": 3094
-    },
-    {
-      "id": 5,
-      "name": "",
-      "score": 195
-    },
-    {
-      "id": 6,
-      "name": "",
-      "score": 217
     },
     {
       "id": 7,
@@ -67,7 +27,7 @@
     },
     {
       "id": 10,
-      "name": "Rene",
+      "name": "Joe",
       "score": 862
     },
     {
@@ -77,7 +37,7 @@
     },
     {
       "id": 12,
-      "name": "",
+      "name": "Rob",
       "score": 1402
     },
     {
@@ -87,13 +47,38 @@
     },
     {
       "id": 14,
-      "name": "111",
-      "score": 3331
+      "name": "Rene",
+      "score": 998
     },
     {
       "id": 15,
-      "name": "Sarah",
-      "score": 4920
-      }
-   ]
+      "name": "",
+      "score": 355
+    },
+    {
+      "id": 16,
+      "name": "Kate <3",
+      "score": 1097
+    },
+    {
+      "id": 17,
+      "name": "Kate",
+      "score": 1435
+    },
+    {
+      "id": 18,
+      "name": "Kate",
+      "score": 1858
+    },
+    {
+      "id": 19,
+      "name": "Rene",
+      "score": 2502
+    },
+    {
+      "id": 20,
+      "name": "Rene",
+      "score": 1215
+    }
+  ]
 }

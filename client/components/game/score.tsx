@@ -2,11 +2,13 @@ import store from '../../store'
 import { highScore } from '../../slices/gameSlice'
 import { getLeaderboard } from '../../apiClient'
 
-class score {//<3
+class score {
+  //<3
   constructor() {
     this.score = 0
   }
-  updateScore(score) {//called each frame
+  updateScore(score) {
+    //called each frame
     this.score = score
   }
 
@@ -24,7 +26,7 @@ class score {//<3
     const arr = data.map((i) => {
       return i.score
     })
-    const topFive = arr.sort((a: number, b: number) => b - a).slice(0, 5)
+    const topFive = arr.sort((a: number, b: number) => b - a).slice(0, 10)
     let newhighscore = false
     topFive.map((i) => {
       if (i < this.score) {

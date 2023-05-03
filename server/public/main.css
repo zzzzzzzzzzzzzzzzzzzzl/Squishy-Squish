@@ -483,7 +483,7 @@ transform: translate(-50%, -50%);
   color: #252220;
   font-size: 0.75em;
   font-weight: bold;
-
+font-size: 23px;
   font-family: 'Press Start 2P', cursive;
   background: rgb(212, 202, 181);
 
@@ -509,7 +509,7 @@ transform: translate(-50%, -50%);
 }
 
 .scoreh1 {
-  width: 3.5em;
+  width: 4.5em;
   align-items: center;
   transform: translate(70%, 8%);
   top: 5px;
