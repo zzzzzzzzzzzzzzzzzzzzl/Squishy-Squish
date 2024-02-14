@@ -23,7 +23,7 @@ const inventorySlice = createSlice({
   reducers: {
     increaseJumpHeight: (state) => {
       const newState = { ...state }
-      newState.jumpHeight += 2
+      // newState.jumpHeight += 2
       savePlayerData({ ...newState })
       return newState
     },
