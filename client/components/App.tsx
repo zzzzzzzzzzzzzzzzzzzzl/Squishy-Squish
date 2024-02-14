@@ -8,9 +8,11 @@ import { useAppSelector } from '../hooks'
 
 function App() {
   const gameSlice = useAppSelector((state) => state.game)
-
+  const translateStyle = {
+    transform: 'translate(10px, 500px)', // Adjust the values as needed
+  };
   return (
-    <div>
+    <div style={translateStyle} >
       {gameSlice.inputName && gameSlice.highscore && <Name />}
       {<Lives />}
       {<Armour />}
