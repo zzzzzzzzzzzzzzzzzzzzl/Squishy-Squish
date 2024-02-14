@@ -68,7 +68,7 @@ class playerObject {
   }
   jump() {
     if (this.grounded) {
-      this.velocity[1] = -this.inventory.jumpHeight - 10
+      this.velocity[1] =  - 18
     }
   }
   playerInput(p5) {
