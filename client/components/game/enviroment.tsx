@@ -193,6 +193,7 @@ class enviroment {
       this.p5 = p5
       this.p5.setup = () => {
         let canvas=this.p5.createCanvas(envSize, envSize)
+        canvas.parent
       }
 
       this.p5.draw = () => {
